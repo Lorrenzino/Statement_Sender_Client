@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 
-
-namespace Statement_Sender_Client.ViewModel.Categories.Statements
+namespace Statement_Sender_Client.ViewModel.Categories.Statements.State
 {
-    internal class ViewModel_MainStatementPage: ViewModelBase
+    internal class ViewModelListStatement : ViewModelBase
     {
 
-        private ObservableCollection<ViewModelStatement> _statement_list_all ;
+        private ObservableCollection<ViewModelStatement> _statement_list;
 
-        public IEnumerable<ViewModelStatement> Statement_list_all => _statement_list_all;
+        public IEnumerable<ViewModelStatement> Statement_list => _statement_list;
 
-        public ViewModel_MainStatementPage() 
+        public ViewModelListStatement()
         {
-            _statement_list_all = new ObservableCollection<ViewModelStatement>();
 
-            _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
+            _statement_list = new ObservableCollection<ViewModelStatement>();
+
+            _statement_list.Add(new ViewModelStatement(new Model.Statement(
                 11111,
                 "Andrei",
                 "OMA",
@@ -34,7 +33,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                 "Відправлено"
 
        )));
-            _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
+            _statement_list.Add(new ViewModelStatement(new Model.Statement(
                 11112,
                 "Andrei 2",
                 "SWAT",
@@ -50,7 +49,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                 "Відправлено"
 
        )));
-            _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
+            _statement_list.Add(new ViewModelStatement(new Model.Statement(
                 11113,
                "Andrei 3",
                "SWAT",
@@ -66,7 +65,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                "Відправлено"
 
        )));
-            _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
+            _statement_list.Add(new ViewModelStatement(new Model.Statement(
                 11114,
                "Andrei4",
                "OMA",
@@ -83,39 +82,26 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
        )));
 
-            /*
-            DataRotation.GetDataFromServer();
-            Current_User.StatementCollection = DataRotation.GetData();
-            ObservableCollection<ViewModelStatement> dat = new ObservableCollection<ViewModelStatement>();
-            */
+
+
+            //_statement_list = new ObservableCollection<ViewModelStatement>();
+            //DataRotation.GetDataFromServer();
+            //Current_User.StatementCollection = DataRotation.GetData();
 
             /*
             foreach (var item in Current_User.StatementCollection)
             {
-                _statement_list_all.Add(item);
+                _statement_list.Add(item);
             }
             */
+            /*
+            foreach (ViewModelStatement el in Current_User.StatementCollection)
+                if (el.Comment =="")
+                    _statement_list.Add(el);
+            */
 
-
-            //MyState
-            //Done 
-            //Open 
-            //Test 
-            //Frost
-            //Cansel
         }
 
-
-        public ICommand MyState { get;}
-        public ICommand Done { get; }
-        public ICommand Open { get; }
-        public ICommand Test { get; }
-        public ICommand Frost { get; }
-        public ICommand Cansel { get; }
-
         
-
-        public ICommand OpenStatementsEditor { get; }
-
     }
 }
