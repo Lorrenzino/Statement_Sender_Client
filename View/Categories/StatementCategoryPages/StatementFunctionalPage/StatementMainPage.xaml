@@ -9,6 +9,161 @@
       Title="StatementMainPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="3*" MaxWidth="300" MinWidth="200"/>
+            <ColumnDefinition Width="7*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid x:Name="NavigationTreeViewGrid" Grid.Column="0"  Background="DarkGray">
+
+            <Grid x:Name="FUCK" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Button Grid.Row="0"
+                        Margin="3"
+                        Content="Створити нову заяву" 
+                        Command="{Binding OpenStatementsEditor}"/>
+                <TreeView x:Name="I_HATE_THE_TREE"
+                                  Grid.Row="1"
+                                  Background="{x:Null}" 
+                                  BorderBrush="{x:Null}"
+                                  ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                                  ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+
+
+
+                    <!-- Мої заяви -->
+                    <TreeViewItem  Name="TreeView_My" Background="{x:Null}">
+                        <TreeViewItem.Header>
+                            <DockPanel>
+                                <Button Content="Мої завленяння" Command="{Binding MyState}"></Button>
+                                <Label Content="4" HorizontalAlignment="Right" />
+                            </DockPanel>
+                        </TreeViewItem.Header>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Зроблено" Command="{Binding Done}"/>
+
+                            <Label Content="1" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="В процесі" Command="{Binding Open}" ></Button>
+
+                            <Label Content=" 1" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal" >
+                            <Button Content="Відправлено" Command="{Binding Test}"></Button>
+
+                            <Label Content=" 2" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Призупинено" Command="{Binding Frost}"></Button>
+
+                            <Label Content=" 0" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Скасовано" Command="{Binding Cansel}"></Button>
+
+                            <Label Content=" 0" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                    </TreeViewItem>
+
+                    <!-- Заяви відділу Бугалтерія -->
+                    <TreeViewItem Name="TreeView_Bug">
+                        <TreeViewItem.Header>
+                            <DockPanel>
+                                <Button Content="Буггалтерія завленяння" ></Button>
+                                <Label Content="10" HorizontalAlignment="Right" />
+                            </DockPanel>
+                        </TreeViewItem.Header>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Зроблено"  />
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Відкрито"  ></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <DockPanel Width="200" >
+                            <Button Content="На перевірці" ></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3 " HorizontalAlignment="Right"/>
+                        </DockPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Призупинено" ></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Скасовано" ></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </TreeViewItem>
+
+
+                    <!-- Заяви відділу Виробництво -->
+                    <TreeViewItem Name="TreeView_Prod">
+                        <TreeViewItem.Header>
+                            <DockPanel>
+                                <Button Content="Виробництво завленяння" ></Button>
+                                <Label Content="10" HorizontalAlignment="Right" />
+                            </DockPanel>
+                        </TreeViewItem.Header>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Зроблено" />
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Відкрито"  ></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <DockPanel Width="200" >
+                            <Button Content="На перевірці"></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3 " HorizontalAlignment="Right"/>
+                        </DockPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Призупинено"></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Скасовано"></Button>
+                            <Label Content="count" HorizontalAlignment="Right" />
+                            <Label Content=" 3" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                    </TreeViewItem>
+                </TreeView>
+
+            </Grid>
+
+
+        </Grid>
+        <Grid Grid.Column="1">
+            <Frame x:Name="Frame_1" NavigationUIVisibility="Automatic" Source="/View/Categories/StatementCategoryPages/StatementFunctionalPage/SVP_SubPage/StatementViewerTabl.xaml" />
+        </Grid>
     </Grid>
 </Page>
