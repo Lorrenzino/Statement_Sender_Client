@@ -17,70 +17,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.State
 
             _statement_list = new ObservableCollection<ViewModelStatement>();
 
-            _statement_list.Add(new ViewModelStatement(new Model.Statement(
-                11111,
-                "Andrei",
-                "OMA",
-                "adres1",
-                "a101",
-                "0965845865",
-                "Канцелярія",
-                "Низька",
-                "problem_name1",
-                "Заправити принтер",
-                "цей комент",
-                DateTime.Now,
-                "Відправлено"
-
-       )));
-            _statement_list.Add(new ViewModelStatement(new Model.Statement(
-                11112,
-                "Andrei 2",
-                "SWAT",
-                "adres2",
-                "room2",
-                "3489653298",
-                "Системний доступ",
-                "Висока",
-                "problem_name2",
-                "Відновити дістанційний доступ",
-                "",
-                DateTime.Now,
-                "Відправлено"
-
-       )));
-            _statement_list.Add(new ViewModelStatement(new Model.Statement(
-                11113,
-               "Andrei 3",
-               "SWAT",
-               "adres3",
-               "room3",
-               "37545874587",
-               "Інвентарна",
-               "Висока",
-               "problem_name3",
-               "Зламався куллер",
-               "pomogite pojosta",
-               DateTime.Now,
-               "Відправлено"
-
-       )));
-            _statement_list.Add(new ViewModelStatement(new Model.Statement(
-                11114,
-               "Andrei4",
-               "OMA",
-               "adres4",
-               "room4",
-               "32653576778",
-               "Інвентарна",
-               "Висока",
-               "problem_name4",
-               "Потрібен новий вогнегасник",
-               "",
-               DateTime.Now,
-               "Завершено"
-
-       )));
+            foreach (var statement in Statement_list)
+            {
+                _statement_list.Add(statement);
+            }
 
 
 

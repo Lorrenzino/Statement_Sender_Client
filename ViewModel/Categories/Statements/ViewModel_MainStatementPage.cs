@@ -113,7 +113,12 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         public ICommand Frost { get; }
         public ICommand Cansel { get; }
 
-        
+
+
+        //test command to change datacontext
+        public ICommand Chang_DataContext_SubPage { get; }
+
+
 
         public ICommand OpenStatementsEditor { get; }
 
