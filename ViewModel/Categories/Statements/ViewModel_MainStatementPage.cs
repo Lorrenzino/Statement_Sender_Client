@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage;
+using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -95,7 +97,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                 _statement_list_all.Add(item);
             }
             */
-
+            Chang_DataContext_SubPage= new Chang_DataContext_SubPage(this, _statement_list_all);
 
             //MyState
             //Done 

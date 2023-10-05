@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 
-namespace Statement_Sender_Client.ViewModel.Categories.Statements.State
+namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
     internal class ViewModelListStatement : ViewModelBase
     {
