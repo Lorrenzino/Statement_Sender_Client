@@ -8,7 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModel\" />
+    <Folder Include="ViewModel\Categories\Statements\StatementSub\" />
+    <Folder Include="ViewModel\MainWindows\" />
   </ItemGroup>
 
 </Project>
