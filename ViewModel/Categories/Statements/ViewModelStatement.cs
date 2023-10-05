@@ -1,12 +1,12 @@
 ﻿using Statement_Sender_Client.ViewModel;
 using Statement_Sender_Client.Model;
 
-namespace Statement_Sender_ClientViewModel.Categories.Statements
+namespace Statement_Sender_Client.ViewModel.Categories.Statements
 {
     internal class ViewModelStatement : ViewModelBase
     {
         private readonly Statement _statement;
-         
+
         //-------------------------------------------------------------
         public string Sender_Name => _statement.Sender_Name;
         public string Adres => _statement.Adres;
