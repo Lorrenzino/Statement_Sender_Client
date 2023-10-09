@@ -163,7 +163,9 @@
 
         </Grid>
         <Grid Grid.Column="1">
-            <Frame x:Name="Frame_1" NavigationUIVisibility="Automatic" Source="/View/Categories/StatementCategoryPages/StatementFunctionalPage/SVP_SubPage/StatementViewerTabl.xaml" />
+            <Frame x:Name="Frame_1" NavigationUIVisibility="Automatic"  Source="/View/Categories/StatementCategoryPages/StatementFunctionalPage/SVP_SubPage/StatementViewerTabl.xaml">
+                 
+            </Frame>
         </Grid>
     </Grid>
 </Page>

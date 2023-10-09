@@ -8,9 +8,9 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
     /// <summary>
     /// Логика взаимодействия для StatementViwerTabl.xaml
     /// </summary>
-    public partial class StatementViwerTabl : Page
+    public partial class StatementViewerTabl : Page
     {
-        public StatementViwerTabl()
+        public StatementViewerTabl()
         {
             InitializeComponent();
             DataContext = new ViewModelListStatement();

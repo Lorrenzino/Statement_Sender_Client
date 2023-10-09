@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <Folder Include="Command\Categories\StatementCategoryPages\StatementFunctionalPage\SVP_SubPage\StatementEditor_Commands\" />
+    <Folder Include="Navigation\Categories\StatementCategory\" />
     <Folder Include="ViewModel\MainWindows\" />
   </ItemGroup>
 
