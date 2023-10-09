@@ -1,8 +1,12 @@
-﻿using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage;
+﻿using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage;
+using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage;
+using Statement_Sender_Client.Navigation;
+using Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage;
 using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 
@@ -11,10 +15,12 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 {
     internal class ViewModel_MainStatementPage: ViewModelBase
     {
+        
 
         private ObservableCollection<ViewModelStatement> _statement_list_all ;
 
         public IEnumerable<ViewModelStatement> Statement_list_all => _statement_list_all;
+
 
         public ViewModel_MainStatementPage() 
         {
@@ -99,14 +105,30 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             */
             Chang_DataContext_SubPage= new Chang_DataContext_SubPage(this, _statement_list_all);
 
-            //MyState
-            //Done 
+            MyState= Open_ViewTabPage;
+            Done = Open_StateEditPage;
             //Open 
             //Test 
             //Frost
             //Cansel
         }
+        private Page StateEditPage = new StatementEditor();
+        private Page ViewTabPage = new StatementViewerTabl();
 
+        private Page _CurPage_StatementSub = new StatementViewerTabl();
+
+        public Page CurPage_StatementSub
+        {
+            get => _CurPage_StatementSub;
+            set
+            {
+                _CurPage_StatementSub = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public RelayCommand Open_StateEditPage => new RelayCommand(execute => { CurPage_StatementSub = StateEditPage; });
+        public RelayCommand Open_ViewTabPage => new RelayCommand(execute => { CurPage_StatementSub = ViewTabPage; });
 
         public ICommand MyState { get;}
         public ICommand Done { get; }

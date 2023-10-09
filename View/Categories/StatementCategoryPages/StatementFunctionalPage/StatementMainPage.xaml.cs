@@ -1,4 +1,5 @@
-﻿using Statement_Sender_Client.ViewModel.Categories.Statements;
+﻿using Statement_Sender_Client.Navigation;
+using Statement_Sender_Client.ViewModel.Categories.Statements;
 using System.Windows.Controls;
 
 namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage

@@ -11,7 +11,7 @@ using Statement_Sender_Client.ViewModel;
 
 namespace Statement_Sender_Client.Navigation
 {
-    internal class NavigationLib : ViewModelBase
+    internal class NavigationBlock_StatementSub : ViewModelBase
     {
         /*
         public RelayCommand AddComand => new RelayCommand(execute => { 
@@ -22,11 +22,11 @@ namespace Statement_Sender_Client.Navigation
                                                                         return true; 
                                                                         });
         */
-        public Page StMP = new StatementMainPage();
-        public Page StateEditPage = new StatementEditor();
-        public Page ViewTabPage = new StatementViewerTabl();
+        private Page StMP = new StatementMainPage();
+        private Page StateEditPage = new StatementEditor();
+        private Page ViewTabPage = new StatementViewerTabl();
 
-        public Page _CurPage_StatementSub = new StatementViewerTabl();
+        private Page _CurPage_StatementSub = new StatementViewerTabl();
 
         public Page CurPage_StatementSub 
         {
@@ -38,7 +38,20 @@ namespace Statement_Sender_Client.Navigation
             }
         }
 
-        //public RelayCommand Open_StateEditPage = new RelayCommand( execute =>{ CurPage_StatementSub = StateEditPage; });
+        public RelayCommand Open_StateEditPage => new RelayCommand( execute => { CurPage_StatementSub = StateEditPage; });
+        public RelayCommand Open_ViewTabPage => new RelayCommand(execute => { CurPage_StatementSub = ViewTabPage; });
+
+        public void Open_StateEditPage_X()
+        {
+            CurPage_StatementSub = StateEditPage;
+        }
+
+        public void Open_ViewTabPage_X()
+        {
+            CurPage_StatementSub = ViewTabPage;
+        }
+
+
 
     }
 }

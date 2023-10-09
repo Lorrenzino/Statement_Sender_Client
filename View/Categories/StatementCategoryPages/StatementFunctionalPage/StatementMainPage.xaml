@@ -25,7 +25,7 @@
                 <Button Grid.Row="0"
                         Margin="3"
                         Content="Створити нову заяву" 
-                        Command="{Binding OpenStatementsEditor}"/>
+                        Command="{Binding Done}"/>
                 <TreeView x:Name="I_HATE_THE_TREE"
                                   Grid.Row="1"
                                   Background="{x:Null}" 
@@ -163,7 +163,11 @@
 
         </Grid>
         <Grid Grid.Column="1">
-            <Frame x:Name="Frame_1" NavigationUIVisibility="Automatic"  Source="/View/Categories/StatementCategoryPages/StatementFunctionalPage/SVP_SubPage/StatementViewerTabl.xaml">
+            <Frame x:Name="Frame_1" 
+                   NavigationUIVisibility="Automatic"  
+                   Content="{Binding CurPage_StatementSub }"
+                   
+                   >
                  
             </Frame>
         </Grid>
