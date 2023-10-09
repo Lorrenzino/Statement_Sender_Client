@@ -103,17 +103,19 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                 _statement_list_all.Add(item);
             }
             */
-            Chang_DataContext_SubPage= new Chang_DataContext_SubPage(this, _statement_list_all);
+            //Chang_DataContext_SubPage= new Chang_DataContext_SubPage(this, _statement_list_all);
 
-            MyState= Open_ViewTabPage;
-            Done = Open_StateEditPage;
+            MyState = new MyState_Command(this, _statement_list_all);
+            //Done 
+
+            
             //Open 
             //Test 
             //Frost
             //Cansel
         }
-        private Page StateEditPage = new StatementEditor();
-        private Page ViewTabPage = new StatementViewerTabl();
+        public Page StateEditPage = new StatementEditor();
+        public Page ViewTabPage = new StatementViewerTabl();
 
         private Page _CurPage_StatementSub = new StatementViewerTabl();
 

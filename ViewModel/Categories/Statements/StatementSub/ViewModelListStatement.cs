@@ -12,16 +12,34 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         public IEnumerable<ViewModelStatement> Statement_list => _statement_list;
 
-        public ViewModelListStatement()
+        public ViewModelListStatement(ObservableCollection<ViewModelStatement> list)
         {
 
             _statement_list = new ObservableCollection<ViewModelStatement>();
 
-            foreach (var statement in Statement_list)
+            foreach (var statement in list)
             {
                 _statement_list.Add(statement);
             }
+            OnPropertyChanged();
+            
 
+            _statement_list.Add(new ViewModelStatement(new Model.Statement(
+                11111,
+                "Andrei",
+                "OMA",
+                "adres1",
+                "a101",
+                "0965845865",
+                "Канцелярія",
+                "Низька",
+                "problem_name1",
+                "Заправити принтер",
+                "цей комент",
+                DateTime.Now,
+                "Відправлено"
+
+       )));
 
 
             //_statement_list = new ObservableCollection<ViewModelStatement>();

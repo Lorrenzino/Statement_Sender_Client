@@ -13,7 +13,7 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
         public StatementViewerTabl()
         {
             InitializeComponent();
-            DataContext = new ViewModelListStatement();
+            DataContext = new ViewModelListStatement(new ObservableCollection<ViewModelStatement>());
         }
     }
 }
