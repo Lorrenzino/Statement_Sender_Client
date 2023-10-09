@@ -14,16 +14,17 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         public ViewModelListStatement(ObservableCollection<ViewModelStatement> list)
         {
-
+            int v = 1;
             _statement_list = new ObservableCollection<ViewModelStatement>();
 
-            foreach (var statement in list)
+            foreach (ViewModelStatement statement in list)
             {
+                v++;
                 _statement_list.Add(statement);
             }
             OnPropertyChanged();
             
-
+            for(;v<3;v++)
             _statement_list.Add(new ViewModelStatement(new Model.Statement(
                 11111,
                 "Andrei",
