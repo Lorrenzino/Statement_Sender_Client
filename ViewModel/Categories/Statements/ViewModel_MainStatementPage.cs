@@ -6,6 +6,7 @@ using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -106,18 +107,19 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             //Chang_DataContext_SubPage= new Chang_DataContext_SubPage(this, _statement_list_all);
 
             MyState = new MyState_Command(this, _statement_list_all);
-            //Done 
-
-            
-            //Open 
-            //Test 
-            //Frost
-            //Cansel
+            Done = new Done_Command(this, _statement_list_all);
+            Open =new Open_Command(this, _statement_list_all);
+            Test = new Test_Command(this, _statement_list_all);
+            Frost = new Frost_Command(this, _statement_list_all);
+            Canseled = new Canseled_Command(this, _statement_list_all);
         }
+        // -------------------------------------------------------------------------------------------------------------------------'
+        // Создаём навигациб
+        // создаём страницы и добавляем команды перенаправляния для навигации
         public Page StateEditPage = new StatementEditor();
         public Page ViewTabPage = new StatementViewerTabl();
 
-        public Page _CurPage_StatementSub = new StatementViewerTabl();
+        public Page _CurPage_StatementSub = new StatementEditor();
 
         public Page CurPage_StatementSub
         {
@@ -129,15 +131,22 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             }
         }
 
+        public void SetDataToPage(Page setthis)
+        {
+            // может получится сделать страницы private
+        }
+
         public RelayCommand Open_StateEditPage => new RelayCommand(execute => { CurPage_StatementSub = StateEditPage; });
         public RelayCommand Open_ViewTabPage => new RelayCommand(execute => { CurPage_StatementSub = ViewTabPage; });
 
+        // -------------------------------------------------------------------------------------------------------------------------'
+        // Обьявляем команды
         public ICommand MyState { get;}
         public ICommand Done { get; }
         public ICommand Open { get; }
         public ICommand Test { get; }
         public ICommand Frost { get; }
-        public ICommand Cansel { get; }
+        public ICommand Canseled { get; }
 
 
 

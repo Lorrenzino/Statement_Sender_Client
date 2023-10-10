@@ -7,6 +7,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
     {
         private readonly Statement _statement;
 
+        public string Autor_ID => _statement.Sender.User_ID.ToString();
+
         //-------------------------------------------------------------
         public string Sender_Name => _statement.Sender_Name;
         public string Adres => _statement.Adres;
