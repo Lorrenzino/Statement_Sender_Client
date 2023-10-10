@@ -117,7 +117,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         public Page StateEditPage = new StatementEditor();
         public Page ViewTabPage = new StatementViewerTabl();
 
-        private Page _CurPage_StatementSub = new StatementViewerTabl();
+        public Page _CurPage_StatementSub = new StatementViewerTabl();
 
         public Page CurPage_StatementSub
         {

@@ -25,6 +25,9 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         public override void Execute(object parameter)
         {
             VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
+            
+            VM_model._CurPage_StatementSub.DataContext = new ViewModelListStatement(Statement_list);
+            VM_model._CurPage_StatementSub = VM_model.StateEditPage;
             //OnPropertyChanged();
 
         }

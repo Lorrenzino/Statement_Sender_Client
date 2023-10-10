@@ -8,7 +8,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
     internal class ViewModelListStatement : ViewModelBase
     {
 
-        private ObservableCollection<ViewModelStatement> _statement_list;
+        public ObservableCollection<ViewModelStatement> _statement_list;
 
         public IEnumerable<ViewModelStatement> Statement_list => _statement_list;
 
