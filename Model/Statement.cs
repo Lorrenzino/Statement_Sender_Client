@@ -33,6 +33,31 @@ namespace Statement_Sender_Client.Model
         public DateTime Date_statemant {  get; set; }
         public string Status { get; set; }
 
+        public Statement(string sender_Name,
+                        string sender_Department,
+                        string adres,
+                        string room,
+                        string phone,
+                        string type_problem,
+                        string priority,
+                        string abstract_,
+                        string description,
+                        string comment)
+        {
+            Sender = Current_user.Current;
+            Sender_Name = sender_Name;
+            Sender_Department = sender_Department;
+            Adres = adres;
+            Room = room;
+            Phone = phone;
+            Type_problem = type_problem;
+            Priority = priority;
+            Abstract = abstract_;
+            Description = description;
+            Comment = comment;
+            Date_statemant = DateTime.Now;
+            Status = "новий";
+        }
         public Statement(int id_state,
                         string sender_Name,
                         string sender_Department,

@@ -152,6 +152,23 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         }
 
 
+        private bool _isChecked=false;
+        public bool IsChecked
+        {
+            get
+            {
+                return _isChecked;
+            }
+            set
+            {
+                if (_isChecked != value)
+                {
+                    _isChecked = value;
+                    OnPropertyChanged(nameof(IsChecked));
+                }
+            }
+        }
+
 
         public ICommand SendStatementE { get; }
 
@@ -161,7 +178,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         public ViewModelStatementEditor()
         {
-            SendStatementE = new CanselStatementE_Command();
+            SendStatementE = new SendStatementE_Command(this);
             CleanStatementE = new CleanStatementE_Command(this);
             CanselStatementE = new CanselStatementE_Command();
 

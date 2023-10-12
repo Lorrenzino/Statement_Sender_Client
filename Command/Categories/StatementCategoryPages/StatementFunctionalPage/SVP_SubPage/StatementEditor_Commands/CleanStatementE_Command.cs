@@ -18,7 +18,17 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         }
         public override void Execute(object parameter)
         {
-            //_view.A
+            _view.Short_description = "";
+            _view.DescriptionL = "";
+            _view.Specification = "";
+            if (_view.IsChecked)
+            {
+                _view.User_name = "";
+                _view.Adres = "";
+                _view.Department = "";
+                _view.Room = "";
+                _view.Phone_nom = "";
+            }
 
         }
     }

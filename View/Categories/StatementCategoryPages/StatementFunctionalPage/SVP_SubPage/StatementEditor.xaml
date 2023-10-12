@@ -76,8 +76,8 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0"
-                            Content="Адреса"
-                            VerticalAlignment="Center"></Label>
+                                Content="Адреса"
+                                VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
                                  Text="{Binding Adres}"
              
@@ -114,8 +114,8 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
-                    Content="Кімната"
-                    VerticalAlignment="Center"></Label>
+                                    Content="Кімната"
+                                    VerticalAlignment="Center"></Label>
                             <TextBox Grid.Column="1"
                       Text="{Binding Room}"
                       VerticalAlignment="Center"></TextBox>
@@ -128,11 +128,11 @@
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Label Grid.Column="0"
-                         Content="Контактний номер"
-                         VerticalAlignment="Center"></Label>
+                                    Content="Контактний номер"
+                                    VerticalAlignment="Center"></Label>
                             <TextBox Grid.Column="1"
-                         Text="{Binding Phone_nom}"
-                         VerticalAlignment="Center"></TextBox>
+                                    Text="{Binding Phone_nom}"
+                                    VerticalAlignment="Center"></TextBox>
                         </Grid>
                     </Grid>
 
@@ -143,11 +143,12 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0"
-                    Content="Інший Адрес"
-                    VerticalAlignment="Center"></Label>
-                        <CheckBox Grid.Column="1"
-                       VerticalAlignment="Center"></CheckBox>
-
+                                Content="Інший Адрес"
+                                VerticalAlignment="Center"></Label>
+                        <CheckBox x:Name="Chek"
+                                Grid.Column="1"
+                                IsChecked="{Binding IsChecked}"
+                                VerticalAlignment="Center"/>
                     </Grid>
 
                     <Grid Grid.Row="6">
@@ -157,11 +158,11 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0"
-                    Content="Категорія"
-                    VerticalAlignment="Center"></Label>
+                                Content="Категорія"
+                                VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
-                      Text="{Binding Specification}"
-                      VerticalAlignment="Center"></TextBox>
+                                Text="{Binding Specification}"
+                                VerticalAlignment="Center"></TextBox>
                     </Grid>
 
 
@@ -174,11 +175,11 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0"
-                    Content="Короткий опис"
-                    VerticalAlignment="Center"></Label>
+                                Content="Короткий опис"
+                                VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
-                      Text="{Binding Short_description}"
-                      VerticalAlignment="Center"></TextBox>
+                                Text="{Binding Short_description}"
+                                VerticalAlignment="Center"></TextBox>
                     </Grid>
 
                     <Grid Grid.Row="8">
@@ -187,10 +188,10 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                     Content="Опис"
-                     VerticalAlignment="Top"></Label>
+                                Content="Опис"
+                                VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
-                     Text="{Binding DescriptionL}"></TextBox>
+                                Text="{Binding DescriptionL}"></TextBox>
 
                     </Grid>
 
@@ -200,10 +201,10 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                     Content="Коментар"
-                     VerticalAlignment="Top"></Label>
+                                Content="Коментар"
+                                VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
-                     Text="{Binding About}"></TextBox>
+                                Text="{Binding About}"></TextBox>
 
                     </Grid>
 
@@ -213,8 +214,8 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                     Content="Додаток"
-                     VerticalAlignment="Top"></Label>
+                                Content="Додаток"
+                                VerticalAlignment="Top"></Label>
                         <DataGrid Grid.Column="1"
                    ></DataGrid>
 
@@ -233,13 +234,16 @@
                     
                     <Button Grid.Column="0"
                             Content="Відправити"
+                            Command="{Binding SendStatementE}"
                             Margin="5"></Button>
                     <Button Grid.Column="1"
                             Content="Очистити"
+                            Command="{Binding CleanStatementE}"
                             Margin="5"></Button>
 
                     <Button Grid.Column="2"
                             Content="Відміна"
+                            Command="{Binding CanselStatementE}"
                             Margin="5"></Button>
                 
                 </Grid>
