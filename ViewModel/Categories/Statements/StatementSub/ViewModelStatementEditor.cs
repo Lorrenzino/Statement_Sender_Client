@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementEditor_Commands;
+using Statement_Sender_Client.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -9,9 +12,20 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
     internal class ViewModelStatementEditor : ViewModelBase
     {
+        private string _status;
+        public string Status
+        {
+            get
+            {
+                return _status;
+            }
+            set
+            {
+                _status = value;
+                OnPropertyChanged(nameof(User_name));
+            }
+        }
         private string _user_name;
-
-
         public string User_name
         {
             get
@@ -26,7 +40,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         }
 
         private string _adres;
-
         public string Adres
         {
             get
@@ -41,7 +54,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         }
 
         private string _department;
-        public string Department
+        public string Department 
         {
             get
             {
@@ -96,7 +109,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
-
         private string _short_description;
         public string Short_description
         {
@@ -125,7 +137,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
-
         private string _about;
         public string About
         {
@@ -142,13 +153,24 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
 
 
-        public ICommand SendStatementCommand { get; }
+        public ICommand SendStatementE { get; }
 
-        public ICommand CleanStatementCommand { get; }
+        public ICommand CleanStatementE { get; }
+
+        public ICommand CanselStatementE { get; }
 
         public ViewModelStatementEditor()
         {
+            SendStatementE = new CanselStatementE_Command();
+            CleanStatementE = new CleanStatementE_Command(this);
+            CanselStatementE = new CanselStatementE_Command();
 
+            _status = "Новий";
+            _user_name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
+            _adres = Current_user.Current.Adres;
+            _department = Current_user.Current.Department;
+            _room = Current_user.Current.Room;
+            _phone_nom = Current_user.Current.Phone;
         }
     }
 }

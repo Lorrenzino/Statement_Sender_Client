@@ -26,5 +26,7 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
             InitializeComponent();
             DataContext = new ViewModelStatementEditor();
         }
+
+      
     }
 }

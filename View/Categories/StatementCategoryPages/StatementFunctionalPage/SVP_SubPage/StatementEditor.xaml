@@ -8,203 +8,240 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StatementEditor">
 
-    <Grid>
-        <ScrollViewer HorizontalScrollBarVisibility="Hidden"
-               VerticalScrollBarVisibility="Visible">
-            <Grid>
+    <Grid Background="White" >
+        <!-- Patern -->
+
+        <ScrollViewer Grid.Row="0"
+            HorizontalScrollBarVisibility="Auto"
+            VerticalScrollBarVisibility="Auto">
+            <Grid Margin="5">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition Height="30"></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition />
+                    <RowDefinition Height="0.1*"/>
                 </Grid.RowDefinitions>
 
-                <Grid Grid.Row="0" >
 
-                    <StackPanel Orientation="Horizontal" 
-                         HorizontalAlignment="Right" 
-                         VerticalAlignment="Center">
-                        <Label  Content="Статус"
+
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="3*"></RowDefinition>
+                        <RowDefinition Height="2*"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="1">
+                            <DockPanel>
+                            <Label  Content="Статус"
+                                    VerticalAlignment="Center"></Label>
+                            <TextBox Text="{Binding Status}"
+                                     
+                                     VerticalAlignment="Center"
+                                     IsReadOnly="True"></TextBox>
+                            </DockPanel>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0" 
+                               Content="Відправник"
+                               VerticalAlignment="Center"></Label>
+                        <TextBox Grid.Column="1" 
+                                 Text="{Binding User_name}"
+                                 VerticalAlignment="Center">
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                            Content="Адреса"
+                            VerticalAlignment="Center"></Label>
+                        <TextBox Grid.Column="1"
+                                 Text="{Binding Adres}"
+             
+                                VerticalAlignment="Center">
+                        </TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                                Content="Підрозділ"
+                                VerticalAlignment="Center"></Label>
+                        <TextBox Grid.Column="1"
+                                Text="{Binding Department}"
+             
+                                VerticalAlignment="Center">
+                        </TextBox>
+
+                    </Grid>
+
+                    <Grid Grid.Row="4" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                    Content="Кімната"
+                    VerticalAlignment="Center"></Label>
+                            <TextBox Grid.Column="1"
+                      Text="{Binding Room}"
+                      VerticalAlignment="Center"></TextBox>
+                        </Grid>
+
+
+                        <Grid Grid.Column="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Label Grid.Column="0"
+                         Content="Контактний номер"
                          VerticalAlignment="Center"></Label>
-                        <TextBox Text="Новий"
-                         VerticalAlignment="Center"
-                         IsReadOnly="True"></TextBox>
-                    </StackPanel>
+                            <TextBox Grid.Column="1"
+                         Text="{Binding Phone_nom}"
+                         VerticalAlignment="Center"></TextBox>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Row="5">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                    Content="Інший Адрес"
+                    VerticalAlignment="Center"></Label>
+                        <CheckBox Grid.Column="1"
+                       VerticalAlignment="Center"></CheckBox>
+
+                    </Grid>
+
+                    <Grid Grid.Row="6">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                    Content="Категорія"
+                    VerticalAlignment="Center"></Label>
+                        <TextBox Grid.Column="1"
+                      Text="{Binding Specification}"
+                      VerticalAlignment="Center"></TextBox>
+                    </Grid>
+
+
+
+
+                    <Grid Grid.Row="7">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Column="0"
+                    Content="Короткий опис"
+                    VerticalAlignment="Center"></Label>
+                        <TextBox Grid.Column="1"
+                      Text="{Binding Short_description}"
+                      VerticalAlignment="Center"></TextBox>
+                    </Grid>
+
+                    <Grid Grid.Row="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                     Content="Опис"
+                     VerticalAlignment="Top"></Label>
+                        <TextBox Grid.Column="1"
+                     Text="{Binding DescriptionL}"></TextBox>
+
+                    </Grid>
+
+                    <Grid Grid.Row="9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                     Content="Коментар"
+                     VerticalAlignment="Top"></Label>
+                        <TextBox Grid.Column="1"
+                     Text="{Binding About}"></TextBox>
+
+                    </Grid>
+
+                    <Grid Grid.Row="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                     Content="Додаток"
+                     VerticalAlignment="Top"></Label>
+                        <DataGrid Grid.Column="1"
+                   ></DataGrid>
+
+                    </Grid>
                 </Grid>
+
+                <!-- Butttons -->
 
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <Label Grid.Column="0" 
-                    Content="Відправник"
-                    VerticalAlignment="Center"></Label>
-                    <TextBox Grid.Column="1" 
-                      Text="nan"
-                      
-                      VerticalAlignment="Center">
+                    
+                    <Button Grid.Column="0"
+                            Content="Відправити"
+                            Margin="5"></Button>
+                    <Button Grid.Column="1"
+                            Content="Очистити"
+                            Margin="5"></Button>
 
-                    </TextBox>
-                </Grid>
-
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0"
-                    Content="Адреса"
-                    VerticalAlignment="Center"></Label>
-                    <TextBox Grid.Column="1"
-                      Text="nan"
-             
-                      VerticalAlignment="Center">
-                    </TextBox>
-                </Grid>
-
-                <Grid Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0"
-                    Content="Підрозділ"
-                    VerticalAlignment="Center"></Label>
-                    <TextBox Grid.Column="1"
-                      Text="nan"
-             
-                      VerticalAlignment="Center">
-                    </TextBox>
-
-                </Grid>
-
-                <Grid Grid.Row="4" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Grid Grid.Column="0">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0"
-                    Content="Кімната"
-                    VerticalAlignment="Center"></Label>
-                        <TextBox Grid.Column="1"
-                      Text="nan"
-                      VerticalAlignment="Center"></TextBox>
-                    </Grid>
-
-
-                    <Grid Grid.Column="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Label Grid.Column="0"
-                         Content="Контактний номер"
-                         VerticalAlignment="Center"></Label>
-                        <TextBox Grid.Column="1"
-                         Text="nan"
-                         VerticalAlignment="Center"></TextBox>
-                    </Grid>
-                </Grid>
-
-                <Grid Grid.Row="5">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0"
-                    Content="Інший Адрес"
-                    VerticalAlignment="Center"></Label>
-                    <CheckBox Grid.Column="1"
-                       VerticalAlignment="Center"></CheckBox>
-
-                </Grid>
-
-                <Grid Grid.Row="6">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0"
-                    Content="Категорія"
-                    VerticalAlignment="Center"></Label>
-                    <TextBox Grid.Column="1"
-                      Text="nan"
-                      VerticalAlignment="Center"></TextBox>
-                </Grid>
-
-
-
-
-                <Grid Grid.Row="7">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-
-                    <Label Grid.Column="0"
-                    Content="Короткий опис"
-                    VerticalAlignment="Center"></Label>
-                    <TextBox Grid.Column="1"
-                      Text="nan"
-                      VerticalAlignment="Center"></TextBox>
-                </Grid>
-
-                <Grid Grid.Row="8">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"
-                     Content="Опис"
-                     VerticalAlignment="Top"></Label>
-                    <TextBox Grid.Column="1"
-                     Text="nan"></TextBox>
-
-                </Grid>
-
-                <Grid Grid.Row="9">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"
-                     Content="Коментар"
-                     VerticalAlignment="Top"></Label>
-                    <TextBox Grid.Column="1"
-                     Text="nan"></TextBox>
-
-                </Grid>
-
-                <Grid Grid.Row="10">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Label Grid.Column="0"
-                     Content="Додаток"
-                     VerticalAlignment="Top"></Label>
-                    <DataGrid Grid.Column="1"
-                   ></DataGrid>
-
+                    <Button Grid.Column="2"
+                            Content="Відміна"
+                            Margin="5"></Button>
+                
                 </Grid>
             </Grid>
         </ScrollViewer>
