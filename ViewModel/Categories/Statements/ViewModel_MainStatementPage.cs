@@ -139,6 +139,15 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         public RelayCommand Open_StateEditPage => new RelayCommand(execute => { CurPage_StatementSub = StateEditPage; });
         public RelayCommand Open_ViewTabPage => new RelayCommand(execute => { CurPage_StatementSub = ViewTabPage; });
 
+        public ICommand Open_SOME                       // => new RelayCommand(execute => { CurPage_StatementSub = StateEditPage; });
+        {
+            get
+            {
+                CurPage_StatementSub = StateEditPage;
+                return MyState;
+            }
+
+        }
         // -------------------------------------------------------------------------------------------------------------------------'
         // Обьявляем команды
         public ICommand MyState { get;}

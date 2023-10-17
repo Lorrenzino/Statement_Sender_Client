@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using System.Windows.Input;
 
 namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
@@ -41,6 +41,19 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         }
 
-        
+        public List<object> Selected;
+
+        public void EventChangSelectedStat()
+        {
+            
+        }
+
+        ICommand Chang { get; }
+        ICommand Delet { get; }
+        ICommand SetAs { get; }
+        ICommand ChangStatus { get; }
+        ICommand ChangPriorite { get; }
+
+
     }
 }

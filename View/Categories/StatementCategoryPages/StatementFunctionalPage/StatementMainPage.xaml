@@ -4,6 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage"
+      
+      xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="StatementMainPage">
@@ -25,7 +28,7 @@
                 <Button Grid.Row="0"
                         Margin="3"
                         Content="Створити нову заяву" 
-                        Command="{Binding Done}"/>
+                        Command="{Binding Open_StateEditPage}"/>
                 <TreeView x:Name="I_HATE_THE_TREE"
                                   Grid.Row="1"
                                   Background="{x:Null}" 
@@ -39,7 +42,15 @@
                     <TreeViewItem  Name="TreeView_My" Background="{x:Null}">
                         <TreeViewItem.Header>
                             <DockPanel>
-                                <Button Content="Мої завленяння" Command="{Binding MyState}"></Button>
+                                <Button Content="Мої заявлення" >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Click">
+                                            <i:InvokeCommandAction Command="{Binding MyState}" />
+                                            <i:InvokeCommandAction Command="{Binding Open_ViewTabPage}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </Button>
                                 <Label Content="4" HorizontalAlignment="Right" />
                             </DockPanel>
                         </TreeViewItem.Header>
@@ -80,7 +91,7 @@
                     <TreeViewItem Name="TreeView_Bug">
                         <TreeViewItem.Header>
                             <DockPanel>
-                                <Button Content="Буггалтерія завленяння" ></Button>
+                                <Button Content="Буггалтерія заявлення" ></Button>
                                 <Label Content="10" HorizontalAlignment="Right" />
                             </DockPanel>
                         </TreeViewItem.Header>
@@ -121,7 +132,7 @@
                     <TreeViewItem Name="TreeView_Prod">
                         <TreeViewItem.Header>
                             <DockPanel>
-                                <Button Content="Виробництво завленяння" ></Button>
+                                <Button Content="Виробництво заявлення" ></Button>
                                 <Label Content="10" HorizontalAlignment="Right" />
                             </DockPanel>
                         </TreeViewItem.Header>

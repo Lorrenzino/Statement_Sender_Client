@@ -11,14 +11,14 @@ namespace Statement_Sender_Client.WorkWithData
 {
     internal class Client
     {
-        public async void OutCommingCall ()
+        public async void OutCommingCall()
         {
             byte[] bytes = new byte[1024];
 
             string host = Current_user.Current.User_IP;
             int port = 20101;
             TcpClient client = new TcpClient();
-
+            /*
             var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             try
             {
@@ -33,16 +33,35 @@ namespace Statement_Sender_Client.WorkWithData
                 Console.WriteLine($"Не удалось установить подключение к {host}");
             }
 
-
+            
             try
             {
                 await socket.ConnectAsync(host, port);
                 // определяем отправляемые данные
                 var message = $"GET / HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n";
                 // конвертируем данные в массив байтов
-                var messageBytes = Encoding.UTF8.GetBytes(message);
+                byte[] messageBytes = Encoding.UTF8.GetBytes(message);
                 int bytesSent = await socket.SendAsync(messageBytes);
                 Console.WriteLine($"на адрес {host} отправлено {bytesSent} байт(а)");
+
+
+
+                await socket.ConnectAsync(host, port);
+                // определяем отправляемые данные
+                var message = $"GET / HTTP/1.1\r\nHost: {host}\r\nConnection: close\r\n\r\n";
+                // конвертируем данные в массив байтов
+                var messageBytes = Encoding.UTF8.GetBytes(message);
+                // отправляем данные
+                await socket.SendAsync(messageBytes);
+
+                // буфер для получения данных
+                var responseBytes = new byte[512];
+                // получаем данные
+                var bytes = await socket.ReceiveAsync(responseBytes);
+                // преобразуем полученные данные в строку
+                string response = Encoding.UTF8.GetString(responseBytes, 0, bytes);
+                // выводим данные на консоль
+                Console.WriteLine(response);
             }
             catch (SocketException ex)
             {
@@ -57,6 +76,8 @@ namespace Statement_Sender_Client.WorkWithData
         void ForServer()
         {
 
+        }
+            */
         }
 
     }
