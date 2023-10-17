@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
+using System.Windows.Input;
 
 namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
@@ -21,7 +21,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 _statement_list.Add(statement);
             }
             OnPropertyChanged();
-            
+
 
             //_statement_list = new ObservableCollection<ViewModelStatement>();
             //DataRotation.GetDataFromServer();
@@ -38,9 +38,23 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 if (el.Comment =="")
                     _statement_list.Add(el);
             */
+        }
+        public List<object> Selected;
+
+        public void EventChangSelectedStat()
+        {
 
         }
+        public ICommand Chang { get; }
+        public ICommand Delet { get; }
+        public ICommand SetAs { get; }
+        public ICommand ChangStatus { get; }
+        public ICommand ChangPriorite { get; }
+
+
+    }
 
         
-    }
+
+    
 }

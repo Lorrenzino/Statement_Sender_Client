@@ -33,7 +33,7 @@ namespace Statement_Sender_Client.WorkWithData
                 Console.WriteLine($"Не удалось установить подключение к {host}");
             }
 
-
+            /*
             try
             {
                 await socket.ConnectAsync(host, port);
@@ -48,6 +48,7 @@ namespace Statement_Sender_Client.WorkWithData
             {
                 Console.WriteLine(ex.Message);
             }
+            */
         }
         //public Task<int> SendAsync(ArraySegment<byte> buffer);
         //public Task<int> SendAsync(ArraySegment<byte> buffer, SocketFlags socketFlags);
