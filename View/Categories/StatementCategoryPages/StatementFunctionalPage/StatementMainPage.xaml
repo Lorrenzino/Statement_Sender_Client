@@ -25,7 +25,7 @@
                 <Button Grid.Row="0"
                         Margin="3"
                         Content="Створити нову заяву" 
-                        Command="{Binding Done}"/>
+                        Command="{Binding Open_ViewTabPage}"/>
                 <TreeView x:Name="I_HATE_THE_TREE"
                                   Grid.Row="1"
                                   Background="{x:Null}" 
