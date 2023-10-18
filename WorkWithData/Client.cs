@@ -2,35 +2,69 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
+using System.Reflection.Metadata;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Markup;
 
 namespace Statement_Sender_Client.WorkWithData
 {
     internal class Client
     {
+        public static string data = null;
         public async void OutCommingCall ()
         {
             byte[] bytes = new byte[1024];
+            var hostName = "HelpClient";
+            //IPHostEntry ipHost = Dns.GetHostEntry("HelpClient");
+            //var hostName = "10.114.9.21";
+            //Console.WriteLine(hostName);                
+            IPHostEntry ipHost = Dns.GetHostEntry(hostName);
+            IPAddress ipAddress = ipHost.AddressList[1];
 
-            string host = Current_user.Current.User_IP;
-            int port = 20101;
-            TcpClient client = new TcpClient();
 
-            var socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+
+            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 20101);
+            Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
+
+
+
+            Console.WriteLine(ipAddress + "   " + localEndPoint.Port);
+
             try
             {
-                await socket.ConnectAsync(host, port);
-                Console.WriteLine($"Подключение к {host} установлено");
+                listener.Bind(localEndPoint);
+                listener.Listen(10);
+                do
+                {
+                    Socket handler = listener.Accept();
+                    data = null;
+                    while (true)
+                    {
+                        int byteRec = handler.Receive(bytes);
+                        data += Encoding.ASCII.GetString(bytes, 0, byteRec);
+                        if (handler.Available <= 0)
+                            break;
+                    }
 
 
-                await socket.DisconnectAsync(true); // отключаемся
+                    data += " ALL DATA HAS SENDED";
+                    byte[] msg = Encoding.ASCII.GetBytes(data);
+                    handler.Send(msg);
+
+                    handler.Shutdown(SocketShutdown.Both);
+                    handler.Close();
+                }
+                while (false);
             }
-            catch (SocketException)
+            catch
+            (Exception e)
             {
-                Console.WriteLine($"Не удалось установить подключение к {host}");
+                Console.WriteLine(e.Message);
+                Console.WriteLine("happend somthing BAD");
             }
 
             /*

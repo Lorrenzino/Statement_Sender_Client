@@ -64,7 +64,7 @@
                         <GridViewColumn Header="Check">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox ></CheckBox>
+                                    <CheckBox IsChecked="{Binding EventChangSelectedStat}"></CheckBox>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
