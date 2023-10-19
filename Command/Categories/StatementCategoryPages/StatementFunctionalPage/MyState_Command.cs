@@ -12,9 +12,10 @@ using Statement_Sender_Client.Model;
 
 namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage
 {
-    class MyState_Command: CommandBase
+    class MyState_Command : CommandBase
     {
         ViewModel_MainStatementPage VM_model;
+        
         ObservableCollection<ViewModelStatement> Statement_list= new ObservableCollection<ViewModelStatement>();
 
         public MyState_Command(ViewModel_MainStatementPage _model, ObservableCollection<ViewModelStatement> _list) 
@@ -31,11 +32,17 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         public override void Execute(object parameter)
         {
             //VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
-            
+            VM_model.CurPage_StatementSub = VM_model.ViewTabPage;
             VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
             //VM_model._CurPage_StatementSub = VM_model.ViewTabPage;
             //OnPropertyChanged();
 
         }
+        /*
+        public MyState_Command(ViewModel_MainStatementPage model, ObservableCollection<ViewModelStatement> dat)
+        {
+            model.ViewTabPage.DataContext = new ViewModelListStatement(dat);
+        }
+        */
     }
 }

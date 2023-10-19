@@ -20,7 +20,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
         private ObservableCollection<ViewModelStatement> _statement_list_all ;
 
-        public IEnumerable<ViewModelStatement> Statement_list_all => _statement_list_all;
+        public ObservableCollection<ViewModelStatement> Statement_list_all => _statement_list_all;
 
 
         public ViewModel_MainStatementPage() 
@@ -40,7 +40,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                 "Заправити принтер",
                 "цей комент",
                 DateTime.Now,
-                "Відправлено"
+                "Відкрита"
 
        )));
             _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
@@ -56,7 +56,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                 "Відновити дістанційний доступ",
                 "",
                 DateTime.Now,
-                "Відправлено"
+                "Завершена"
 
        )));
             _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
@@ -72,7 +72,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                "Зламався куллер",
                "pomogite pojosta",
                DateTime.Now,
-               "Відправлено"
+               "Відкрита"
 
        )));
             _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
@@ -88,7 +88,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                "Потрібен новий вогнегасник",
                "",
                DateTime.Now,
-               "Завершено"
+               "Призупинена"
 
        )));
 
@@ -112,6 +112,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             Test = new Test_Command(this, _statement_list_all);
             Frost = new Frost_Command(this, _statement_list_all);
             Canseled = new Canseled_Command(this, _statement_list_all);
+
+
+            OpenStatementsEditor = new RelayCommand(OpenStatementsEditor_C);
         }
         // -------------------------------------------------------------------------------------------------------------------------'
         // Создаём навигациб
@@ -131,11 +134,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             }
         }
 
-        public void SetDataToPage(Page setthis)
-        {
-            // может получится сделать страницы private
-        }
-
+        
         public RelayCommand Open_StateEditPage => new RelayCommand(execute => { CurPage_StatementSub = StateEditPage; });
         public RelayCommand Open_ViewTabPage => new RelayCommand(execute => { CurPage_StatementSub = ViewTabPage; });
 
@@ -156,6 +155,14 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
 
         public ICommand OpenStatementsEditor { get; }
+        // -------------------------------------------------------------------------------------------------------------------------'
+        // Реализация
+
+
+        private void OpenStatementsEditor_C(object obj)
+        {
+            CurPage_StatementSub = StateEditPage;
+        }
 
     }
 }

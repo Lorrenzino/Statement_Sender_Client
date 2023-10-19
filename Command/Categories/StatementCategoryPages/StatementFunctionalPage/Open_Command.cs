@@ -21,14 +21,15 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
             foreach (ViewModelStatement st in _list)
             {
                 if (st.Autor_ID == Current_user.Current.User_ID)
-                    Statement_list.Add(st);
+                    if(st.Status == "Відкрита")
+                        Statement_list.Add(st);
             }
         }
 
         public override void Execute(object parameter)
         {
             VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
-
+            VM_model.CurPage_StatementSub = VM_model.ViewTabPage;
         }
     }
 }

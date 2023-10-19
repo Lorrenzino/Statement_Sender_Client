@@ -21,6 +21,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
             foreach (ViewModelStatement st in _list)
             {
                 if (st.Autor_ID == Current_user.Current.User_ID)
+                    if(st.Status=="Відмінено")
                     Statement_list.Add(st);
             }
         }
