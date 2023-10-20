@@ -64,7 +64,8 @@
 
 
         <Grid Grid.Column="1" x:Name="fff" Background="LightGray">
-            <Frame x:Name="Frame_1" NavigationUIVisibility="Hidden"  Source="/View/Categories/StatementCategoryPages/StatementFunctionalPage/StatementMainPage.xaml" />
+            <Frame x:Name="Frame_1" NavigationUIVisibility="Hidden" Content= "{Binding CurPage_StatementSub}" />
+                   <!--Source="/View/Categories/StatementCategoryPages/StatementFunctionalPage/StatementMainPage.xaml"--> 
         </Grid>
     </Grid>
 </Window>

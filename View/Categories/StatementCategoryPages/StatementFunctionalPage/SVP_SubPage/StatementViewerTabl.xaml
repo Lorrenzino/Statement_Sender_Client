@@ -20,11 +20,16 @@
 
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Редагувати" Width="70" Margin="4" ></Button>
-                <Button Content="Скасувати" Width="60" Margin="4" ></Button>
+                <Button Content="Видалити" Width="70" Margin="4" Command="{Binding Delet}" ></Button>
+                <!--<Button Content="Скасувати" Width="60" Margin="4" ></Button>-->
                 <Button Content="Позначити як..." Width="90" Margin="4"></Button>
-                <Button Content="Змінити статус на..." Width="120" Margin="4"></Button>
-                <Button Content="Надати пріорітет" Width="100" Margin="4"></Button>
+                <ComboBox Width="70" Margin="4">
+                    <Label Content="Датою"/>
+                    <Label Content="Відділом"/>
+                    <Label Content="Пріорітетом"/>
+                </ComboBox>
+                <Button Content="Сортувати за ..." Command="{Binding SetAs}"  Width="120" Margin="4"></Button>
+                <Button Content="Надати пріорітет"  Width="100" Margin="4"></Button>
             </StackPanel>
         </Grid>
 
@@ -53,21 +58,23 @@
                 
             </TabItem>
         </TabControl>-->
-            <ListView ItemsSource="{Binding Statement_list}">
+            <ListView ItemsSource="{Binding Statement_list}"
+                      SelectedItem="{Binding SelectedRow}">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="Check">
+                    <GridView >
+                        
+                        <!--<GridViewColumn Header="Check">
                             <GridViewColumn.CellTemplate>
-                                <DataTemplate>
+                                <DataTemplate >
                                     <CheckBox IsChecked="{Binding EventChangSelectedStat}"></CheckBox>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        </GridViewColumn>-->
                         
                         <GridViewColumn Header="Дата">
                             <GridViewColumn.CellTemplate>

@@ -1,4 +1,5 @@
 ﻿using Statement_Sender_Client.Model;
+using Statement_Sender_Client.ViewModel.Categories.Statements;
 using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         public override void Execute(object parameter)
         {
             Statement newSt = new Statement(_view.User_name, _view.Department, _view.Adres, _view.Room, _view.Phone_nom, _view.Specification, "priority", _view.Short_description, _view.DescriptionL, _view.About);
-
+            ViewModelStatement newSVM = new ViewModelStatement(newSt);
 
         }
     }

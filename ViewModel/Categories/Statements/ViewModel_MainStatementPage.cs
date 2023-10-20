@@ -1,5 +1,6 @@
 ﻿using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage;
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage;
+using Statement_Sender_Client.Model;
 using Statement_Sender_Client.Navigation;
 using Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage;
 using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
@@ -25,8 +26,14 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
         public ViewModel_MainStatementPage() 
         {
+            
             _statement_list_all = new ObservableCollection<ViewModelStatement>();
-
+            Statement_Collection.UpSt();
+            foreach( ViewModelStatement vm in Statement_Collection.User_StatementsVM )
+            {
+                _statement_list_all.Add( vm );
+            }
+            /*
             _statement_list_all.Add(new ViewModelStatement(new Model.Statement(
                 11111,
                 "Andrei",
@@ -91,7 +98,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                "Призупинена"
 
        )));
-
+            */
             /*
             DataRotation.GetDataFromServer();
             Current_User.StatementCollection = DataRotation.GetData();
@@ -163,6 +170,95 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         {
             CurPage_StatementSub = StateEditPage;
         }
+
+        // -------------------------------------------------------------------------------------------------------------------------'
+        // Поля для счётчиков
+        // Скасовано Призупинено Відправлено Відкрита Зроблено
+        public int _myState_count;
+        public int MyState_count
+        {
+            get
+            {
+                int count = 0;
+                foreach (ViewModelStatement st in Statement_list_all)
+                    if (st.Autor_ID==Current_user.Current.User_ID)
+                        count++;
+                return _myState_count = count;
+            }
+            set { }
+        }
+        public int _myState_Done_count;
+        public int MyState_Done_count
+        {
+           get
+            {
+                int count = 0;
+                foreach (ViewModelStatement st in Statement_list_all)
+                    if (st.Autor_ID==Current_user.Current.User_ID)
+                        if (st.Status == "Завершена")
+                        count++;
+                return _myState_Done_count = count;
+            }
+            set { }
+        }
+        public int _myState_Open_count;
+        public int MyState_Open_count
+        {
+            get
+            {
+                int count = 0;
+                foreach (ViewModelStatement st in Statement_list_all)
+                    if (st.Autor_ID == Current_user.Current.User_ID)
+                        if (st.Status == "Відкрита")
+                            count++;
+                return _myState_Open_count = count;
+            }
+            set { }
+        }
+        public int _myState_Test_count;
+        public int MyState_Test_count
+        {
+            get
+            {
+                int count = 0;
+                foreach (ViewModelStatement st in Statement_list_all)
+                    if (st.Autor_ID == Current_user.Current.User_ID)
+                        if (st.Status == "Відправлена")
+                            count++;
+                return _myState_Test_count = count;
+            }
+            set { }
+        }
+        public int _myState_Frost_count;
+        public int MyState_Frost_count
+        {
+            get
+            {
+                int count = 0;
+                foreach (ViewModelStatement st in Statement_list_all)
+                    if (st.Autor_ID == Current_user.Current.User_ID)
+                        if (st.Status == "Призупинена")
+                            count++;
+                return _myState_Frost_count = count;
+            }
+            set { }
+        }
+        public int _myState_Canseled_count;
+        public int MyState_Canseled_count
+        {
+            get
+            {
+                int count = 0;
+                foreach (ViewModelStatement st in Statement_list_all)
+                    if (st.Autor_ID == Current_user.Current.User_ID)
+                        if (st.Status == "Скасована")
+                            count++;
+                return _myState_Canseled_count = count;
+            }
+            set { }
+
+        }
+       
 
     }
 }

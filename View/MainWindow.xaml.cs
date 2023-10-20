@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Statement_Sender_Client.Navigation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace Statement_Sender_Client
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new NavigationBlock_StatementSub();
         }
     }
 }

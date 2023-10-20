@@ -22,11 +22,11 @@ namespace Statement_Sender_Client.Navigation
                                                                         return true; 
                                                                         });
         */
-        private Page StMP = new StatementMainPage();
+        private static Page StMP = new StatementMainPage();
         private Page StateEditPage = new StatementEditor();
         private Page ViewTabPage = new StatementViewerTabl();
 
-        private Page _CurPage_StatementSub = new StatementViewerTabl();
+        private Page _CurPage_StatementSub = StMP;
 
         public Page CurPage_StatementSub 
         {

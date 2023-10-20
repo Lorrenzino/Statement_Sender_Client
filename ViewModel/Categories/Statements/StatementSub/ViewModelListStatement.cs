@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection.Metadata;
+using System.Security.Cryptography;
 using System.Windows.Input;
+using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementEditor_Commands.ManageButton;
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementViewTabl_Commands.chek;
 using Statement_Sender_Client.Model;
+using Statement_Sender_Client.Navigation;
 
 namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
@@ -14,8 +17,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         private ObservableCollection<ViewModelStatement> _statement_list;
 
-        public IEnumerable<ViewModelStatement> Statement_list => _statement_list;
+        public ObservableCollection<ViewModelStatement> Statement_list => _statement_list;
 
+        
         public ViewModelListStatement(ObservableCollection<ViewModelStatement> list)
         {
             _statement_list = new ObservableCollection<ViewModelStatement>();
@@ -45,7 +49,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
             //EventChangSelectedStat = new EventChangSelectedStat_Command(this);
 
-            SortBy("Phone");
+            //Delet = new DeleteStatementMB_Command(IsSelectedRow, this);
+
+
+            //SortBy("Phone");
         }
 
         public void SortBy(string parametr)
@@ -91,16 +98,52 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
             OnPropertyChanged();
         }
-        public List<object> Selected;
+        public List<object> Selected_objct;
 
+
+        public ViewModelStatement IsSelectedRow =new ViewModelStatement(null);
+        public ViewModelStatement SelectedRow
+        {
+            get { 
+                return IsSelectedRow; 
+            }
+            set { 
+                IsSelectedRow = value;
+                OnPropertyChanged();
+            }
+        }
         public ICommand EventChangSelectedStat
         {
             get;
         }
         public ICommand Chang { get; }
-        public ICommand Delet { get; }
-        public ICommand SetAs { get; }
-        public ICommand ChangStatus { get; }
+        public RelayCommand Delet => new RelayCommand(execute =>
+        {
+                for(int i=0; (i<= Statement_list.Count());i++)
+                {
+                try
+                {
+
+                
+                    if (Statement_list[i] == IsSelectedRow)
+                    {
+                        Statement_list.Remove(Statement_list[i]);
+                        Statement_Collection.User_StatementsVM.Remove(Statement_list[i]);
+                        OnPropertyChanged();
+                    }
+                }
+                catch (Exception ex) { }
+                }
+            
+        });
+        public RelayCommand SetAs => new RelayCommand(execute =>
+        {
+            SortBy("Sender_Name");
+        });
+        public RelayCommand ChangStatus => new RelayCommand(execute =>
+        {
+            SortBy("Priority");
+        });
         public ICommand ChangPriorite { get; }
 
 

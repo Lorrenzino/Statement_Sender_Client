@@ -17,6 +17,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
 
         public Canseled_Command(ViewModel_MainStatementPage _model, ObservableCollection<ViewModelStatement> _list)
         {
+            
             VM_model = _model;
             foreach (ViewModelStatement st in _list)
             {
@@ -29,7 +30,21 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         public override void Execute(object parameter)
         {
             VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
-
+            VM_model.CurPage_StatementSub = VM_model.ViewTabPage;
+            /*
+            for (int i = 0; i<= Statement_list.Count(); i++)
+            {
+                try
+                {
+                    if (Statement_list[i] == Statement_list[0])
+                    {
+                        Statement_list.Remove(Statement_list[i]);
+                        //Current_user
+                    }
+                }
+                catch { }
+            }
+            */
         }
     }
 }
