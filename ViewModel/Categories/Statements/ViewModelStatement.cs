@@ -22,7 +22,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         public string Description => _statement.Description;
         public string Comment => _statement.Comment;
         //-------------------------------------------------------------
-        public string Date_statemant => _statement.Date_statemant.ToString();
+        public string Date_statemant => _statement.Date_start.ToString();
         public string Status => _statement.Status;
 
         public ViewModelStatement(Statement _examp)

@@ -77,7 +77,7 @@
                     </TreeViewItem>
 
                     <!-- Заяви відділу Бугалтерія -->
-                    <TreeViewItem Name="TreeView_Bug">
+                    <TreeViewItem Name="TreeView_Bug" >
                         <TreeViewItem.Header>
                             <DockPanel>
                                 <Button Content="Буггалтерія завленяння" ></Button>

@@ -15,6 +15,7 @@ namespace Statement_Sender_Client.Model
 
         //parametr of user
         public User Sender { get; }
+        public User Accountable { get; }
         public string Sender_Name { get; }
         public string Sender_Department { get; }
         public string Adres { get; }
@@ -24,13 +25,15 @@ namespace Statement_Sender_Client.Model
         //robochie param
         public string Type_problem { get; set; }
         public string Priority { get; set; }
-        public string Abstract { get; set; }
+        public string Abstract { get; set; } // результат роботи (замінити)
         public string Description { get; set; }
-        public string Comment { get; set; }
+        // conect with user
+        public string Comment { get; set; } // зворотній зв'язок (замінити)
         
 
         // no control atribut
-        public DateTime Date_statemant {  get; set; }
+        public DateTime Date_start {  get; set; }
+        public DateTime Date_end { get; set; }
         public string Status { get; set; }
 
         public Statement(string sender_Name,
@@ -55,7 +58,7 @@ namespace Statement_Sender_Client.Model
             Abstract = abstract_;
             Description = description;
             Comment = comment;
-            Date_statemant = DateTime.Now;
+            Date_start = DateTime.Now;
             Status = "новий";
         }
         public Statement(int id_state,
@@ -82,7 +85,7 @@ namespace Statement_Sender_Client.Model
             Abstract = abstract_;
             Description = description;
             Comment = comment;
-            Date_statemant = DateTime.Now;
+            Date_start = DateTime.Now;
             Status = "новий";
         }
 
@@ -113,7 +116,7 @@ namespace Statement_Sender_Client.Model
                                             comment)
         {
             {
-                this.Date_statemant = dat;
+                this.Date_start = dat;
                 this.Status = status;
             }
         }
