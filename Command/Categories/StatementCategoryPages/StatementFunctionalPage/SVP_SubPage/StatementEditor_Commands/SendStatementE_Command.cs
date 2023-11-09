@@ -19,7 +19,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         }
         public override void Execute(object parameter)
         {
-            Statement newSt = new Statement(_view.User_name, _view.Department, _view.Adres, _view.Room, _view.Phone_nom, _view.Specification, "priority", _view.Short_description, _view.DescriptionL, _view.About);
+            Statement newSt = new Statement(Current_user.Current, _view.Priority, _view.Type_problem, _view.Description, Convert.ToDateTime(_view.Date_start), _view.Status);
             ViewModelStatement newSVM = new ViewModelStatement(newSt);
 
         }

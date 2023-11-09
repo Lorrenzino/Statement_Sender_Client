@@ -11,114 +11,118 @@ namespace Statement_Sender_Client.Model
 {
     internal class Statement
     {
-        public int ID_state { get; }
+        public int ID_unic { get; }
 
         //parametr of user
         public User Sender { get; }
         public User Accountable { get; }
+        public User Worker { get; }
         public string Sender_Name { get; }
         public string Sender_Department { get; }
-        public string Adres { get; }
+        public string Addres { get; }
         public string Room { get; }
         public string Phone { get; }
 
         //robochie param
-        public string Type_problem { get; set; }
         public string Priority { get; set; }
-        public string Abstract { get; set; } // результат роботи (замінити)
+        public string Type_problem { get; set; }
+        public string Subject { get; set; }
         public string Description { get; set; }
+        public string Rezult { get; set; } // результат a (замінити) abstrackt
+
         // conect with user
-        public string Comment { get; set; } // зворотній зв'язок (замінити)
-        
+        public string Log_convert { get; set; } // зворотній зв'язок (замінити) Comment
+
 
         // no control atribut
-        public DateTime Date_start {  get; set; }
+        public DateTime Date_start { get; set; }
         public DateTime Date_end { get; set; }
+        public DateTime Date_control { get; set; }
         public string Status { get; set; }
 
-        public Statement(string sender_Name,
-                        string sender_Department,
-                        string adres,
+        public Statement(int id_unic,
+                        User sender,
+                        User accountable,
+                        User worker,
+                        string sender_name,
+                        string sender_department,
+                        string addres,
                         string room,
                         string phone,
-                        string type_problem,
                         string priority,
-                        string abstract_,
+                        string type_problem,
+                        string subject,
                         string description,
-                        string comment)
+                        string rezult,
+                        string log_conv,
+                        DateTime ds,
+                        DateTime de,
+                        DateTime dc,
+                        string status)
         {
-            Sender = Current_user.Current;
-            Sender_Name = sender_Name;
-            Sender_Department = sender_Department;
-            Adres = adres;
+            ID_unic = id_unic;
+            Sender = sender;
+            Accountable = accountable;
+            Worker = worker;
+            Sender_Name = sender_name;
+            Sender_Department = sender_department;
+            Addres = addres;
             Room = room;
             Phone = phone;
-            Type_problem = type_problem;
             Priority = priority;
-            Abstract = abstract_;
-            Description = description;
-            Comment = comment;
-            Date_start = DateTime.Now;
-            Status = "новий";
-        }
-        public Statement(int id_state,
-                        string sender_Name,
-                        string sender_Department,
-                        string adres,
-                        string room,
-                        string phone,
-                        string type_problem,
-                        string priority,
-                        string abstract_,
-                        string description,
-                        string comment)
-        {
-            ID_state = id_state;
-            Sender = Current_user.Current;
-            Sender_Name = sender_Name;
-            Sender_Department = sender_Department;
-            Adres = adres;
-            Room = room;
-            Phone = phone;
             Type_problem = type_problem;
-            Priority = priority;
-            Abstract = abstract_;
+            Subject = subject;
+            Rezult = rezult;
             Description = description;
-            Comment = comment;
-            Date_start = DateTime.Now;
-            Status = "новий";
-        }
+            Log_convert = log_conv;
+            Date_start = ds;
+            Date_end = de;
+            Date_control = dc;
+            Status = status;
 
-
-
-        public Statement(int id_state,
-                        string sender_Name,
-                        string sender_Department,
-                        string adres,
-                        string room,
-                        string phone,
-                        string type_problem,
-                        string priority,
-                        string abstract_,
-                        string description,
-                        string comment,
-                        DateTime dat,
-                        string status) : this(id_state,
-                                            sender_Name,
-                                            sender_Department,
-                                            adres,
-                                            room,
-                                            phone,
-                                            type_problem,
-                                            priority,
-                                            abstract_,
-                                            description,
-                                            comment)
-        {
+            if (sender_department == null)
             {
-                this.Date_start = dat;
-                this.Status = status;
+                Sender_Department = Sender.Department;
             }
+            if (addres == null)
+            {
+                Addres = Sender.Addres;
+            }
+            if (room == null)
+            {
+                room = Sender.Room;
+            }
+            if (phone == null)
+            {
+                phone = Sender.Phone;
+            }
+
+            if (sender_name == null)
+            {
+                Sender_Name = Sender.User_Name_Last + " " + Sender.User_Name_First + " " + Sender.User_Name_Father;
+            }
+        }
+
+
+        public Statement(
+                       User sender,
+                       string priority,
+                       string type_problem,
+                       string description,
+                       DateTime ds,
+                       string status)
+        {
+            Sender = sender;
+            Sender_Name = Sender.User_Name_Last + " " + Sender.User_Name_First + " " + Sender.User_Name_Father;
+            Sender_Department = Sender.Department;
+            Addres = Sender.Addres;
+            Room = Sender.Room;
+            Phone = Sender.Phone;
+            Priority = priority;
+            Type_problem = type_problem;
+            Description = description;
+            Date_start = ds;
+            Status = status;
         }
 
 

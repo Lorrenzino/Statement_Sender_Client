@@ -57,6 +57,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         public void SortBy(string parametr)
         {
+            /*
             switch(parametr)
             {
                 case "Sender_Name":
@@ -97,6 +98,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                     break;
             }
             OnPropertyChanged();
+            */
         }
         public List<object> Selected_objct;
 

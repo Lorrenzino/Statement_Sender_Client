@@ -18,9 +18,9 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         }
         public override void Execute(object parameter)
         {
-            _view.Short_description = "";
-            _view.DescriptionL = "";
-            _view.Specification = "";
+            _view.Subject = "";
+            _view.Description = "";
+            _view.Type_problem = "";
             if (_view.IsChecked)
             {
                 _view.User_name = "";

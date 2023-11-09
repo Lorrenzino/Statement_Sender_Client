@@ -25,6 +25,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(User_name));
             }
         }
+
         private string _user_name;
         public string User_name
         {
@@ -38,6 +39,50 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(User_name));
             }
         }
+
+        private string _accountable;
+        public string Accountable
+        {
+            get
+            {
+                return _accountable;
+            }
+            set
+            {
+                _accountable = value;
+                OnPropertyChanged(nameof(Accountable));
+            }
+        }
+
+        private string _worker;
+        public string Worker
+        {
+            get
+            {
+                return _worker;
+            }
+            set
+            {
+                _worker = value;
+                OnPropertyChanged(nameof(Worker));
+            }
+        }
+
+        private string _sender;
+        public string Sender
+        {
+            get
+            {
+                return _sender;
+            }
+            set
+            {
+                _sender = value;
+                OnPropertyChanged(nameof(Sender));
+            }
+        }
+
+        // изменяеміе поля (параметры отправителя)
 
         private string _adres;
         public string Adres
@@ -94,62 +139,124 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Phone_nom));
             }
         }
+        // параметрі заявления
 
-        private string _specification;
-        public string Specification
+        private string _priority;
+        public string Priority
         {
             get
             {
-                return _specification;
+                return _priority;
             }
             set
             {
-                _specification = value;
-                OnPropertyChanged(nameof(Specification));
+                _priority = value;
+                OnPropertyChanged(nameof(Priority));
             }
-        }
 
-        private string _short_description;
-        public string Short_description
+        }
+        private string _type_problem;
+        public string Type_problem
         {
             get
             {
-                return _short_description;
+                return _type_problem;
             }
             set
             {
-                _short_description = value;
-                OnPropertyChanged(nameof(Short_description));
+                _type_problem = value;
+                OnPropertyChanged(nameof(Type_problem));
             }
         }
 
-        private string _descriptionL;
-        public string DescriptionL
+        private string _subject;
+        public string Subject
         {
             get
             {
-                return _descriptionL;
+                return _subject;
             }
             set
             {
-                _descriptionL = value;
-                OnPropertyChanged(nameof(DescriptionL));
+                _subject = value;
+                OnPropertyChanged(nameof(Subject));
             }
         }
 
-        private string _about;
-        public string About
+        private string _description;
+        public string Description
         {
             get
             {
-                return _about;
+                return _description;
             }
             set
             {
-                _about = value;
-                OnPropertyChanged(nameof(About));
+                _description = value;
+                OnPropertyChanged(nameof(Description));
             }
         }
+
+        private string _rezult;
+        public string Rezult
+        {
+            get
+            {
+                return _rezult;
+            }
+            set
+            {
+                _rezult = value;
+                OnPropertyChanged(nameof(Rezult));
+            }
+        }
+
+        // параметри дати
+
+        private string _date_start;
+        public string Date_start
+        {
+            get
+            {
+                return _date_start;
+            }
+            set
+            {
+                _date_start = value;
+                OnPropertyChanged(nameof(Date_start));
+            }
+        }
+
+        private string _date_end;
+        public string Date_end
+        {
+            get
+            {
+                return _date_end;
+            }
+            set
+            {
+                _date_end = value;
+                OnPropertyChanged(nameof(Date_end));
+            }
+        }
+
+        private string _date_control;
+        public string Date_control
+        {
+            get
+            {
+                return _date_control;
+            }
+            set
+            {
+                _date_control = value;
+                OnPropertyChanged(nameof(Date_control));
+            }
+        }
+
+
+
 
 
         private bool _isChecked=false;
@@ -178,13 +285,15 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         public ViewModelStatementEditor()
         {
+            
+            //кнопки
             SendStatementE = new SendStatementE_Command(this);
             CleanStatementE = new CleanStatementE_Command(this);
             CanselStatementE = new CanselStatementE_Command();
 
             _status = "Новий";
             _user_name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
-            _adres = Current_user.Current.Adres;
+            _adres = Current_user.Current.Addres;
             _department = Current_user.Current.Department;
             _room = Current_user.Current.Room;
             _phone_nom = Current_user.Current.Phone;

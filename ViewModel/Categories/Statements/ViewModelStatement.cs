@@ -11,19 +11,24 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
         //-------------------------------------------------------------
         public string Sender_Name => _statement.Sender_Name;
-        public string Adres => _statement.Adres;
+        public string Adres => _statement.Addres;
         public string Sender_Department => _statement.Sender_Department;
         public string Room => _statement.Room;
         public string Phone => _statement.Phone;
         //-------------------------------------------------------------
-        public string Type_problem => _statement.Type_problem;
         public string Priority => _statement.Priority;
-        public string Abstract => _statement.Abstract;
+        public string Type_problem => _statement.Type_problem;
+        public string Subject => _statement.Subject;
         public string Description => _statement.Description;
-        public string Comment => _statement.Comment;
+        public string Rezult => _statement.Rezult;
         //-------------------------------------------------------------
-        public string Date_statemant => _statement.Date_start.ToString();
+        public string Date_start => _statement.Date_start.ToString();
+        public string Date_end => _statement.Date_end.ToString();
+        public string Date_control => _statement.Date_control.ToString();
         public string Status => _statement.Status;
+
+        public string Accountable => _statement.Accountable.User_Name_First;
+        public string Worker => _statement.Worker.User_Name_First;
 
         public ViewModelStatement(Statement _examp)
         {

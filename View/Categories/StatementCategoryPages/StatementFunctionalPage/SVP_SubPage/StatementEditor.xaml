@@ -28,14 +28,15 @@
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
-                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="4*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
-                        
-                      
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+
+
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
@@ -45,9 +46,9 @@
                         </Grid.ColumnDefinitions>
 
                         <Label  Grid.Column="0"
-                                Content="Дата створення"
+                                Content="Номер"
                                 VerticalAlignment="Center"></Label>
-                        <TextBox Grid.Column="1"
+                        <TextBox Grid.Column="1" 
                                  Text="{Binding Status}"
                                      
                                  Width="150"
@@ -64,7 +65,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label  Grid.Column="0"
-                                Content="Статус"
+                                Content="Дата"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
                                 Text="{Binding Status}"
@@ -83,7 +84,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label  Grid.Column="0"
-                                Content="Терміновість"
+                                Content="Термін до"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
                                 Text="{Binding Status}"
@@ -94,7 +95,7 @@
                                 IsReadOnly="True"></TextBox>
                     </Grid>
 
-                    <Grid Grid.Row="3">
+                    <Grid Grid.Row="5">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -109,7 +110,7 @@
                     </Grid>
                     
 
-                    <Grid Grid.Row="4">
+                    <Grid Grid.Row="3">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -124,7 +125,7 @@
                         </TextBox>
                     </Grid>
 
-                    <Grid Grid.Row="5"  >
+                    <Grid Grid.Row="4"  >
                         <Grid.RowDefinitions>
                             <RowDefinition MinHeight="90" Height="3*"></RowDefinition>
                             <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
@@ -231,7 +232,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                Content="Опис"
+                                Content="Тема"
                                 VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
                                 Text="{Binding DescriptionL}">
@@ -248,7 +249,7 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0"
-                                Content="Коментар"
+                                Content="Опис"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
                                 Text="{Binding About }"
@@ -263,7 +264,7 @@
                             <ColumnDefinition></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
-                                Content="Rezult work"
+                                Content="Результат"
                                 VerticalAlignment="Top"></Label>
                         <StackPanel Grid.Column="1"
                                    Orientation="Horizontal">
@@ -287,6 +288,19 @@
                         <TextBox Grid.Column="1"
                                  Text=""
                                  VerticalAlignment="Center"></TextBox>
+                    </Grid>
+                    
+                    <Grid Grid.Row="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.Column="0"
+                                Content="Відповідальний"
+                                VerticalAlignment="Top"></Label>
+                        <TextBox Grid.Column="1"
+                                Text=""
+                                VerticalAlignment="Center"></TextBox>
                     </Grid>
                 </Grid>
 
