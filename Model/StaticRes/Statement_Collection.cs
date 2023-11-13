@@ -19,8 +19,8 @@ namespace Statement_Sender_Client.Model
             User_StatementsVM.Add(new ViewModelStatement(new Model.Statement(
                 11111,
                 Current_user.Current,
-                null,
-                null,
+                Current_user.Current,
+                Current_user.Current,
                 "Andrei",
                 "OMA",
                 "adres1",
@@ -41,8 +41,8 @@ namespace Statement_Sender_Client.Model
             User_StatementsVM.Add(new ViewModelStatement(new Model.Statement(
                 11112,
                 Current_user.Current,
-                null,
-                null,
+                Current_user.Current,
+                Current_user.Current,
                 "Andrei 2",
                 "SWAT",
                 "adres2",
@@ -63,8 +63,8 @@ namespace Statement_Sender_Client.Model
             User_StatementsVM.Add(new ViewModelStatement(new Model.Statement(
                 11113,
                 Current_user.Current,
-                null,
-                null,
+                Current_user.Current,
+                Current_user.Current,
                "Andrei 3",
                "SWAT",
                "adres3",
@@ -85,8 +85,8 @@ namespace Statement_Sender_Client.Model
             User_StatementsVM.Add(new ViewModelStatement(new Model.Statement(
                 11114,
                 Current_user.Current,
-                null,
-                null,
+                Current_user.Current,
+                Current_user.Current,
                "Andrei4",
                "OMA",
                "adres4",

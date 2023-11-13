@@ -7,7 +7,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
     {
         private readonly Statement _statement;
 
-        public string Autor_ID => _statement.Sender.User_ID.ToString();
+        public string Autor_ID => _statement.Sender.User_ID.ToString(); // ChangMe  не правельні вівод
 
         //-------------------------------------------------------------
         public string Sender_Name => _statement.Sender_Name;
@@ -27,8 +27,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         public string Date_control => _statement.Date_control.ToString();
         public string Status => _statement.Status;
 
-        public string Accountable => _statement.Accountable.User_Name_First;
-        public string Worker => _statement.Worker.User_Name_First;
+        public string Accountable => _statement.Accountable.User_Name_First;  // ChangMe краш если нулл
+        public string Worker => _statement.Worker.User_Name_First; // ChangMe краг если нул
 
         public ViewModelStatement(Statement _examp)
         {

@@ -34,6 +34,26 @@
         </Grid>
 
         <Grid Grid.Row="1">
+            <DataGrid ItemsSource="{Binding Statement_list}"
+                      AutoGenerateColumns="False">
+                <DataGrid.Columns>
+                    <DataGridCheckBoxColumn Header="Select"></DataGridCheckBoxColumn>
+                    <DataGridTextColumn Header="Код" Binding="{Binding Autor_ID}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Назва" Binding="{Binding Subject}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата створення" Binding="{Binding Date_start}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Дата виконання" Binding="{Binding  Date_end}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Термін виконання" Binding="{Binding Date_control}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Статус" Binding="{Binding Status}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Створив" Binding="{Binding Sender_Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Виконав" Binding="{Binding Worker}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Пріорітет" Binding="{Binding Priority}"></DataGridTextColumn>
+                </DataGrid.Columns>
+
+            </DataGrid>
+        </Grid>
+
+        <Grid Grid.Row="2">
             <!--<TabControl>
             <TabItem>
                 
