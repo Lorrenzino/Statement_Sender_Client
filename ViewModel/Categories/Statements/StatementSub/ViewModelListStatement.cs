@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 using System.Windows.Input;
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementEditor_Commands.ManageButton;
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementViewTabl_Commands.chek;
+using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementViewTabl_Commands.ClickOnCommand;
 using Statement_Sender_Client.Model;
 using Statement_Sender_Client.Navigation;
 
@@ -19,7 +20,24 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         public ObservableCollection<ViewModelStatement> Statement_list => _statement_list;
 
-        
+
+
+        public ViewModelStatement _Selected_item;
+        public ViewModelStatement Selected_item
+        {
+            get
+            {
+                return _Selected_item;
+            }
+            set
+            {
+                _Selected_item = value;
+                OnPropertyChanged(nameof(Selected_item));
+            }
+        }
+
+
+
         public ViewModelListStatement(ObservableCollection<ViewModelStatement> list)
         {
             _statement_list = new ObservableCollection<ViewModelStatement>();
@@ -53,6 +71,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
 
             //SortBy("Phone");
+
+
+
+            RowDoubleCkick_Command = new MouseDoubleClick(this);
         }
 
         public void SortBy(string parametr)
@@ -148,6 +170,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         });
         public ICommand ChangPriorite { get; }
 
+        public ICommand RowDoubleCkick_Command { get; }
 
     }
 

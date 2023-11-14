@@ -34,8 +34,19 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <DataGrid ItemsSource="{Binding Statement_list}"
-                      AutoGenerateColumns="False">
+            <DataGrid ItemsSource="{Binding Statement_list, Mode=OneWay}"
+                      AutoGenerateColumns="False" 
+                      IsReadOnly="True"
+                      SelectedItem="{Binding Selected_item}"
+                      IsSynchronizedWithCurrentItem="True"
+                      
+                      
+                      >
+                <DataGrid.InputBindings>
+                    <MouseBinding MouseAction="LeftDoubleClick"
+                                  Command="{Binding RowDoubleCkick_Command}"
+                                  CommandParameter="{Binding Statement_list, Mode=OneWay}"/>
+                </DataGrid.InputBindings>
                 <DataGrid.Columns>
                     <DataGridCheckBoxColumn Header="Select"></DataGridCheckBoxColumn>
                     <DataGridTextColumn Header="Код" Binding="{Binding Autor_ID}"></DataGridTextColumn>
@@ -49,7 +60,6 @@
                     <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Пріорітет" Binding="{Binding Priority}"></DataGridTextColumn>
                 </DataGrid.Columns>
-
             </DataGrid>
         </Grid>
 
@@ -95,77 +105,77 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>-->
-                        
-                        <GridViewColumn Header="Дата">
+
+                        <GridViewColumn Header="Код">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Date_statemant}"/>
+                                    <TextBlock Text="{Binding Autor_ID}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <GridViewColumn Header="Sender_Name">
+                        <GridViewColumn Header="Назва">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Subject}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Дата створення">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Date_start}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Дата виконання">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Date_end}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Термін виконання">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Date_control}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Статус">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Status}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Створив">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Sender_Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
-                        <GridViewColumn Header="Adres">
+                        <GridViewColumn Header="Виконав">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Adres}"/>
+                                    <TextBlock Text="{Binding Worker}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-
-                        <GridViewColumn Header="Sender_Department">
+                        <GridViewColumn Header="Відповідальний">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Sender_Department}"/>
+                                    <TextBlock Text="{Binding Accountable}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Room">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Room}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Phone">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Phone}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Type_problem">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Type_problem}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Priority">
+                        <GridViewColumn Header="Пріорітет">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Priority}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Abstract">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Abstract}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Description">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Description}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

@@ -1,5 +1,9 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Data;
+using System.Security.Cryptography.Xml;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Statement_Sender_Client.ViewModel.Categories.Statements;
 using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
 
@@ -13,7 +17,9 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
         public StatementViewerTabl()
         {
             InitializeComponent();
-            DataContext = new ViewModelListStatement(new ObservableCollection<ViewModelStatement>());
+            this.DataContext = new ViewModelListStatement(new ObservableCollection<ViewModelStatement>());
         }
+
+        
     }
 }
