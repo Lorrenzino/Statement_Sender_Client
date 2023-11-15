@@ -18,7 +18,8 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         }
         public override void Execute(object parameter)
         {
-            this.
+            
+            
 
         }
     }

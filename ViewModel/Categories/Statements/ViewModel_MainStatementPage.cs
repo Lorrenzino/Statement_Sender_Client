@@ -181,7 +181,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             {
                 int count = 0;
                 foreach (ViewModelStatement st in Statement_list_all)
-                    if (st.Autor_ID==Current_user.Current.User_ID)
+                    if (st.Sender.User_ID ==Current_user.Current.User_ID)
                         count++;
                 return _myState_count = count;
             }
@@ -194,7 +194,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             {
                 int count = 0;
                 foreach (ViewModelStatement st in Statement_list_all)
-                    if (st.Autor_ID==Current_user.Current.User_ID)
+                    if (st.Sender.User_ID==Current_user.Current.User_ID)
                         if (st.Status == "Завершена")
                         count++;
                 return _myState_Done_count = count;
@@ -208,7 +208,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             {
                 int count = 0;
                 foreach (ViewModelStatement st in Statement_list_all)
-                    if (st.Autor_ID == Current_user.Current.User_ID)
+                    if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Відкрита")
                             count++;
                 return _myState_Open_count = count;
@@ -222,7 +222,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             {
                 int count = 0;
                 foreach (ViewModelStatement st in Statement_list_all)
-                    if (st.Autor_ID == Current_user.Current.User_ID)
+                    if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Відправлена")
                             count++;
                 return _myState_Test_count = count;
@@ -236,7 +236,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             {
                 int count = 0;
                 foreach (ViewModelStatement st in Statement_list_all)
-                    if (st.Autor_ID == Current_user.Current.User_ID)
+                    if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Призупинена")
                             count++;
                 return _myState_Frost_count = count;
@@ -250,7 +250,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             {
                 int count = 0;
                 foreach (ViewModelStatement st in Statement_list_all)
-                    if (st.Autor_ID == Current_user.Current.User_ID)
+                    if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Скасована")
                             count++;
                 return _myState_Canseled_count = count;

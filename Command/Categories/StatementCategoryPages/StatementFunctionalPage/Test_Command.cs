@@ -20,7 +20,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
             VM_model = _model;
             foreach (ViewModelStatement st in _list)
             {
-                if (st.Autor_ID == Current_user.Current.User_ID)
+                if (st.Sender.User_ID == Current_user.Current.User_ID)
                     if (st.Status=="Обробляється")
                     Statement_list.Add(st);
             }
