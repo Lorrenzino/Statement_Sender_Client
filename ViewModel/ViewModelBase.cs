@@ -17,7 +17,7 @@ namespace Statement_Sender_Client.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
 
-
+        
         /// <summary>
         /// переход на другую страницу +предварительная проверка на переход на туже самую страницу
         /// </summary>

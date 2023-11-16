@@ -24,8 +24,8 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
             if (_view.IsChecked)
             {
                 _view.User_name = "";
-                _view.Adres = "";
-                _view.Department = "";
+                _view.Addres = "";
+                _view.Sender_Department = "";
                 _view.Room = "";
                 _view.Phone_nom = "";
             }

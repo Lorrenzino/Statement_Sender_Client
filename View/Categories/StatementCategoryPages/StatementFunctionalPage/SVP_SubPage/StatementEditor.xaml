@@ -49,7 +49,7 @@
                                 Content="Номер"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1" 
-                                 Text="{Binding Status}"
+                                 Text="{Binding Autor_ID,Mode=OneWay}"
                                      
                                  Width="150"
                                  VerticalAlignment="Center"
@@ -68,7 +68,7 @@
                                 Content="Дата"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
-                                Text="{Binding Status}"
+                                Text="{Binding Date_start}"
                  
                                 Width="150"
                                 VerticalAlignment="Center"
@@ -87,12 +87,12 @@
                                 Content="Термін до"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
-                                Text="{Binding Status}"
+                                Text="{Binding Date_control}"
                  
                                 Width="150"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left"
-                                IsReadOnly="True"></TextBox>
+                                IsReadOnly="True" ></TextBox>
                     </Grid>
 
                     <Grid Grid.Row="5">
@@ -105,7 +105,7 @@
                                 Content="Категорія"
                                 VerticalAlignment="Center"></Label>
                         <ComboBox Grid.Column="1"
-                                Text="{Binding Specification}"
+                                Text="{Binding Type_problem}"
                                 VerticalAlignment="Center"></ComboBox>
                     </Grid>
                     
@@ -120,7 +120,7 @@
                                Content="Відправник"
                                VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1" 
-                                 Text="{Binding User_name}"
+                                 Text="{Binding Sender_Name}"
                                  VerticalAlignment="Center">
                         </TextBox>
                     </Grid>
@@ -150,7 +150,7 @@
                                     Content="Адреса"
                                     VerticalAlignment="Center"></Label>
                             <TextBox Grid.Column="1"
-                                    Text="{Binding Adres}"
+                                    Text="{Binding Addres}"
              
                                     VerticalAlignment="Center">
                             </TextBox>
@@ -166,7 +166,7 @@
                                     Content="Підрозділ"
                                     VerticalAlignment="Center"></Label>
                             <TextBox Grid.Column="1"
-                                    Text="{Binding Department}"
+                                    Text="{Binding Sender_Department}"
              
                                     VerticalAlignment="Center">
                             </TextBox>
@@ -235,7 +235,7 @@
                                 Content="Тема"
                                 VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
-                                Text="{Binding DescriptionL}">
+                                Text="{Binding Subject}">
                             
                         </TextBox>
 
@@ -252,7 +252,7 @@
                                 Content="Опис"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
-                                Text="{Binding About }"
+                                Text="{Binding Description }"
                                 ></TextBox>
                     </Grid>
 
@@ -269,7 +269,7 @@
                         <StackPanel Grid.Column="1"
                                    Orientation="Horizontal">
                         <TextBox 
-                                Text="{Binding Short_description}"
+                                Text="{Binding Rezult}"
                                 Width="100"></TextBox>
 
                             <Button Content="+"  Width="23" Height="20" Margin="20,0,10,0" > </Button>
@@ -286,7 +286,7 @@
                                 Content="Виконавець"
                                 VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
-                                 Text=""
+                                 Text="{Binding Worker_Name}"
                                  VerticalAlignment="Center"></TextBox>
                     </Grid>
                     
@@ -299,7 +299,7 @@
                                 Content="Відповідальний"
                                 VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
-                                Text=""
+                                Text="{Binding Accountable_Name}"
                                 VerticalAlignment="Center"></TextBox>
                     </Grid>
                 </Grid>

@@ -12,6 +12,12 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
     internal class ViewModelStatementEditor : ViewModelBase
     {
+        private string _Autor_ID;
+        public string Autor_ID
+        {
+            get { return _Autor_ID; }
+        }
+
         private string _status;
         public string Status
         {
@@ -22,7 +28,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             set
             {
                 _status = value;
-                OnPropertyChanged(nameof(User_name));
+                OnPropertyChanged(nameof(Status));
             }
         }
 
@@ -59,6 +65,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         {
             get
             {
+                
                 return _worker;
             }
             set
@@ -84,31 +91,31 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         // изменяеміе поля (параметры отправителя)
 
-        private string _adres;
-        public string Adres
+        private string _addres;
+        public string Addres
         {
             get
             {
-                return _adres;
+                return _addres;
             }
             set
             {
-                _adres = value;
-                OnPropertyChanged(nameof(Adres));
+                _addres = value;
+                OnPropertyChanged(nameof(Addres));
             }
         }
 
-        private string _department;
-        public string Department 
+        private string _sender_department;
+        public string Sender_Department
         {
             get
             {
-                return _department;
+                return _sender_department;
             }
             set
             {
-                _department = value;
-                OnPropertyChanged(nameof(Department));
+                _sender_department = value;
+                OnPropertyChanged(nameof(Sender_Department));
             }
         }
 
@@ -255,9 +262,50 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
+        // ----------------------------------------
 
+        private string _sender_Name;
 
+        public string Sender_Name
+        {
+            get
+            {
+                return _sender_Name;
+            }
+            set
+            {
+                _sender_Name = value;
+                OnPropertyChanged(nameof(Sender_Name));
+            }
+        }
 
+        private string _worker_Name;
+        public string Worker_Name
+        {
+            get
+            {
+                return _worker_Name;
+            }
+            set
+            {
+                _worker_Name = value;
+                OnPropertyChanged(nameof(Worker_Name));
+            }
+        }
+
+        private string _accountable_Name;
+        public string Accountable_Name
+        {
+            get
+            {
+                return _accountable_Name;
+            }
+            set
+            {
+                _accountable_Name = value;
+                OnPropertyChanged(nameof(Accountable_Name));
+            }
+        }
 
         private bool _isChecked=false;
         public bool IsChecked
@@ -292,9 +340,24 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             CanselStatementE = new CanselStatementE_Command();
 
             _status = "Новий";
-            _user_name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
-            _adres = Current_user.Current.Addres;
-            _department = Current_user.Current.Department;
+            _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
+            _addres = Current_user.Current.Addres;
+            _sender_department = Current_user.Current.Department;
+            _room = Current_user.Current.Room;
+            _phone_nom = Current_user.Current.Phone;
+        }
+        public ViewModelStatementEditor(ViewModelStatement view)
+        {
+
+            //кнопки
+            SendStatementE = new SendStatementE_Command(this);
+            CleanStatementE = new CleanStatementE_Command(this);
+            CanselStatementE = new CanselStatementE_Command();
+
+            _status = "Новий";
+            _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
+            _addres = Current_user.Current.Addres;
+            _sender_department = Current_user.Current.Department;
             _room = Current_user.Current.Room;
             _phone_nom = Current_user.Current.Phone;
         }

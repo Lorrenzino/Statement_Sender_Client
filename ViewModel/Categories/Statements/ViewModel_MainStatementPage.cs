@@ -119,7 +119,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             Test = new Test_Command(this, _statement_list_all);
             Frost = new Frost_Command(this, _statement_list_all);
             Canseled = new Canseled_Command(this, _statement_list_all);
-
+            //ChangPage_Command= new RelayCommand(ChangPage)
 
             OpenStatementsEditor = new RelayCommand(OpenStatementsEditor_C);
         }
@@ -142,6 +142,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         }
 
         
+        public RelayCommand ChangPage_Command { get; }
         public RelayCommand Open_StateEditPage => new RelayCommand(execute => { CurPage_StatementSub = StateEditPage; });
         public RelayCommand Open_ViewTabPage => new RelayCommand(execute => { CurPage_StatementSub = ViewTabPage; });
 
