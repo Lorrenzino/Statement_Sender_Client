@@ -69,7 +69,10 @@ namespace Statement_Sender_Client.Model
             this.User_Name_First = "Ivan";
             this.User_Name_Last = "Ivanov";
             this.User_Name_Father = "Ivanovich";
-            this.Addres = "1";
+            this.Addres = "0";
+            this.Room = "0";
+            this.Phone ="+000000000000";
+            this.Department = "0";
             this.User_IP = "0.0.0.0";
             this.User_Access_bill = "common";
         }

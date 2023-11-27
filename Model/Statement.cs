@@ -12,6 +12,7 @@ namespace Statement_Sender_Client.Model
     internal class Statement
     {
         public int ID_unic { get; }
+        public string Status { get; set; }
 
         //parametr of user
         public User Sender { get; }
@@ -38,7 +39,7 @@ namespace Statement_Sender_Client.Model
         public DateTime Date_start { get; set; }
         public DateTime Date_end { get; set; }
         public DateTime Date_control { get; set; }
-        public string Status { get; set; }
+       
 
         public Statement(int id_unic,
                         User sender,

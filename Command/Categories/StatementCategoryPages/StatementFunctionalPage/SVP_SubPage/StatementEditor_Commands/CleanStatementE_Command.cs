@@ -23,7 +23,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
             _view.Type_problem = "";
             if (_view.IsChecked)
             {
-                _view.User_name = "";
+                _view.Sender_Name = "";
                 _view.Addres = "";
                 _view.Sender_Department = "";
                 _view.Room = "";

@@ -52,7 +52,7 @@ namespace Statement_Sender_Client.Model
                 "room2",
                 "3489653298",
                 "Висока",
-                "Системний доступ",
+                "Сеть",
                 "problem_name2",
                 "Відновити дістанційний доступ",
                 "",

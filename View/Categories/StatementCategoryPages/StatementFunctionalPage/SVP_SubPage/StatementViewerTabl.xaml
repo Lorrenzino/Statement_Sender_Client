@@ -55,9 +55,9 @@
                     <DataGridTextColumn Header="Дата виконання" Binding="{Binding  Date_end}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Термін виконання" Binding="{Binding Date_control}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Статус" Binding="{Binding Status}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Створив" Binding="{Binding Sender.User_Name_First }"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Виконав" Binding="{Binding Worker_Name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable_Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Створив" Binding="{Binding Source=Sender, Path=User_Name_First }"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Виконав" Binding="{Binding Worker.User_Name_First }"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable.User_Name_First}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Пріорітет" Binding="{Binding Priority}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>

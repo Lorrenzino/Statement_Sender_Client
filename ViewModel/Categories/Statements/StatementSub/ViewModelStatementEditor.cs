@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.NetworkInformation;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -36,21 +37,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
-        private string _user_name;
-        public string User_name
-        {
-            get
-            {
-                return _user_name;
-            }
-            set
-            {
-                _user_name = value;
-                OnPropertyChanged(nameof(User_name));
-            }
-        }
-
-        private string _accountable;
+        private User _accountable;
+        /*
         public string Accountable
         {
             get
@@ -63,8 +51,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Accountable));
             }
         }
+        */
 
-        private string _worker;
+        private User _worker;
+        /*
         public string Worker
         {
             get
@@ -78,8 +68,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Worker));
             }
         }
+        */
 
-        private string _sender;
+        private User _sender;
+        /*
         public string Sender
         {
             get
@@ -92,8 +84,39 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Sender));
             }
         }
+        */
 
         // изменяеміе поля (параметры отправителя)
+        /*
+        private string _user_name;
+        public string User_name
+        {
+            get
+            {
+                return _user_name;
+            }
+            set
+            {
+                _user_name = value;
+                OnPropertyChanged(nameof(User_name));
+            }
+        }
+        */
+       
+        private string _sender_department;
+        public string Sender_Department
+        {
+            get
+            {
+                return _sender_department;
+            }
+            set
+            {
+                _sender_department = value;
+                OnPropertyChanged(nameof(Sender_Department));
+            }
+        }
+
 
         private string _addres;
         public string Addres
@@ -106,20 +129,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             {
                 _addres = value;
                 OnPropertyChanged(nameof(Addres));
-            }
-        }
-
-        private string _sender_department;
-        public string Sender_Department
-        {
-            get
-            {
-                return _sender_department;
-            }
-            set
-            {
-                _sender_department = value;
-                OnPropertyChanged(nameof(Sender_Department));
             }
         }
 
@@ -166,6 +175,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
 
         }
+
         private string _type_problem;
         public string Type_problem
         {
@@ -267,9 +277,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         }
 
         // ----------------------------------------
-
         private string _sender_Name;
-
         public string Sender_Name
         {
             get
@@ -282,6 +290,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Sender_Name));
             }
         }
+
 
         private string _worker_Name;
         public string Worker_Name
@@ -311,6 +320,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
+
+
         private bool _isChecked=false;
         public bool IsChecked
         {
@@ -327,6 +338,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 }
             }
         }
+
+
+       
 
 
         public ICommand SendStatementE { get; }
@@ -358,16 +372,54 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             CleanStatementE = new CleanStatementE_Command(this);
             CanselStatementE = new CanselStatementE_Command();
 
-            if (view != null)
-            {
+            if (view.Status != null)
                 _status = view.Status;
-                _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
+
+            if (view.Autor_ID != null)
+                _Autor_ID=view.Autor_ID;
+            if (view.Date_start != null)
+                _date_start= view.Date_start;
+            if (view.Date_control != null)
+                _date_control= view.Date_control;
+            if (view.Date_end != null)
+                _date_end= view.Date_end;
+            //if (view != null)
+              //  _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
+            if (view.Addres != null)
                 _addres = view.Addres;
+            if (view.Sender_Department != null)
                 _sender_department = view.Sender_Department;
+            if (view.Room != null)
                 _room = view.Room;
+            if (view.Phone != null)
                 _phone_nom = view.Phone;
-                _accountable = view.Accountable.User_Name_First;
+
+            if (view != null)
+                _priority = view.Priority;
+            if (view != null) 
+                _subject = view.Subject;
+            if (view != null)
+                _description= view.Description;
+            if (view != null)
+                _rezult = view.Rezult;
+            if (view != null)
+                _type_problem= view.Type_problem;
+            if (view.Sender != null)
+            {
+                _sender = view.Sender;
+                _sender_Name = view.Sender.User_Name_First;
             }
+            if (view.Worker != null)
+            {
+                _worker = view.Worker;
+                _worker_Name = view.Worker.User_Name_First;
+            }
+            if (view.Accountable != null)
+            {
+                _accountable = view.Accountable;
+                _accountable_Name = view.Accountable.User_Name_First;
+            }
+            
         }
     }
 }
