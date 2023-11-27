@@ -10,11 +10,14 @@ using Statement_Sender_Client.Command.Categories.StatementCategoryPages.Statemen
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementViewTabl_Commands.ClickOnCommand;
 using Statement_Sender_Client.Model;
 using Statement_Sender_Client.Navigation;
+using Statement_Sender_Client.Navigation.Categories.StatementCategory;
 
 namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
     internal class ViewModelListStatement : ViewModelBase
     {
+
+        private readonly NavigationLib _navigationLib;
 
         private ObservableCollection<ViewModelStatement> _statement_list;
 
@@ -38,8 +41,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
 
 
-        public ViewModelListStatement(ObservableCollection<ViewModelStatement> list)
+        public ViewModelListStatement(NavigationLib navigationLib, ObservableCollection<ViewModelStatement> list)
         {
+            _navigationLib = navigationLib;
+
             _statement_list = new ObservableCollection<ViewModelStatement>();
 
             foreach (ViewModelStatement statement in list)
@@ -74,7 +79,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
 
 
-            RowDoubleCkick_Command = new MouseDoubleClick(this);
+            RowDoubleCkick_Command = new MouseDoubleClick(_navigationLib, this);
         }
 
         public void SortBy(string parametr)

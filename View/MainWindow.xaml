@@ -3,6 +3,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        
+        xmlns:viewmodels="clr-namespace:Statement_Sender_Client.ViewModel.Categories.Statements"
+        xmlns:views="clr-namespace:Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage"
+            
+        
+        
         xmlns:local="clr-namespace:Statement_Sender_Client"
                 mc:Ignorable="d"
         Title="MainWindow" Height="500" Width="1000" 
@@ -21,9 +27,6 @@
     <Grid Background="White">
 
 
-
-
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="70"/>
             <ColumnDefinition />
@@ -31,6 +34,21 @@
         <!-- First column - Main categoris panel -->
         <!-- Second collumn - Function space for Category -->
 
+
+        <Grid Grid.Column="1" x:Name="fff" Background="LightGray">
+            <Frame Content="{Binding Current_Main_ViewModel}">
+                
+                    <ContentControl.Resources>
+                        <DataTemplate  DataType="{x:Type viewmodels:ViewModel_MainStatementPage }">
+                            <views:StatementMainPage/>
+                        </DataTemplate>
+                    </ContentControl.Resources>
+               
+            </Frame>
+            
+        </Grid>
+
+        
 
         <Grid Grid.Column="0" Background="LightGreen">
             <StackPanel >
@@ -63,10 +81,7 @@
 
 
 
-        <Grid Grid.Column="1" x:Name="fff" Background="LightGray">
-            <Frame x:Name="Frame_1" NavigationUIVisibility="Hidden" Content= "{Binding CurPage_StatementSub}" />
-                   <!--Source="/View/Categories/StatementCategoryPages/StatementFunctionalPage/StatementMainPage.xaml"--> 
-        </Grid>
+        
     </Grid>
 </Window>
 

@@ -17,7 +17,7 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
         public StatementViewerTabl()
         {
             InitializeComponent();
-            this.DataContext = new ViewModelListStatement(new ObservableCollection<ViewModelStatement>());
+            //this.DataContext = new ViewModelListStatement(new ObservableCollection<ViewModelStatement>());
         }
 
         

@@ -7,9 +7,4 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Folder Include="Navigation\Categories\StatementCategory\" />
-    <Folder Include="ViewModel\MainWindows\" />
-  </ItemGroup>
-
 </Project>

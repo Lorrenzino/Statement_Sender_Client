@@ -105,8 +105,9 @@
                                 Content="Категорія"
                                 VerticalAlignment="Center"></Label>
                         <ComboBox Grid.Column="1"
-                                Text="{Binding Type_problem}"
-                                VerticalAlignment="Center"></ComboBox>
+                                  ItemsSource="{Binding Type_of_problem}"
+                                
+                                VerticalAlignment="Center" ></ComboBox>
                     </Grid>
                     
 
@@ -120,6 +121,7 @@
                                Content="Відправник"
                                VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1" 
+                                 
                                  Text="{Binding Sender_Name}"
                                  VerticalAlignment="Center">
                         </TextBox>

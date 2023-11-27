@@ -12,8 +12,8 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
         public StatementMainPage()
         {
             InitializeComponent();
-            ViewModel_MainStatementPage vm= new ViewModel_MainStatementPage();
-            DataContext = vm;
+            //ViewModel_MainStatementPage vm= new ViewModel_MainStatementPage();
+            //DataContext = vm;
         }
     }
 }

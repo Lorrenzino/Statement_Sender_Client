@@ -9,18 +9,19 @@ using System.Text;
 using System.Threading.Tasks;
 using Statement_Sender_Client.ViewModel;
 using Statement_Sender_Client.Model;
+using Statement_Sender_Client.Navigation.Categories.StatementCategory;
 
 namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage
 {
     class MyState_Command : CommandBase
     {
-        ViewModel_MainStatementPage VM_model;
-        
+        private readonly NavigationLib _navigationLib;
+
         ObservableCollection<ViewModelStatement> Statement_list= new ObservableCollection<ViewModelStatement>();
 
-        public MyState_Command(ViewModel_MainStatementPage _model, ObservableCollection<ViewModelStatement> _list) 
+        public MyState_Command(NavigationLib lib, ObservableCollection<ViewModelStatement> _list) 
         {
-            VM_model= _model;
+            _navigationLib = lib;
             foreach (ViewModelStatement st in _list)
             {
                 if (st.Sender.User_ID == Current_user.Current.User_ID)
@@ -31,9 +32,11 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
 
         public override void Execute(object parameter)
         {
+            _navigationLib.CurPage_Statements=new ViewModelListStatement(_navigationLib, Statement_list);
+            _navigationLib.CurPage_Statements.Rfresh();
             //VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
-            VM_model.CurPage_StatementSub = VM_model.ViewTabPage;
-            VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
+            ////        VM_model.CurPage_StatementSub = VM_model.ViewTabPage;
+            ////        VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
             //VM_model._CurPage_StatementSub = VM_model.ViewTabPage;
             //OnPropertyChanged();
 

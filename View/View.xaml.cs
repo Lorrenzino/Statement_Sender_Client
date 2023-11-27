@@ -1,5 +1,4 @@
-﻿using Statement_Sender_Client.Navigation;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,18 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
 
-namespace Statement_Sender_Client
+namespace Statement_Sender_Client.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Логика взаимодействия для View.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class View : Page
     {
-        public MainWindow()
+        public View()
         {
             InitializeComponent();
-            //DataContext = new NavigationBlock_StatementSub();
+            DataContext = new ViewModelStatementEditor();
         }
     }
 }

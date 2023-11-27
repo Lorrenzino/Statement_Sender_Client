@@ -12,6 +12,9 @@ namespace Statement_Sender_Client.Model
     static class Statement_Collection
     {
         public static ObservableCollection<Statement> User_Statements;
+        public static ObservableCollection<Statement> Department_Statements;
+        public static ObservableCollection<Statement> ALL_Statements;
+
         public static ObservableCollection<ViewModelStatement> User_StatementsVM;
         public static void UpSt()
         {

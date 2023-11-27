@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace Statement_Sender_Client.ViewModel
 {
@@ -16,8 +17,11 @@ namespace Statement_Sender_Client.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(PropertyName));
         }
+        public void Rfresh()
+        {
+            OnPropertyChanged();
+        }
 
-        
         /// <summary>
         /// переход на другую страницу +предварительная проверка на переход на туже самую страницу
         /// </summary>

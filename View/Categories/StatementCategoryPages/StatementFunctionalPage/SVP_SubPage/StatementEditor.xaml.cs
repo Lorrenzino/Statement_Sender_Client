@@ -24,7 +24,7 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
         public StatementEditor()
         {
             InitializeComponent();
-            DataContext = new ViewModelStatementEditor();
+            //DataContext = new ViewModelStatementEditor();
         }
 
         

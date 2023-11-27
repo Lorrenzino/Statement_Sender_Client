@@ -3,6 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      
+      xmlns:viewmodels="clr-namespace:Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub"
+      xmlns:views="clr-namespace:Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage"
+      
+      
       xmlns:local="clr-namespace:Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
@@ -153,12 +158,15 @@
 
         </Grid>
         <Grid Grid.Column="1">
-            <Frame x:Name="Frame_1" 
-                   NavigationUIVisibility="Automatic"  
-                   Content="{Binding CurPage_StatementSub }"
-                   
-                   >
-                 
+            <Frame Content="{Binding Current_Statements_ViewModel }">
+                <ContentControl.Resources>
+                    <DataTemplate  DataType="{x:Type viewmodels:ViewModelListStatement }">
+                        <views:StatementViewerTabl/>
+                    </DataTemplate>
+                    <DataTemplate  DataType="{x:Type viewmodels:ViewModelStatementEditor }">
+                        <views:StatementEditor/>
+                    </DataTemplate>
+                </ContentControl.Resources>
             </Frame>
         </Grid>
     </Grid>

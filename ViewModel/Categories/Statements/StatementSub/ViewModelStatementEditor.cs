@@ -12,6 +12,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 {
     internal class ViewModelStatementEditor : ViewModelBase
     {
+        public List<string> Type_of_problem => Current_user.Type_of_problem;
+        
+
+
         private string _Autor_ID;
         public string Autor_ID
         {
@@ -354,12 +358,16 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             CleanStatementE = new CleanStatementE_Command(this);
             CanselStatementE = new CanselStatementE_Command();
 
-            _status = "Новий";
-            _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
-            _addres = Current_user.Current.Addres;
-            _sender_department = Current_user.Current.Department;
-            _room = Current_user.Current.Room;
-            _phone_nom = Current_user.Current.Phone;
+            if (view != null)
+            {
+                _status = view.Status;
+                _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
+                _addres = view.Addres;
+                _sender_department = view.Sender_Department;
+                _room = view.Room;
+                _phone_nom = view.Phone;
+                _accountable = view.Accountable.User_Name_First;
+            }
         }
     }
 }
