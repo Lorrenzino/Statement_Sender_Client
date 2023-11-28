@@ -12,6 +12,6 @@ namespace Statement_Sender_Client.Model
         public static List<string> Type_of_status = new List<string> { "Зроблено", "Відкрито", "Закрито", "Призупинено", "Скасовано" };
         public static List<string> Type_of_department = new List<string> { };
         public static List<string> Type_of_problem = new List<string> { "Инвентаризация","Сеть","1С","Снабжение","Дениско"};
-
+        public static List<string> Select_by = new List<string> {"Код","Назва","Дата створення","Дата виконання","Термін виконання","Статус","Виконавецт","Відповідальний","Пріорітет" };
     }
 }

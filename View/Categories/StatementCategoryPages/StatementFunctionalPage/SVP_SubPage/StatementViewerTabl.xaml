@@ -20,16 +20,13 @@
 
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
-                <Button Content="Видалити" Width="70" Margin="4" Command="{Binding Delet}" ></Button>
-                <Button Content="Скасувати" Width="60" Margin="4" ></Button>
-                <Button Content="Позначити як..." Width="90" Margin="4"></Button>
-                <ComboBox Width="70" Margin="4">
-                    <Label Content="Датою"/>
-                    <Label Content="Відділом"/>
-                    <Label Content="Пріорітетом"/>
+                <ComboBox Width="70" Margin="4"
+                          ItemsSource="{Binding Select_by}"
+                          SelectedValue="{Binding Select}">
+                    
                 </ComboBox>
                 <Button Content="Сортувати за ..." Command="{Binding SetAs}"  Width="120" Margin="4"></Button>
-                <Button Content="Надати пріорітет"  Width="100" Margin="4"></Button>
+                <Button Content="Оновити данні" Command="{Binding }"  Width="120" Margin="4"></Button>
             </StackPanel>
         </Grid>
 
@@ -39,8 +36,6 @@
                       IsReadOnly="True"
                       SelectedItem="{Binding Selected_item}"
                       IsSynchronizedWithCurrentItem="True"
-                      
-                      
                       >
                 <DataGrid.InputBindings>
                     <MouseBinding MouseAction="LeftDoubleClick"
@@ -48,16 +43,16 @@
                                   CommandParameter="{Binding Statement_list}"/>
                 </DataGrid.InputBindings>
                 <DataGrid.Columns>
-                    <DataGridCheckBoxColumn Header="Select"></DataGridCheckBoxColumn>
+                    
                     <DataGridTextColumn Header="Код" Binding="{Binding Autor_ID}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Назва" Binding="{Binding Subject}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дата створення" Binding="{Binding Date_start}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дата виконання" Binding="{Binding  Date_end}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Термін виконання" Binding="{Binding Date_control}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Статус" Binding="{Binding Status}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Створив" Binding="{Binding Source=Sender, Path=User_Name_First }"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Створив" Binding="{Binding Source=.Sender.User_Name_First}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Виконав" Binding="{Binding Worker.User_Name_First }"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable.User_Name_First}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Пріорітет" Binding="{Binding Priority}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>

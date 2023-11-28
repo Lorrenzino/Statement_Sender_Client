@@ -6,6 +6,7 @@ using System.Reflection.Metadata;
 using System.Security.Cryptography;
 using System.Windows.Input;
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementEditor_Commands.ManageButton;
+using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementViewTabl_Commands;
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementViewTabl_Commands.chek;
 using Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage.SVP_SubPage.StatementViewTabl_Commands.ClickOnCommand;
 using Statement_Sender_Client.Model;
@@ -18,9 +19,24 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
     {
 
         private readonly NavigationLib _navigationLib;
+        public List<string> Select_by => Current_user.Select_by;
+        public string _Select;
+        public string Select
 
-        private ObservableCollection<ViewModelStatement> _statement_list;
+        {
+            get
+            {
+                return _Select;
+            }
+            set
+            {
+                _Select = value;
+                OnPropertyChanged(nameof(_Select));
+            }
+        }
 
+
+        public ObservableCollection<ViewModelStatement> _statement_list;
         public ObservableCollection<ViewModelStatement> Statement_list => _statement_list;
 
 
@@ -78,7 +94,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             //SortBy("Phone");
 
 
-
+            SetAs = new SortBy_Command(_navigationLib, this);
             RowDoubleCkick_Command = new MouseDoubleClick(_navigationLib, this);
         }
 
@@ -165,10 +181,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 }
             
         });
-        public RelayCommand SetAs => new RelayCommand(execute =>
-        {
-            SortBy("Sender_Name");
-        });
+        public ICommand SetAs { get; }
+
         public RelayCommand ChangStatus => new RelayCommand(execute =>
         {
             SortBy("Priority");

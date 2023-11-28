@@ -18,9 +18,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 {
     internal class ViewModel_MainStatementPage: ViewModelBase
     {
-        
 
 
+       
         private ObservableCollection<ViewModelStatement> _statement_list_all ;
 
         public ObservableCollection<ViewModelStatement> Statement_list_all => _statement_list_all;
