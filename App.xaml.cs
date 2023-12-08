@@ -20,6 +20,7 @@ namespace Statement_Sender_Client
         
         protected override void OnStartup(StartupEventArgs e)
         {
+            Model.Statement_Collection.UpSt();
             NavigationLib lib = new NavigationLib();
             lib._CurPage_Main = new ViewModel_MainStatementPage(lib);
             lib._CurPage_Statements = new ViewModelStatementEditor();

@@ -19,9 +19,12 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         }
         public override void Execute(object parameter)
         {
-            Statement newSt = new Statement(Current_user.Current, _view.Priority, _view.Type_problem, _view.Description, Convert.ToDateTime(_view.Date_start), _view.Status);
-            ViewModelStatement newSVM = new ViewModelStatement(newSt);
-
+            //Statement newSt = new Statement(Current_user.Current, _view.Priority, _view.Type_problem, _view.Description, Convert.ToDateTime(_view.Date_start), _view.Status);
+            Statement newStatement = new Statement(Current_user.Current, Current_user.Current, _view.Sender_Name, _view.Sender_Department, _view.Addres, _view.Room, _view.Phone_nom, _view.Priority, _view.Type_problem, _view.Subject, _view.Description, Convert.ToDateTime(_view.Date_start), _view.Status);
+            ViewModelStatement newSVM = new ViewModelStatement(newStatement);
+            Statement_Collection.User_StatementsVM.Add(newSVM);
         }
     }
 }
+
+

@@ -20,11 +20,11 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         }
         public override void Execute(object parameter)
         {
-            foreach(ViewModelStatement st in _vm.Statement_list)
+            foreach(ViewModelStatement st in _vm.statement_list)
             {
                 if(st==_statement)
                 {
-                    _vm.Statement_list.Remove(st);
+                    _vm.statement_list.Remove(st);
                 }
             }
 

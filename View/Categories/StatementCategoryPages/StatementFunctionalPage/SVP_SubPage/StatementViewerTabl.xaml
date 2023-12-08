@@ -31,7 +31,7 @@
         </Grid>
 
         <Grid Grid.Row="1">
-            <DataGrid ItemsSource="{Binding Statement_list, Mode=OneWay}"
+            <DataGrid ItemsSource="{Binding statement_list, Mode=OneWay}"
                       AutoGenerateColumns="False" 
                       IsReadOnly="True"
                       SelectedItem="{Binding Selected_item}"
@@ -40,7 +40,7 @@
                 <DataGrid.InputBindings>
                     <MouseBinding MouseAction="LeftDoubleClick"
                                   Command="{Binding RowDoubleCkick_Command}"
-                                  CommandParameter="{Binding Statement_list}"/>
+                                  CommandParameter="{Binding statement_list}"/>
                 </DataGrid.InputBindings>
                 <DataGrid.Columns>
                     
@@ -50,9 +50,9 @@
                     <DataGridTextColumn Header="Дата виконання" Binding="{Binding  Date_end}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Термін виконання" Binding="{Binding Date_control}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Статус" Binding="{Binding Status}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Створив" Binding="{Binding Source=.Sender.User_Name_First}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Виконав" Binding="{Binding Worker.User_Name_First }"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Створив" Binding="{Binding Sender_Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Виконав" Binding="{Binding Worker_Name }"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Відповідальний" Binding="{Binding Accountable_Name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Пріорітет" Binding="{Binding Priority}"></DataGridTextColumn>
                 </DataGrid.Columns>
             </DataGrid>

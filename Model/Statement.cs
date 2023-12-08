@@ -127,7 +127,35 @@ namespace Statement_Sender_Client.Model
         }
 
 
-
+        public Statement(
+                       User sender,
+                       User accountable,
+                       string sender_name,
+                       string sender_department,
+                       string addres,
+                       string room,
+                       string phone,
+                       string priority,
+                       string type_problem,
+                       string subject,
+                       string description,
+                       DateTime ds,
+                       string status)
+        {
+            Sender = sender;
+            Accountable = accountable;
+            Sender_Name = sender_name;
+            Sender_Department = sender_department;
+            Addres = addres;
+            Room = room;
+            Phone = phone;
+            Priority = priority;
+            Type_problem = type_problem;
+            Subject = subject;
+            Description = description;
+            Date_start = ds;
+            Status = status;
+        }
 
 
     }

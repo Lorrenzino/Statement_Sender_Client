@@ -22,7 +22,7 @@ namespace Statement_Sender_Client.Model
             User_StatementsVM.Add(new ViewModelStatement(new Model.Statement(
                 11111,
                 Current_user.Current,
-                Current_user.Current,
+                null,
                 Current_user.Current,
                 "Andrei",
                 "OMA",

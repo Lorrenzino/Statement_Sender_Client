@@ -1,4 +1,5 @@
-﻿using Statement_Sender_Client.Navigation.Categories.StatementCategory;
+﻿using Statement_Sender_Client.Model;
+using Statement_Sender_Client.Navigation.Categories.StatementCategory;
 using Statement_Sender_Client.ViewModel.Categories.Statements;
 using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
 using System;
@@ -23,7 +24,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         } 
         public override void Execute(object parameter)
         {
-            ObservableCollection<ViewModelStatement> New_statement_list = new ObservableCollection<ViewModelStatement>(_view._statement_list);
+            ObservableCollection<ViewModelStatement> New_statement_list = new ObservableCollection<ViewModelStatement>(_view.statement_list);
 
             switch (_view.Select)
             {
@@ -56,7 +57,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                     break;
                 
             }
-            _view._statement_list = New_statement_list;
+            Statement_Collection.User_StatementsVM = New_statement_list;
 
         }
     }

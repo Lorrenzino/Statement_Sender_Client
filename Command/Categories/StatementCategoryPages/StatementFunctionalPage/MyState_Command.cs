@@ -33,7 +33,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         public override void Execute(object parameter)
         {
             _navigationLib.CurPage_Statements=new ViewModelListStatement(_navigationLib, Statement_list);
-            _navigationLib.CurPage_Statements.Rfresh();
+            //_navigationLib.CurPage_Statements.Rfresh();
             //VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);
             ////        VM_model.CurPage_StatementSub = VM_model.ViewTabPage;
             ////        VM_model.ViewTabPage.DataContext = new ViewModelListStatement(Statement_list);

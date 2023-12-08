@@ -36,9 +36,15 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         }
 
 
-        public ObservableCollection<ViewModelStatement> _statement_list;
-        public ObservableCollection<ViewModelStatement> Statement_list => _statement_list;
-
+        
+        public ObservableCollection<ViewModelStatement>_statement_list => Statement_Collection.User_StatementsVM;
+        public ObservableCollection<ViewModelStatement> statement_list
+        {
+            get
+            {
+                return _statement_list;
+            }
+        }
 
 
         public ViewModelStatement _Selected_item;
@@ -60,40 +66,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         public ViewModelListStatement(NavigationLib navigationLib, ObservableCollection<ViewModelStatement> list)
         {
             _navigationLib = navigationLib;
-
-            _statement_list = new ObservableCollection<ViewModelStatement>();
-
-            foreach (ViewModelStatement statement in list)
-            {
-                _statement_list.Add(statement);
-            }
-            OnPropertyChanged();
-
-
-            //_statement_list = new ObservableCollection<ViewModelStatement>();
-            //DataRotation.GetDataFromServer();
-            //Current_User.StatementCollection = DataRotation.GetData();
-
-            /*
-            foreach (var item in Current_User.StatementCollection)
-            {
-                _statement_list.Add(item);
-            }
-            */
-            /*
-            foreach (ViewModelStatement el in Current_User.StatementCollection)
-                if (el.Comment =="")
-                    _statement_list.Add(el);
-            */
-
-            //EventChangSelectedStat = new EventChangSelectedStat_Command(this);
-
-            //Delet = new DeleteStatementMB_Command(IsSelectedRow, this);
-
-
-            //SortBy("Phone");
-
-
             SetAs = new SortBy_Command(_navigationLib, this);
             RowDoubleCkick_Command = new MouseDoubleClick(_navigationLib, this);
         }
@@ -162,31 +134,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             get;
         }
         public ICommand Chang { get; }
-        public RelayCommand Delet => new RelayCommand(execute =>
-        {
-                for(int i=0; (i<= Statement_list.Count());i++)
-                {
-                try
-                {
-
-                
-                    if (Statement_list[i] == IsSelectedRow)
-                    {
-                        Statement_list.Remove(Statement_list[i]);
-                        Statement_Collection.User_StatementsVM.Remove(Statement_list[i]);
-                        OnPropertyChanged();
-                    }
-                }
-                catch (Exception ex) { }
-                }
-            
-        });
+        
         public ICommand SetAs { get; }
 
-        public RelayCommand ChangStatus => new RelayCommand(execute =>
-        {
-            SortBy("Priority");
-        });
         public ICommand ChangPriorite { get; }
 
         public ICommand RowDoubleCkick_Command { get; }

@@ -15,7 +15,34 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
 
         //-------------------------------------------------------------
-        public string Sender_Name;//=> _statement.Sender_Name;
+        public string Sender_Name// => _statement.Sender.User_Name_First.ToString();
+        {
+            get
+            {
+                if (_statement.Sender != null)
+                    return _statement.Sender.User_Name_First;
+                return "not selected";
+            }
+        }
+        public string Accountable_Name// => _statement.Accountable.User_Name_First.ToString();
+        {
+            get
+            {
+                if (_statement.Accountable != null)
+                    return _statement.Accountable.User_Name_First;
+                return "not selected";
+            }
+        }
+        public string Worker_Name// => _statement.Worker.User_Name_First.ToString();
+        {
+            get
+            {
+                if(_statement.Worker != null)
+                    return _statement.Worker.User_Name_First;
+                return "not selected";
+            }
+        }
+        //-------------------------------------------------------------
         public string Sender_Department => _statement.Sender_Department;
         public string Addres => _statement.Addres;
         public string Room => _statement.Room;
@@ -34,8 +61,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
         //-------------------------------------------------------------
         
-        public string Accountable_Name ;//=> _statement.Accountable.User_Name_First;  // ChangMe краш если нулл
-        public string Worker_Name ;//=> _statement.Worker.User_Name_First; // ChangMe краг если нул
+        //public string Accountable_Name ;//=> _statement.Accountable.User_Name_First;  // ChangMe краш если нулл
+        //public string Worker_Name ;//=> _statement.Worker.User_Name_First; // ChangMe краг если нул
         
 
 
@@ -44,15 +71,27 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         {
             _statement = _examp;
             // Worker_name = _statement.Worker.User_Name_First;
-            if (_statement != null)
+            
+            if (_examp != null)
             {
+                /*
                 if (_statement.Sender == null)
                     Sender_Name = string.Empty;
+                else
+                    Sender_Name = _examp.Sender.User_Name_First;
+                
                 if (_statement.Accountable == null)
                     Accountable_Name = string.Empty;
+                else
+                    Accountable_Name = _examp.Accountable.User_Name_First;
+                
                 if (_statement.Worker == null)
                     Worker_Name = string.Empty;
+                else
+                    Worker_Name = _examp.Worker.User_Name_First;
+                */
             }
+
         }
     }
 }

@@ -21,12 +21,18 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
 
        
-        private ObservableCollection<ViewModelStatement> _statement_list_all ;
+        private ObservableCollection<ViewModelStatement> _statement_list_all => Statement_Collection.User_StatementsVM;
+        public ObservableCollection<ViewModelStatement> statement_list_all
+        {
+            get 
+            { 
+                return _statement_list_all; 
+            }
+        }
+        //public ObservableCollection<ViewModelStatement> Statement_list_all => Statement_Collection.User_StatementsVM;
 
-        public ObservableCollection<ViewModelStatement> Statement_list_all => _statement_list_all;
 
-
-
+        
         private void OnCurrentViewModeIChanged()
         {
             OnPropertyChanged(nameof(Current_Statements_ViewModel));
@@ -40,8 +46,12 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         public ViewModel_MainStatementPage(NavigationLib navigationLib) 
         {
             _navigationLib = navigationLib;
-
             _navigationLib.CurrentViewModelChanged += OnCurrentViewModeIChanged;
+            
+            /*
+            _navigationLib = navigationLib;
+
+            
             
             _statement_list_all = new ObservableCollection<ViewModelStatement>();
             Statement_Collection.UpSt();
@@ -49,7 +59,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             {
                 _statement_list_all.Add( vm );
             }           
-           
+           */
 
             MyState = new MyState_Command(_navigationLib, _statement_list_all);
             Done = new Done_Command(_navigationLib, _statement_list_all);
@@ -103,7 +113,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             get
             {
                 int count = 0;
-                foreach (ViewModelStatement st in Statement_list_all)
+                foreach (ViewModelStatement st in statement_list_all)
                     if (st.Sender.User_ID ==Current_user.Current.User_ID)
                         count++;
                 return _myState_count = count;
@@ -116,7 +126,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
            get
             {
                 int count = 0;
-                foreach (ViewModelStatement st in Statement_list_all)
+                foreach (ViewModelStatement st in statement_list_all)
                     if (st.Sender.User_ID==Current_user.Current.User_ID)
                         if (st.Status == "Завершена")
                         count++;
@@ -130,7 +140,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             get
             {
                 int count = 0;
-                foreach (ViewModelStatement st in Statement_list_all)
+                foreach (ViewModelStatement st in statement_list_all)
                     if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Відкрита")
                             count++;
@@ -144,7 +154,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             get
             {
                 int count = 0;
-                foreach (ViewModelStatement st in Statement_list_all)
+                foreach (ViewModelStatement st in statement_list_all)
                     if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Відправлена")
                             count++;
@@ -158,7 +168,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             get
             {
                 int count = 0;
-                foreach (ViewModelStatement st in Statement_list_all)
+                foreach (ViewModelStatement st in statement_list_all)
                     if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Призупинена")
                             count++;
@@ -172,7 +182,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             get
             {
                 int count = 0;
-                foreach (ViewModelStatement st in Statement_list_all)
+                foreach (ViewModelStatement st in statement_list_all)
                     if (st.Sender.User_ID == Current_user.Current.User_ID)
                         if (st.Status == "Скасована")
                             count++;

@@ -15,15 +15,15 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         private readonly NavigationLib _navigationLib;
         private ViewModelListStatement _view;
 
-        public MouseDoubleClick(NavigationLib lib, ViewModelListStatement Selected_item)
+        public MouseDoubleClick(NavigationLib lib, ViewModelListStatement view)
         {
             _navigationLib = lib;
-            _view = Selected_item;
+            _view = view;
         }
         public override void Execute(object parameter)
         {
 
-            _navigationLib.CurPage_Statements = new ViewModelStatementEditor(_view.Selected_item);
+            _navigationLib.CurPage_Statements = new ViewModelStatementEditor(_view._Selected_item);
 
         }
     }

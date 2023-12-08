@@ -357,7 +357,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             CleanStatementE = new CleanStatementE_Command(this);
             CanselStatementE = new CanselStatementE_Command();
 
-            _status = "Новий";
+            _status = "Відкрита";
             _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
             _addres = Current_user.Current.Addres;
             _sender_department = Current_user.Current.Department;
