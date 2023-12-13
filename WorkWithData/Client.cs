@@ -3,60 +3,63 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
+using System.Net.Http.Json;
 using System.Net.Sockets;
 using System.Reflection.Metadata;
 using System.Security.Policy;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Windows.Markup;
+using Newtonsoft.Json;
+using System.Collections.ObjectModel;
 
 namespace Statement_Sender_Client.WorkWithData
 {
     internal class Client
     {
         public static string data = null;
-        public async void OutCommingCall ()
+        public async void OutCommingCallAsync(Request message_to_send)
         {
             byte[] bytes = new byte[1024];
-            var hostName = "HelpClient";
-            //IPHostEntry ipHost = Dns.GetHostEntry("HelpClient");
-            //var hostName = "10.114.9.21";
-            //Console.WriteLine(hostName);                
+            var hostName = "HelpClient";               
             IPHostEntry ipHost = Dns.GetHostEntry(hostName);
             IPAddress ipAddress = ipHost.AddressList[1];
-
-
-
-            IPEndPoint localEndPoint = new IPEndPoint(ipAddress, 20101);
-            Socket listener = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
-
-
-
-            Console.WriteLine(ipAddress + "   " + localEndPoint.Port);
+            IPEndPoint remoteEP = new IPEndPoint(ipAddress, 20101);
+            Socket sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
             try
             {
-                listener.Bind(localEndPoint);
-                listener.Listen(10);
+                sender.Connect(remoteEP);
                 do
                 {
-                    Socket handler = listener.Accept();
+                    
+                    string send_string = JsonConvert.SerializeObject(message_to_send);
+                    byte[] msg = Encoding.ASCII.GetBytes(send_string);
+                    int byteSent = sender.Send(msg);
                     data = null;
                     while (true)
                     {
-                        int byteRec = handler.Receive(bytes);
+                        int byteRec = sender.Receive(bytes);
                         data += Encoding.ASCII.GetString(bytes, 0, byteRec);
-                        if (handler.Available <= 0)
+                        if (sender.Available <= 0)
                             break;
                     }
 
+                    Request Answer = JsonConvert.DeserializeObject<Request>(data);
 
-                    data += " ALL DATA HAS SENDED";
-                    byte[] msg = Encoding.ASCII.GetBytes(data);
-                    handler.Send(msg);
+                    //чтото что внесёт изменение в мои данные
+                    ObservableCollection<Statement> state_collect = new ObservableCollection<Statement>();
+                    Statement_Collection.User_StatementsVM.Clear();
+                    if(Answer.Data!=null)
+                    foreach (Statement st in Answer.Data)
+                    {
+                        state_collect.Add(st);
+                        Statement_Collection.User_StatementsVM.Add(new ViewModel.Categories.Statements.ViewModelStatement(st));
+                    }
 
-                    handler.Shutdown(SocketShutdown.Both);
-                    handler.Close();
+                    sender.Shutdown(SocketShutdown.Both);
+                    sender.Close();
                 }
                 while (false);
             }

@@ -28,11 +28,11 @@ namespace Statement_Sender_Client.Model
 
         // 2.1  на выбор
         public string[] LP; // логин пароль 
-        public string Key;  // ключ сессии
+        //public string Key;  // ключ сессии
 
         //2.2
         public ObservableCollection<Statement> Data; // данные для внесения или обновления в бд (операция указывается в типе)
-        public List<string[]> Clarification; // уточнение формата {"Параметр", "Ограничение"} например: вывести все заявления отдела за последние 3 года адресованые на Городнера
+        //public List<string[]> Clarification; // уточнение формата {"Параметр", "Ограничение"} например: вывести все заявления отдела за последние 3 года адресованые на Городнера
 
 
 
@@ -78,6 +78,7 @@ namespace Statement_Sender_Client.Model
         */
 
         //  Запрос + логин
+        /*
         public Request(string type_R, string[] lp)
         {
             this.Type_R = type_R;
@@ -135,6 +136,15 @@ namespace Statement_Sender_Client.Model
             this.Key = key;
             this.Data = data;
             this.Clarification = clarification;
+        }
+        */
+
+        // Запрос + логин + дата
+        public Request(string type_R, string[] lp, ObservableCollection<Statement> data)
+        {
+            this.Type_R = type_R;
+            this.LP = lp;
+            this.Data = data;
         }
     }
 }

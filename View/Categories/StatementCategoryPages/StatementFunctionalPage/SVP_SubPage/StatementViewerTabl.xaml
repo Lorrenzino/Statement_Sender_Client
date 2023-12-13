@@ -26,7 +26,7 @@
                     
                 </ComboBox>
                 <Button Content="Сортувати за ..." Command="{Binding SetAs}"  Width="120" Margin="4"></Button>
-                <Button Content="Оновити данні" Command="{Binding }"  Width="120" Margin="4"></Button>
+                <Button Content="Оновити данні" Command="{Binding RefreshData_Command}"  Width="120" Margin="4"></Button>
             </StackPanel>
         </Grid>
 

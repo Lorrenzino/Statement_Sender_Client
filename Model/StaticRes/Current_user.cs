@@ -9,6 +9,7 @@ namespace Statement_Sender_Client.Model
     static class Current_user
     {
         public static User Current = new User();
+        public static string[] LPK = { "user", "user", "" };
         public static List<string> Type_of_status = new List<string> { "Зроблено", "Відкрито", "Закрито", "Призупинено", "Скасовано" };
         public static List<string> Type_of_department = new List<string> { };
         public static List<string> Type_of_problem = new List<string> { "Инвентаризация","Сеть","1С","Снабжение","Дениско"};

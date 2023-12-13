@@ -37,7 +37,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
 
         
-        public ObservableCollection<ViewModelStatement>_statement_list => Statement_Collection.User_StatementsVM;
+        public ObservableCollection<ViewModelStatement>_statement_list = Statement_Collection.User_StatementsVM;
         public ObservableCollection<ViewModelStatement> statement_list
         {
             get
@@ -66,8 +66,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         public ViewModelListStatement(NavigationLib navigationLib, ObservableCollection<ViewModelStatement> list)
         {
             _navigationLib = navigationLib;
+            _statement_list = list;
             SetAs = new SortBy_Command(_navigationLib, this);
             RowDoubleCkick_Command = new MouseDoubleClick(_navigationLib, this);
+            RefreshData_Command = new RefreshDataVT_Command();
         }
 
         public void SortBy(string parametr)
@@ -140,6 +142,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         public ICommand ChangPriorite { get; }
 
         public ICommand RowDoubleCkick_Command { get; }
+
+        public ICommand RefreshData_Command { get; }
 
     }
 

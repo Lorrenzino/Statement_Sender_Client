@@ -98,11 +98,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
 
         public ICommand OpenStatementsEditor { get; }
-        // -------------------------------------------------------------------------------------------------------------------------'
-        // Реализация
-
-
-        
 
         // -------------------------------------------------------------------------------------------------------------------------'
         // Поля для счётчиков
@@ -118,7 +113,10 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                         count++;
                 return _myState_count = count;
             }
-            set { }
+            set
+            {
+                
+            }
         }
         public int _myState_Done_count;
         public int MyState_Done_count
@@ -132,7 +130,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                         count++;
                 return _myState_Done_count = count;
             }
-            set { }
         }
         public int _myState_Open_count;
         public int MyState_Open_count
@@ -146,7 +143,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                             count++;
                 return _myState_Open_count = count;
             }
-            set { }
         }
         public int _myState_Test_count;
         public int MyState_Test_count
@@ -160,7 +156,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                             count++;
                 return _myState_Test_count = count;
             }
-            set { }
         }
         public int _myState_Frost_count;
         public int MyState_Frost_count
@@ -174,7 +169,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                             count++;
                 return _myState_Frost_count = count;
             }
-            set { }
         }
         public int _myState_Canseled_count;
         public int MyState_Canseled_count
@@ -188,8 +182,6 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
                             count++;
                 return _myState_Canseled_count = count;
             }
-            set { }
-
         }
        
 

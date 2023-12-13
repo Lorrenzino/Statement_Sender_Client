@@ -19,16 +19,25 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         public Frost_Command(NavigationLib lib, ObservableCollection<ViewModelStatement> _list)
         {
             _navigationLib = lib;
+            /*
             foreach (ViewModelStatement st in _list)
             {
                 if (st.Sender.User_ID == Current_user.Current.User_ID)
                     if(st.Status == "Призупинена")
                     Statement_list.Add(st);
             }
+            */
         }
 
         public override void Execute(object parameter)
         {
+            Statement_list.Clear();
+            foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
+            {
+                if (st.Sender.User_ID == Current_user.Current.User_ID)
+                    if (st.Status == "Призупинена")
+                        Statement_list.Add(st);
+            }
             _navigationLib.CurPage_Statements = new ViewModelListStatement(_navigationLib, Statement_list);
             _navigationLib.CurPage_Statements.Rfresh();
         }

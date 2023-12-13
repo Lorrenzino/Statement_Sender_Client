@@ -16,6 +16,7 @@ namespace Statement_Sender_Client.Model
         public static ObservableCollection<Statement> ALL_Statements;
 
         public static ObservableCollection<ViewModelStatement> User_StatementsVM;
+
         public static void UpSt()
         {
             User_StatementsVM = new ObservableCollection<ViewModelStatement>();

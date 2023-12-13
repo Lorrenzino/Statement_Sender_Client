@@ -45,7 +45,7 @@
                         <TreeViewItem.Header>
                             <DockPanel>
                                 <Button Content="Мої завленяння" Command="{Binding MyState}"></Button>
-                                <Label Content="{Binding MyState_count}" HorizontalAlignment="Right" />
+                                <Label Content="{Binding MyState_count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
                             </DockPanel>
                         </TreeViewItem.Header>
 
@@ -82,7 +82,7 @@
                     </TreeViewItem>
 
                     <!-- Заяви відділу Бугалтерія -->
-                    <TreeViewItem Name="TreeView_Bug" >
+                    <!--<TreeViewItem Name="TreeView_Bug" >
                         <TreeViewItem.Header>
                             <DockPanel>
                                 <Button Content="Буггалтерія завленяння" ></Button>
@@ -114,11 +114,11 @@
                             <Button Content="Скасовано" ></Button>
                            
                         </StackPanel>
-                    </TreeViewItem>
+                    </TreeViewItem>-->
 
 
                     <!-- Заяви відділу Виробництво -->
-                    <TreeViewItem Name="TreeView_Prod">
+                    <!--<TreeViewItem Name="TreeView_Prod">
                         <TreeViewItem.Header>
                             <DockPanel>
                                 <Button Content="Виробництво завленяння" ></Button>
@@ -150,7 +150,7 @@
                             <Button Content="Скасовано"></Button>
                            
                         </StackPanel>
-                    </TreeViewItem>
+                    </TreeViewItem>-->
                 </TreeView>
 
             </Grid>
