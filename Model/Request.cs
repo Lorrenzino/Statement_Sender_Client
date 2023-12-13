@@ -45,9 +45,16 @@ namespace Statement_Sender_Client.Model
         static private List<string> ReqwestTypeList = new List<string>();
         static public void RefreshReqwestType()
         {
+            ReqwestTypeList.Add("users");
+            ReqwestTypeList.Add("login");
             ReqwestTypeList.Add("select");
             ReqwestTypeList.Add("update");
             ReqwestTypeList.Add("insert");
+            ReqwestTypeList.Add("answer_users");
+            ReqwestTypeList.Add("answer_login");
+            ReqwestTypeList.Add("answer_select");
+            ReqwestTypeList.Add("answer_update");
+            ReqwestTypeList.Add("answer_insert");
             // зфпрос в бд на "горячее" обновление списка типов запросов 
             // выполняется при старте службы или по команде админа
         }

@@ -50,13 +50,11 @@ namespace Statement_Sender_Client.WorkWithData
 
                     //чтото что внесёт изменение в мои данные
                     ObservableCollection<Statement> state_collect = new ObservableCollection<Statement>();
-                    Statement_Collection.User_StatementsVM.Clear();
-                    if(Answer.Data!=null)
-                    foreach (Statement st in Answer.Data)
-                    {
-                        state_collect.Add(st);
-                        Statement_Collection.User_StatementsVM.Add(new ViewModel.Categories.Statements.ViewModelStatement(st));
-                    }
+
+                    if(Answer!=null)
+                        DataWorker.DataWorkerOnWork(Answer);
+
+                    
 
                     sender.Shutdown(SocketShutdown.Both);
                     sender.Close();

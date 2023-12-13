@@ -14,7 +14,7 @@ namespace Statement_Sender_Client.WorkWithData
         // Cheker
         public static bool IsDataActual(ObservableCollection<Statement> data)
         {
-            if(data.Equals(Statement_Collection.User_Statements))
+            if (data.Equals(Statement_Collection.User_Statements))
             {
                 return true;
             }
@@ -24,7 +24,7 @@ namespace Statement_Sender_Client.WorkWithData
         // Send
         public static void SendDataOnServer(ObservableCollection<Statement> data)
         {
-            
+
         }
 
         public static void SendDataOnServer(Statement data)
@@ -33,6 +33,44 @@ namespace Statement_Sender_Client.WorkWithData
             //Statement_Collection.User_Statements = WHAT_WE_GET
         }
 
+
+        public static void DataWorkerOnWork(Request Current_R)
+        {
+            switch (Current_R.Type_R)
+            {
+                case "answer_login":
+                    break;
+                case "answer_select":
+                    Statement_Collection.User_Statements.Clear();
+                    Statement_Collection.User_StatementsVM.Clear();
+                    foreach (Statement st in Current_R.Data)
+                    {
+                        /*
+                        foreach (User us in Statement_Collection.User_list)
+                        {
+                            if (st.Sender.User_pers_nom != null)
+                                if (st.Sender.User_pers_nom == us.User_pers_nom)
+                                    st.Sender = us;
+                            if (st.Accountable.User_pers_nom != null)
+                                if (st.Accountable.User_pers_nom == us.User_pers_nom)
+                                    st.Accountable = us;
+                            if (st.Worker.User_pers_nom != null)
+                                if (st.Worker.User_pers_nom == us.User_pers_nom)
+                                    st.Worker = us;
+                        }
+                        */
+                            
+                        Statement_Collection.User_Statements.Add(st);
+                        Statement_Collection.User_StatementsVM.Add(new ViewModel.Categories.Statements.ViewModelStatement(st));
+                    }
+                    break;
+                case "answer_update":
+                    break;
+                case "answer_insert":
+                    break;
+                
+            }
+        }
 
     }
 }

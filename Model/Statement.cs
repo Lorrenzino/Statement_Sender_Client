@@ -15,9 +15,9 @@ namespace Statement_Sender_Client.Model
        
 
         //parametr of user
-        public User Sender { get; }
-        public User Accountable { get; }
-        public User Worker { get; }
+        public User Sender { get; set; }
+        public User Accountable { get; set; }
+        public User Worker { get; set; }
         public string Sender_Name { get; }
         public string Sender_Department { get; }
         public string Addres { get; }
