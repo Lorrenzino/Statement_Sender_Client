@@ -7,7 +7,8 @@
         xmlns:viewmodels="clr-namespace:Statement_Sender_Client.ViewModel.Categories.Statements"
         xmlns:views="clr-namespace:Statement_Sender_Client.View.Categories.StatementCategoryPages.StatementFunctionalPage"
             
-        
+        xmlns:viewmodels1="clr-namespace:Statement_Sender_Client.ViewModel.Categories.Personal"
+        xmlns:views1="clr-namespace:Statement_Sender_Client.View.Categories.Personal"
         
         xmlns:local="clr-namespace:Statement_Sender_Client"
                 mc:Ignorable="d"
@@ -42,7 +43,10 @@
                         <DataTemplate  DataType="{x:Type viewmodels:ViewModel_MainStatementPage }">
                             <views:StatementMainPage/>
                         </DataTemplate>
-                    </ContentControl.Resources>
+                        <DataTemplate  DataType="{x:Type viewmodels1:ViewModel_Login }">
+                            <views1:LogIn/>
+                        </DataTemplate>
+                </ContentControl.Resources>
                
             </Frame>
             

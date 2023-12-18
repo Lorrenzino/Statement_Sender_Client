@@ -34,11 +34,18 @@ namespace Statement_Sender_Client.WorkWithData
         }
 
 
-        public static void DataWorkerOnWork(Request Current_R)
+        public static bool DataWorkerOnWork(Request Current_R)
         {
+            bool feedback = false;
+
             switch (Current_R.Type_R)
             {
                 case "answer_login":
+                    if (Current_R.LP[3] == "success")
+                    {
+                        Current_user.Current = Current_R.Data[0].Sender;
+                        feedback = true;
+                    }
                     break;
                 case "answer_select":
                     Statement_Collection.User_Statements.Clear();
@@ -70,6 +77,8 @@ namespace Statement_Sender_Client.WorkWithData
                     break;
                 
             }
+
+            return feedback;
         }
 
     }

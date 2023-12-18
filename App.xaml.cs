@@ -9,6 +9,7 @@ using Statement_Sender_Client.Navigation.Categories.StatementCategory;
 using Statement_Sender_Client.ViewModel.Categories.Statements;
 using Statement_Sender_Client.ViewModel.MainWindows;
 using Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub;
+using Statement_Sender_Client.ViewModel.Categories.Personal;
 
 namespace Statement_Sender_Client
 {
@@ -22,7 +23,7 @@ namespace Statement_Sender_Client
         {
             Model.Statement_Collection.UpSt();
             NavigationLib lib = new NavigationLib();
-            lib._CurPage_Main = new ViewModel_MainStatementPage(lib);
+            lib._CurPage_Main = new ViewModel_Login(lib);
             lib._CurPage_Statements = new ViewModelStatementEditor();
 
             MainWindow = new MainWindow()
