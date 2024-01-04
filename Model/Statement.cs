@@ -103,6 +103,8 @@ namespace Statement_Sender_Client.Model
                 Sender_Name = Sender.User_Name_Last + " " + Sender.User_Name_First + " " + Sender.User_Name_Father;
             }
         }
+
+        
         /*
 
         public Statement(

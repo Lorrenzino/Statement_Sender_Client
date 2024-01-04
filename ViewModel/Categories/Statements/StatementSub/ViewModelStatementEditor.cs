@@ -38,8 +38,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         }
 
         private User _accountable;
-        /*
-        public string Accountable
+        
+        public User Accountable
         {
             get
             {
@@ -51,11 +51,11 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Accountable));
             }
         }
-        */
+        
 
         private User _worker;
-        /*
-        public string Worker
+        
+        public User Worker
         {
             get
             {
@@ -68,11 +68,11 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Worker));
             }
         }
-        */
+        
 
         private User _sender;
-        /*
-        public string Sender
+        
+        public User Sender
         {
             get
             {
@@ -84,7 +84,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 OnPropertyChanged(nameof(Sender));
             }
         }
-        */
+        
 
         // изменяеміе поля (параметры отправителя)
         /*
@@ -102,7 +102,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
         */
-       
+
         private string _sender_department;
         public string Sender_Department
         {
@@ -234,8 +234,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         // параметри дати
 
-        private string _date_start;
-        public string Date_start
+        private DateTime? _date_start = DateTime.Now;
+        public DateTime? Date_start
         {
             get
             {
@@ -248,11 +248,13 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
-        private string _date_end;
-        public string Date_end
+        private DateTime? _date_end;
+        public DateTime? Date_end
         {
             get
             {
+                if (_date_end == DateTime.MinValue)
+                    return null;
                 return _date_end;
             }
             set
@@ -262,8 +264,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
-        private string _date_control;
-        public string Date_control
+        private DateTime? _date_control;
+        public DateTime? Date_control
         {
             get
             {
@@ -339,50 +341,317 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             }
         }
 
+        // -----------------------------------------------------------------------------
+        // переменніе для ьлокировки полей для редактирование
 
-       
+        //Обічно доступно всё кроме Номера Дата Завершения Исполнителя и Отправителя + ОПИСАНИЕ ТОЛЬКО ДЛЯ ЧТЕНИЯ
+        // когда заявление уже напис
+        public string _Visability_Date_st = "False";
+        public string Visability_Date_st
+        {
+            get
+            {
+                return _Visability_Date_st;
+            }
+        }
 
+        public string _Visability_Date_end = "False";
+        public string Visability_Date_end
+        {
+            get
+            {
+                return _Visability_Date_end;
+            }
+        }
+
+        public string _Visability_Date_con = "False";
+        public string Visability_Date_con
+        {
+            get
+            {
+                return _Visability_Date_con;
+            }
+        }
+        public string _Visability_User_param = "False";
+        public string Visability_User_param
+        {
+            get
+            {
+                return _Visability_User_param;
+            }
+        }
+
+        public string _Visability_Box_for_message = "False";
+        public string Visability_Box_for_message
+        {
+            get
+            {
+                return _Visability_Box_for_message;
+            }
+        }
+
+        public string _Visability_Accountabl = "False";
+        public string Visability_Accountabl
+        {
+            get
+            {
+                return _Visability_Accountabl;
+            }
+        }
+
+        public string _Visability_Worker = "False";
+        public string Visability_Worker
+        {
+            get
+            {
+                return _Visability_Worker;
+            }
+        }
+        public string _Visability_Sender = "False";
+        public string Visability_Sender
+        {
+            get
+            {
+                return _Visability_Sender;
+            }
+        }
+
+
+        // -----------------------------------------------------------------------------
+        // переменніе для отображения кнопок
+        public string _SendStatementE_visability = "Collapsed";
+        public string SendStatementE_visability
+        {
+            get
+            {
+                return _SendStatementE_visability;
+            }
+        }
+
+        public string _UpdateStatementE_visability = "Collapsed";
+        public string UpdateStatementE_visability
+        {
+            get
+            {
+                return _UpdateStatementE_visability;
+            }
+        }
+
+        public string _TakeStatementE_visability = "Collapsed";
+        public string TakeStatementE_visability
+        {
+            get
+            {
+                return _TakeStatementE_visability;
+            }
+        }
+        public string _ReturnStatementE_visability = "Collapsed";
+        public string ReturnStatementE_visability
+        {
+            get
+            {
+                return _ReturnStatementE_visability;
+            }
+        }
+        public string _FinishStatementE_visability = "Collapsed";
+        public string FinishStatementE_visability
+        {
+            get
+            {
+                return _FinishStatementE_visability;
+            }
+        }
+        public string _AbortStatementE_visability = "Collapsed";
+        public string AbortStatementE_visability
+        {
+            get
+            {
+                return _AbortStatementE_visability;
+            }
+        }
 
         public ICommand SendStatementE { get; }
 
-        public ICommand CleanStatementE { get; }
+        public ICommand ChangStatementE { get; }
+
+        public ICommand TakeInWorkStatementE { get; }
+
+        public ICommand ReturnStatementE { get; }
+
+        public ICommand FinishStatementE { get; }
 
         public ICommand CanselStatementE { get; }
 
         public ViewModelStatementEditor()
-        {
-            
-            //кнопки
-            SendStatementE = new SendStatementE_Command(this);
-            CleanStatementE = new CleanStatementE_Command(this);
-            CanselStatementE = new CanselStatementE_Command();
+        { 
+        _Visability_Date_end = "False";
+        _Visability_Date_con = "True";
+        _Visability_User_param = "True";
+        _Visability_Box_for_message = "True";
+        _Visability_Accountabl = "False";
+        _Visability_Worker = "False";
+        _Visability_Sender = "False";
 
-            _status = "Відкрита";
+        //кнопки
+        SendStatementE = new SendStatementE_Command(this);
+        ChangStatementE = new ChangStatementE_Command(this);
+        TakeInWorkStatementE = new TakeInWorkStatementE_Command(this);
+        //ReturnStatementE= new ReturnStatementE_Command(this);
+        FinishStatementE = new FinishStatementE_Command(this);
+        CanselStatementE = new CanselStatementE_Command(this);
+
+            _status = Current_user.Type_of_status[0];
             _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
             _addres = Current_user.Current.Addres;
             _sender_department = Current_user.Current.Department;
             _room = Current_user.Current.Room;
             _phone_nom = Current_user.Current.Phone;
+
+            _SendStatementE_visability = "Visible";
+            _UpdateStatementE_visability = "Collapsed";
+            _TakeStatementE_visability = "Collapsed";
+            _ReturnStatementE_visability = "Collapsed";
+            _FinishStatementE_visability = "Collapsed";
+            _AbortStatementE_visability= "Collapsed";
+
         }
         public ViewModelStatementEditor(ViewModelStatement view)
         {
-
+            _SendStatementE_visability = "Hidden";
             //кнопки
             SendStatementE = new SendStatementE_Command(this);
-            CleanStatementE = new CleanStatementE_Command(this);
-            CanselStatementE = new CanselStatementE_Command();
+            ChangStatementE = new ChangStatementE_Command(this);
+            TakeInWorkStatementE = new TakeInWorkStatementE_Command(this);
+            //ReturnStatementE= new ReturnStatementE_Command(this);
+            FinishStatementE = new FinishStatementE_Command(this);
+            CanselStatementE = new CanselStatementE_Command(this);
 
+            //если пользователь == отправитель
+            if (view.Sender.User_pers_nom == Current_user.Current.User_pers_nom)
+            {
+                //Відкрито
+                // можна : поміняти або відмінити (внимательно изменять можно не всеполя)
+                if ((view.Status == Current_user.Type_of_status[0]))
+                {
+                    _Visability_User_param = "True";
+                    _Visability_Box_for_message = "True";
+
+                    _SendStatementE_visability = "Collapsed";
+                    _UpdateStatementE_visability = "Visible";
+                    _AbortStatementE_visability = "Visible";
+                }
+                //Опрацьовується
+                // можна : відмінити ,відмінити
+                if ((view.Status == Current_user.Type_of_status[1]))
+                {
+                    _Visability_Box_for_message = "True";
+
+                    _AbortStatementE_visability = "Visible";
+                }
+                //Призупинено
+                // можна : повернути(щось не влаштовує) ,відмінити
+                if ((view.Status == Current_user.Type_of_status[2]))
+                {
+                    _Visability_Box_for_message = "True";
+
+                    _ReturnStatementE_visability = "Visible";
+                    _AbortStatementE_visability = "Visible";
+                }
+                //Повернуто
+                // можна повернути(щось не влаштовує), редагувати, відмінити
+                if (view.Status == Current_user.Type_of_status[3])
+                {
+                    _Visability_Box_for_message = "True";
+
+                    _ReturnStatementE_visability = "Visible";
+                    _UpdateStatementE_visability = "Visible";
+                    _AbortStatementE_visability = "Visible";
+                }
+                //Зроблено 
+                // можно повернути(щось не влаштовує), завершини (та сама кнопка - підтвердження)
+                if (view.Status == Current_user.Type_of_status[4])
+                {
+                    _Visability_Box_for_message = "True";
+
+                    _ReturnStatementE_visability = "Visible";
+                    _FinishStatementE_visability = "Visible";
+                }
+                //Скасовано
+                // можно надіслати(знов)(щось не влаштовує), завершини (та сама кнопка - підтвердження)
+                if (view.Status == Current_user.Type_of_status[5])
+                {
+                    _Visability_Box_for_message = "True";
+
+                    _ReturnStatementE_visability = "Visible";
+                    _FinishStatementE_visability = "Visible";
+                }
+
+                
+            }
+
+            //если пользователь == в составе отдела - получателя
+            if ((view.Accountable.Department == Current_user.Current.Department)|| (view.Worker.Department == Current_user.Current.Department))
+            {
+                //Відкрито
+                //Опрацьовується
+
+                _TakeStatementE_visability = "Visible";
+                _AbortStatementE_visability = "Visible";
+
+                //Призупинено
+                if (view.Status == Current_user.Type_of_status[2])
+                {
+
+                    _ReturnStatementE_visability = "Visible";
+                    _FinishStatementE_visability = "Visible";
+                    _AbortStatementE_visability = "Visible";
+                }
+                //Повернуто
+                // можна повернути(щось не влаштовує), редагувати, відмінити
+                if (view.Status == Current_user.Type_of_status[3])
+                {
+                    _TakeStatementE_visability = "Collapsed";
+                    _AbortStatementE_visability = "Collapsed";
+                }
+                //Зроблено 
+                // можно повернути(щось не влаштовує), завершини (та сама кнопка - підтвердження)
+                if (view.Status == Current_user.Type_of_status[4])
+                {
+                    _TakeStatementE_visability = "Collapsed";
+                    _AbortStatementE_visability = "Collapsed";
+                }
+                //Скасовано
+                // можно надіслати(знов)(щось не влаштовує), завершини (та сама кнопка - підтвердження)
+                if (view.Status == Current_user.Type_of_status[5])
+                {
+                    _TakeStatementE_visability = "Collapsed";
+                    _AbortStatementE_visability = "Collapsed"; 
+                }
+
+                if (Current_user.Current.User_Access_bill == "admin")
+                {
+                    _Visability_Worker = "True";
+                }
+            }
+
+            /*
+            _UpdateStatementE_visability = "Collapsed";
+            _TakeStatementE_visability = "Collapsed";
+            _ReturnStatementE_visability = "Collapsed";
+            _FinishStatementE_visability = "Collapsed";
+            _AbortStatementE_visability = "Collapsed";
+            */
             if (view.Status != null)
                 _status = view.Status;
 
             if (view.Autor_ID != null)
                 _Autor_ID=view.Autor_ID;
             if (view.Date_start != null)
-                _date_start= view.Date_start;
+                _date_start= Convert.ToDateTime( view.Date_start);
             if (view.Date_control != null)
-                _date_control= view.Date_control;
+                _date_control = Convert.ToDateTime(view.Date_control);
             if (view.Date_end != null)
-                _date_end= view.Date_end;
+                _date_end= Convert.ToDateTime(view.Date_end);
             //if (view != null)
               //  _sender_Name = Current_user.Current.User_Name_Last + " " + Current_user.Current.User_Name_First + " " + Current_user.Current.User_Name_Father;
             if (view.Addres != null)

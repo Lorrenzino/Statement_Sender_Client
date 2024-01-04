@@ -44,6 +44,9 @@ namespace Statement_Sender_Client.WorkWithData
                     if (Current_R.LP[3] == "success")
                     {
                         Current_user.Current = Current_R.Data[0].Sender;
+                        Current_user.LPK[0] = Current_R.LP[0];
+                        Current_user.LPK[1] = Current_R.LP[1];
+                        Current_user.isAutorise = true;
                         feedback = true;
                     }
                     break;

@@ -14,13 +14,13 @@ using Statement_Sender_Client.WorkWithData;
 
 namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage
 {
-    class MyState_Command : CommandBase
+    class MyState_for_Command : CommandBase
     {
         private readonly NavigationLib _navigationLib;
 
         ObservableCollection<ViewModelStatement> Statement_list= new ObservableCollection<ViewModelStatement>();
 
-        public MyState_Command(NavigationLib lib, ObservableCollection<ViewModelStatement> _list) 
+        public MyState_for_Command(NavigationLib lib, ObservableCollection<ViewModelStatement> _list) 
         {
             _navigationLib = lib;
             /*
@@ -39,12 +39,12 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
             {
                 if (Current_user.isAutorise)
                 {
-                    if (st.Sender.User_ID == Current_user.Current.User_ID)
+                    if (st.Worker.User_ID == Current_user.Current.User_ID)
                         Statement_list.Add(st);
                 }
                 else
                 {
-                    if (st.Sender.User_pers_nom == Current_user.Current.User_pers_nom)
+                    if (st.Worker.User_pers_nom == Current_user.Current.User_pers_nom)
                         Statement_list.Add(st);
                 }
             }

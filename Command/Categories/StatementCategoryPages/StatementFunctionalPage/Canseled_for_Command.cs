@@ -11,51 +11,58 @@ using Statement_Sender_Client.Navigation.Categories.StatementCategory;
 
 namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.StatementFunctionalPage
 {
-    internal class Done_Command : CommandBase
+    internal class Canseled_for_Command: CommandBase
     {
         private readonly NavigationLib _navigationLib;
-        ObservableCollection<ViewModelStatement> Statement_list= new ObservableCollection<ViewModelStatement>();
 
-        public Done_Command(NavigationLib lib, ObservableCollection<ViewModelStatement> _list)
+        ObservableCollection<ViewModelStatement> Statement_list = new ObservableCollection<ViewModelStatement>();
+
+        public Canseled_for_Command(NavigationLib lib, ObservableCollection<ViewModelStatement> _list)
         {
+
             _navigationLib = lib;
-            /*
             foreach (ViewModelStatement st in _list)
             {
-                if (st.Sender.User_ID == Current_user.Current.User_ID)
-                    if (st.Status == "Завершена")
+                if (st.Worker.User_ID == Current_user.Current.User_ID)
+                    if(st.Status=="Відмінено")
                     Statement_list.Add(st);
             }
-            */
         }
 
         public override void Execute(object parameter)
         {
-            //Statement_list.Clear();
-            //foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
-            //{
-            //    if (st.Sender.User_ID == Current_user.Current.User_ID)
-            //        if (st.Status == "Завершена")
-            //            Statement_list.Add(st);
-            //}
             Statement_list.Clear();
             foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
             {
                 if (Current_user.isAutorise)
                 {
-                    if (st.Sender.User_ID == Current_user.Current.User_ID)
-                        if (st.Status == Current_user.Type_of_status[0])
+                    if (st.Worker.User_ID == Current_user.Current.User_ID)
+                        if (st.Status == Current_user.Type_of_status[4])
                             Statement_list.Add(st);
                 }
                 else
                 {
-                    if (st.Sender.User_pers_nom == Current_user.Current.User_pers_nom)
-                        if (st.Status == Current_user.Type_of_status[0])
+                    if (st.Worker.User_pers_nom == Current_user.Current.User_pers_nom)
+                        if (st.Status == Current_user.Type_of_status[4])
                             Statement_list.Add(st);
                 }
             }
             _navigationLib.CurPage_Statements = new ViewModelListStatement(_navigationLib, Statement_list);
-            //_navigationLib.CurPage_Statements.Rfresh();
+            _navigationLib.CurPage_Statements.Rfresh();
+            /*
+            for (int i = 0; i<= Statement_list.Count(); i++)
+            {
+                try
+                {
+                    if (Statement_list[i] == Statement_list[0])
+                    {
+                        Statement_list.Remove(Statement_list[i]);
+                        //Current_user
+                    }
+                }
+                catch { }
+            }
+            */
         }
     }
 }

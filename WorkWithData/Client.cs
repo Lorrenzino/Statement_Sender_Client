@@ -35,13 +35,13 @@ namespace Statement_Sender_Client.WorkWithData
                 {
                     
                     string send_string = JsonConvert.SerializeObject(message_to_send);
-                    byte[] msg = Encoding.ASCII.GetBytes(send_string);
+                    byte[] msg = Encoding.UTF8.GetBytes(send_string);
                     int byteSent = sender.Send(msg);
                     data = null;
                     while (true)
                     {
                         int byteRec = sender.Receive(bytes);
-                        data += Encoding.ASCII.GetString(bytes, 0, byteRec);
+                        data += Encoding.UTF8.GetString(bytes, 0, byteRec);
                         if (sender.Available <= 0)
                             break;
                     }

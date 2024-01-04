@@ -47,7 +47,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
         {
             _navigationLib = navigationLib;
             _navigationLib.CurrentViewModelChanged += OnCurrentViewModeIChanged;
-            
+
             /*
             _navigationLib = navigationLib;
 
@@ -61,13 +61,33 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
             }           
            */
 
-            MyState = new MyState_Command(_navigationLib, _statement_list_all);
-            Done = new Done_Command(_navigationLib, _statement_list_all);
-            Open =new Open_Command(_navigationLib, _statement_list_all);
-            Test = new Test_Command(_navigationLib, _statement_list_all);
-            Frost = new Frost_Command(_navigationLib, _statement_list_all);
-            Canseled = new Canseled_Command(_navigationLib, _statement_list_all);
+            MyState = new FormAll_command(_navigationLib, _statement_list_all, "", "my");
+            Open = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[0], "my");
+            Test = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[1], "my");
+            Frost = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[2], "my");
+            Returned = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[3], "my");
+            Done_dep = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[4], "my");
+            Canseled = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[5], "my");
+
+            //MyState_for = new MyState_for_Command(_navigationLib, _statement_list_all);
+            //Canseled_for = new Canseled_for_Command(_navigationLib, _statement_list_all);
             //ChangPage_Command = new RelayCommand(CurPage);
+
+            MyState_dep = new FormAll_command(_navigationLib, _statement_list_all,"", "dep");
+            Open_dep = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[0], "dep");
+            Test_dep = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[1], "dep");
+            Frost_dep = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[2], "dep");
+            Returned_dep = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[3], "dep");
+            Done_dep = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[4], "dep");
+            Canseled_dep = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[5], "dep");
+
+            MyState_me = new FormAll_command(_navigationLib, _statement_list_all, "", "me");
+            Open_me = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[0], "me");
+            Test_me = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[1], "me");
+            Frost_me = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[2], "me");
+            Returned_me = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[3], "me");
+            Done_me = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[4], "me");
+            Canseled_me = new FormAll_command(_navigationLib, _statement_list_all, Current_user.Type_of_status[5], "me");
 
             OpenStatementsEditor = new OpenStatementsEditor(_navigationLib);
         }
@@ -83,12 +103,35 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements
 
         // -------------------------------------------------------------------------------------------------------------------------'
         // Обьявляем команды
+      //  "Відкрита","Опрацьовується", "Призупинено","Повернута", "Зроблено", "Скасовано"
         public ICommand MyState { get;}
-        public ICommand Done { get; }
+
         public ICommand Open { get; }
         public ICommand Test { get; }
         public ICommand Frost { get; }
+        public ICommand Returned { get; }
+        public ICommand Done { get; }
         public ICommand Canseled { get; }
+
+
+        public ICommand MyState_dep { get; }
+
+        public ICommand Open_dep { get; }
+        public ICommand Test_dep { get; }
+        public ICommand Frost_dep { get; }
+        public ICommand Returned_dep { get; }
+        public ICommand Done_dep { get; }
+        public ICommand Canseled_dep { get; }
+
+
+        public ICommand MyState_me { get; }
+
+        public ICommand Open_me { get; }
+        public ICommand Test_me { get; }
+        public ICommand Frost_me { get; }
+        public ICommand Returned_me { get; }
+        public ICommand Done_me { get; }
+        public ICommand Canseled_me { get; }
 
 
 

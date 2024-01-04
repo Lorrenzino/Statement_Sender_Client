@@ -21,11 +21,11 @@
         <Grid Grid.Row="0">
             <StackPanel Orientation="Horizontal">
                 <ComboBox Width="70" Margin="4"
-                          ItemsSource="{Binding Select_by}"
+                          ItemsSource="{Binding Date_Interval}"
                           SelectedValue="{Binding Select}">
                     
                 </ComboBox>
-                <Button Content="Сортувати за ..." Command="{Binding SetAs}"  Width="120" Margin="4"></Button>
+                <Button Content="Сортувати за ..." Command="{Binding }"  Width="120" Margin="4"></Button>
                 <Button Content="Оновити данні" Command="{Binding RefreshData_Command}"  Width="120" Margin="4"></Button>
             </StackPanel>
         </Grid>
@@ -45,7 +45,7 @@
                 <DataGrid.Columns>
                     
                     <DataGridTextColumn Header="Код" Binding="{Binding Autor_ID}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Назва" Binding="{Binding Subject}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Тема" Binding="{Binding Subject}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дата створення" Binding="{Binding Date_start}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Дата виконання" Binding="{Binding  Date_end}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Термін виконання" Binding="{Binding Date_control}"></DataGridTextColumn>

@@ -47,8 +47,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Personal
         public ViewModel_Login(NavigationLib navigationLib)
         {
             _navigationLib = navigationLib;
-            Login= new Login_Command(_navigationLib,this);
-            
+            Login = new Login_Command(_navigationLib,this);
+            LoginGest = new LocalUser_Command(_navigationLib);
         }
     }
 }

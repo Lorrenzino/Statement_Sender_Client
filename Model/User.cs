@@ -57,16 +57,16 @@ namespace Statement_Sender_Client.Model
 
         public User()
         {
-            this.User_ID = "2";
-            this.User_pers_nom = "2";
-            this.User_Name_First = "Ivan";
-            this.User_Name_Last = "Ivanov";
-            this.User_Name_Father = "Ivanovich";
-            this.Addres = "0";
-            this.Room = "0";
-            this.Phone ="000000000000";
-            this.Department = "0";
-            this.User_Access_bill = "common";
+            this.User_ID = "6";
+            this.User_pers_nom = "4";
+            this.User_Name_First = "noauthorization";
+            this.User_Name_Last = "System";
+            this.User_Name_Father = "";
+            this.Addres = "not";
+            this.Room = "not";
+            this.Phone ="0";
+            this.Department = "not";
+            this.User_Access_bill = "noauthorization";
             
         }
     }

@@ -33,9 +33,12 @@ namespace Statement_Sender_Client.Command.Personal
             //Statement_Collection.User_StatementsVM.Add(newSVM);
             Client A = new Client();
             A.OutCommingCallAsync(r);
-
-            _navigationLib.CurPage_Main = new ViewModel_MainStatementPage(_navigationLib);
-            _navigationLib.CurPage_Statements.Rfresh();
+            if (Current_user.isAutorise)
+            {
+                _navigationLib.CurPage_Main = new ViewModel_MainStatementPage(_navigationLib);
+                _navigationLib.CurPage_Statements.Rfresh();
+            }
+            
         }
     }
 }

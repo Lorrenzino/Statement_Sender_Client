@@ -45,16 +45,12 @@
                     <TreeViewItem  Name="TreeView_My" Background="{x:Null}">
                         <TreeViewItem.Header>
                             <DockPanel>
-                                <Button Content="Мої завленяння" Command="{Binding MyState}"></Button>
+                                <Button Content="Мої задачі" Command="{Binding MyState}"></Button>
                                 <Label Content="{Binding MyState_count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
                             </DockPanel>
                         </TreeViewItem.Header>
 
-                        <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Зроблено" Command="{Binding Done}"/>
-
-                            <Label Content="{Binding MyState_Done_count}" HorizontalAlignment="Right"/>
-                        </StackPanel>
+                        
 
                         <StackPanel Width="200" Orientation="Horizontal">
                             <Button Content="Відкрито" Command="{Binding Open}" ></Button>
@@ -63,7 +59,7 @@
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal" >
-                            <Button Content="Відправлено" Command="{Binding Test}"></Button>
+                            <Button Content="Опрацьовується" Command="{Binding Test}"></Button>
 
                             <Label Content="{Binding MyState_Test_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
@@ -75,6 +71,18 @@
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Повернуто" Command="{Binding Returned }"/>
+
+                            <Label Content="{Binding MyState_Done_count}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Зроблено" Command="{Binding Done}"/>
+
+                            <Label Content="{Binding MyState_Done_count}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+                        
+                        <StackPanel Width="200" Orientation="Horizontal">
                             <Button Content="Скасовано" Command="{Binding Canseled}"></Button>
 
                             <Label Content="{Binding MyState_Canseled_count}" HorizontalAlignment="Right"/>
@@ -82,77 +90,108 @@
 
                     </TreeViewItem>
 
-                    <!-- Заяви відділу Бугалтерія -->
-                    <!--<TreeViewItem Name="TreeView_Bug" >
+                    <!-- Мого відділу заяви -->
+                    <TreeViewItem  Name="TreeView_My_Depart" Background="{x:Null}">
                         <TreeViewItem.Header>
                             <DockPanel>
-                                <Button Content="Буггалтерія завленяння" ></Button>
-                                <Label Content="0" HorizontalAlignment="Right" />
+                                <Button Content="Задачі відділу" Command="{Binding MyState_dep}"></Button>
+                                <Label Content="{Binding MyState_count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
                             </DockPanel>
                         </TreeViewItem.Header>
 
-                        <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Зроблено"  />
-                           
-                        </StackPanel>
+
 
                         <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Відкрито"  ></Button>
-                            
+                            <Button Content="Відкрито" Command="{Binding Open_dep}" ></Button>
+
+                            <Label Content="{Binding MyState_Open_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal" >
-                            <Button Content="На перевірці" ></Button>
-                            
+                            <Button Content="Опрацьовується" Command="{Binding Test_dep}"></Button>
+
+                            <Label Content="{Binding MyState_Test_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Призупинено" ></Button>
-                            
+                            <Button Content="Призупинено" Command="{Binding Frost_dep}"></Button>
+
+                            <Label Content="{Binding MyState_Frost_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Скасовано" ></Button>
-                           
+                            <Button Content="Повернуто" Command="{Binding Returned_dep}"/>
+
+                            <Label Content="{Binding MyState_Done_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
-                    </TreeViewItem>-->
 
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Зроблено" Command="{Binding Done_dep}"/>
 
-                    <!-- Заяви відділу Виробництво -->
-                    <!--<TreeViewItem Name="TreeView_Prod">
+                            <Label Content="{Binding MyState_Done_count}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Скасовано" Command="{Binding Canseled_dep}"></Button>
+
+                            <Label Content="{Binding MyState_Canseled_count}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                    </TreeViewItem>
+                    
+                    <!-- Надіслані мною заяви -->
+                    <TreeViewItem  Name="TreeView_FromMe" 
+                                   Background="{x:Null}"
+                                   >
                         <TreeViewItem.Header>
                             <DockPanel>
-                                <Button Content="Виробництво завленяння" ></Button>
-                                <Label Content="0" HorizontalAlignment="Right" />
+                                <Button Content="Відправлені мою" Command="{Binding MyState_me}"></Button>
+                                <Label Content="{Binding MyState_count, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Right" />
                             </DockPanel>
                         </TreeViewItem.Header>
 
                         <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Зроблено" />
-                           
+                            <Button Content="Відкрито" Command="{Binding Open_me}" ></Button>
+
+                            <Label Content="{Binding MyState_Open_count}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                        <StackPanel Width="200" Orientation="Horizontal" >
+                            <Button Content="Опрацьовується" Command="{Binding Test_me}"></Button>
+
+                            <Label Content="{Binding MyState_Test_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Відкрито"  ></Button>
-                           
-                        </StackPanel>
+                            <Button Content="Призупинено" Command="{Binding Frost_me}"></Button>
 
-                        <StackPanel Width="200" Orientation="Horizontal " >
-                            <Button Content="На перевірці"></Button>
-       
+                            <Label Content="{Binding MyState_Frost_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Призупинено"></Button>
-                           
+                            <Button Content="Повернуто" Command="{Binding Returned_me}"/>
+
+                            <Label Content="{Binding MyState_Done_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
 
                         <StackPanel Width="200" Orientation="Horizontal">
-                            <Button Content="Скасовано"></Button>
-                           
+                            <Button Content="Зроблено" Command="{Binding Done_me}"/>
+
+                            <Label Content="{Binding MyState_Done_count}" HorizontalAlignment="Right"/>
                         </StackPanel>
-                    </TreeViewItem>-->
+
+                        <StackPanel Width="200" Orientation="Horizontal">
+                            <Button Content="Скасовано" Command="{Binding Canseled_me}"></Button>
+
+                            <Label Content="{Binding MyState_Canseled_count}" HorizontalAlignment="Right"/>
+                        </StackPanel>
+
+                    </TreeViewItem>
                 </TreeView>
+
+                
+
+               
 
             </Grid>
 

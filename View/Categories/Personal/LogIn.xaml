@@ -58,6 +58,7 @@
             </Button>
             <Button Grid.Row="5"
                     Content="Гість"
+                    Command="{Binding LoginGest}"
                     HorizontalAlignment="Right"
                     Margin="10"
                     Width="120">

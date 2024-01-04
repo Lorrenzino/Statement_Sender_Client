@@ -19,8 +19,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
     {
 
         private readonly NavigationLib _navigationLib;
-        public List<string> Select_by => Current_user.Select_by;
-        public string _Select;
+        public List<string> Date_Interval => Current_user.Date_Interval;
+
+        public string _Select = Current_user.Date_Interval[3];
         public string Select
 
         {
@@ -69,7 +70,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             _statement_list = list;
             SetAs = new SortBy_Command(_navigationLib, this);
             RowDoubleCkick_Command = new MouseDoubleClick(_navigationLib, this);
-            RefreshData_Command = new RefreshDataVT_Command();
+            RefreshData_Command = new RefreshDataVT_Command(this);
         }
 
         public void SortBy(string parametr)

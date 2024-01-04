@@ -28,8 +28,8 @@
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
-                        <RowDefinition MinHeight="30" Height="4*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                        <RowDefinition MinHeight="30" Height="4*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
                         <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
@@ -48,14 +48,21 @@
                         <Label  Grid.Column="0"
                                 Content="Номер"
                                 VerticalAlignment="Center"></Label>
-                        <TextBox Grid.Column="1" 
-                                 Text="{Binding Autor_ID,Mode=OneWay}"
-                                     
-                                 Width="150"
-                                 VerticalAlignment="Center"
-                                 HorizontalAlignment="Left"
-                                 IsReadOnly="True"></TextBox>
+
+
+                        
+                            <TextBox 
+                                Text="{Binding Autor_ID,Mode=OneWay}"
+                                Grid.Column="1"
+                                Width="150"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left"
+                                IsReadOnly="True"></TextBox>
+                                
                             
+                        
+
+
                     </Grid>
 
                     <Grid Grid.Row="1">
@@ -65,16 +72,30 @@
                         </Grid.ColumnDefinitions>
 
                         <Label  Grid.Column="0"
-                                Content="Дата"
+                                Content="Дата створення"
                                 VerticalAlignment="Center"></Label>
-                        <TextBox Grid.Column="1"
-                                Text="{Binding Date_start}"
-                 
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <TextBox 
+                                Text="{Binding ElementName=DateStart, Path=SelectedDate}"
+                                
                                 Width="150"
                                 VerticalAlignment="Center"
                                 HorizontalAlignment="Left"
-                                IsReadOnly="True"></TextBox>
-
+                                IsReadOnly="True" 
+                                ></TextBox>
+                        
+                            <DatePicker x:Name="DateStart"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        Margin="15,0,0,0"
+                                        
+                                        IsDropDownOpen="False"
+                                        SelectedDate="{Binding Date_start}"
+                                        FirstDayOfWeek="Monday"
+                                        ></DatePicker>
+                            
+                        </StackPanel>
                     </Grid>
                     
                     <Grid Grid.Row="2">
@@ -84,18 +105,60 @@
                         </Grid.ColumnDefinitions>
 
                         <Label  Grid.Column="0"
-                                Content="Термін до"
+                                Content="Дата контролю"
                                 VerticalAlignment="Center"></Label>
-                        <TextBox Grid.Column="1"
-                                Text="{Binding Date_control}"
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <TextBox 
+                                    Text="{Binding ElementName=DateControl, Path=SelectedDate}"
                  
-                                Width="150"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                IsReadOnly="True" ></TextBox>
+                                    Width="150"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    IsReadOnly="True" ></TextBox>
+                            <DatePicker x:Name="DateControl"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Margin="15,0,0,0"
+                                    IsDropDownOpen="False"
+                                    SelectedDate="{Binding Date_control}"
+                                    FirstDayOfWeek="Monday"
+                                    IsEnabled="{Binding Visability_Date_con}"
+                                    ></DatePicker>
+                        </StackPanel>
                     </Grid>
 
-                    <Grid Grid.Row="5">
+                    <Grid Grid.Row="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Label  Grid.Column="0"
+                                Content="Дата завершення"
+                                VerticalAlignment="Center"></Label>
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <TextBox 
+                                    Text="{Binding ElementName=DateEnd, Path=SelectedDate}"
+                 
+                                    Width="150"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    IsReadOnly="True" ></TextBox>
+                            <DatePicker x:Name="DateEnd"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Center"
+                                    Margin="15,0,0,0"
+                                    IsDropDownOpen="False"
+                                    SelectedDate="{Binding Date_end}"
+                                    FirstDayOfWeek="Monday"
+                                    IsEnabled="{Binding Visability_Date_end}"
+                                    ></DatePicker>
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid Grid.Row="6">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -107,11 +170,12 @@
                         <ComboBox Grid.Column="1"
                                   ItemsSource="{Binding Type_of_problem}"
                                    SelectedValue="{Binding Type_problem}"
-                                VerticalAlignment="Center" ></ComboBox>
+                                VerticalAlignment="Center" 
+                                  IsEnabled="{Binding Visability_User_param}"></ComboBox>
                     </Grid>
                     
 
-                    <Grid Grid.Row="3">
+                    <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -123,11 +187,12 @@
                         <TextBox Grid.Column="1" 
                                  
                                  Text="{Binding Sender_Name}"
-                                 VerticalAlignment="Center" >
+                                 VerticalAlignment="Center" 
+                                 IsEnabled="{Binding Visability_User_param}">
                         </TextBox>
                     </Grid>
 
-                    <Grid Grid.Row="4"  >
+                    <Grid Grid.Row="5"  >
                         <Grid.RowDefinitions>
                             <RowDefinition MinHeight="90" Height="3*"></RowDefinition>
                             <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
@@ -154,7 +219,8 @@
                             <TextBox Grid.Column="1"
                                     Text="{Binding Addres}"
              
-                                    VerticalAlignment="Center">
+                                    VerticalAlignment="Center"
+                                    IsEnabled="{Binding Visability_User_param}">
                             </TextBox>
                         </Grid>
 
@@ -170,7 +236,8 @@
                             <TextBox Grid.Column="1"
                                     Text="{Binding Sender_Department}"
              
-                                    VerticalAlignment="Center">
+                                    VerticalAlignment="Center"
+                                     IsEnabled="{Binding Visability_User_param}">
                             </TextBox>
 
                         </Grid>
@@ -191,7 +258,8 @@
                                         VerticalAlignment="Center"></Label>
                                 <TextBox Grid.Column="1"
                                         Text="{Binding Room}"
-                                        VerticalAlignment="Center"></TextBox>
+                                        VerticalAlignment="Center"
+                                        IsEnabled="{Binding Visability_User_param}"></TextBox>
                             </Grid>
 
 
@@ -205,7 +273,8 @@
                                         VerticalAlignment="Center"></Label>
                                 <TextBox Grid.Column="1"
                                         Text="{Binding Phone_nom}"
-                                        VerticalAlignment="Center"></TextBox>
+                                        VerticalAlignment="Center"
+                                        IsEnabled="{Binding Visability_User_param}"></TextBox>
                             </Grid>
                         </Grid>
 
@@ -228,7 +297,7 @@
                     </Grid>
                     </Grid>
 
-                    <Grid Grid.Row="6">
+                    <Grid Grid.Row="7">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -244,7 +313,7 @@
 
                     </Grid>
 
-                    <Grid Grid.Row="7">
+                    <Grid Grid.Row="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -255,12 +324,12 @@
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
                                 Text="{Binding Description }"
-                                ></TextBox>
+                                IsEnabled="{Binding Visability_Box_for_message}"></TextBox>
                     </Grid>
 
                     
 
-                    <Grid Grid.Row="8">
+                    <!--<Grid Grid.Row="8">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
                             <ColumnDefinition></ColumnDefinition>
@@ -272,12 +341,12 @@
                                    Orientation="Horizontal">
                         <TextBox 
                                 Text="{Binding Rezult}"
-                                Width="100"></TextBox>
+                                Width="100" TextChanged="TextBox_TextChanged_1"></TextBox>
 
                             <Button Content="+"  Width="23" Height="20" Margin="20,0,10,0" > </Button>
                         </StackPanel>
 
-                    </Grid>
+                    </Grid>-->
 
                     <Grid Grid.Row="9">
                         <Grid.ColumnDefinitions>
@@ -289,7 +358,8 @@
                                 VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
                                  Text="{Binding Worker_Name}"
-                                 VerticalAlignment="Center"></TextBox>
+                                 VerticalAlignment="Center"
+                                 IsEnabled="{Binding Visability_Worker}"></TextBox>
                     </Grid>
                     
                     <Grid Grid.Row="10">
@@ -302,7 +372,8 @@
                                 VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
                                 Text="{Binding Accountable_Name}"
-                                VerticalAlignment="Center"></TextBox>
+                                VerticalAlignment="Center"
+                                IsEnabled="{Binding  Visability_Accountabl}"></TextBox>
                     </Grid>
                 </Grid>
 
@@ -317,27 +388,34 @@
                         <Button 
                                 Content="Відправити"
                                 Command="{Binding SendStatementE}"
+                                Visibility="{Binding SendStatementE_visability}"
                                 Margin="5"></Button>
                         <Button 
-                                Content="Очистити форму"
-                                Command="{Binding CleanStatementE}"
+                                Content="Змінити"
+                                Command="{Binding ChangStatementE}"
+                                Visibility="{Binding UpdateStatementE_visability}"
                                 Margin="5"></Button>
 
                         <Button 
                                 Content="Взяти до роботи"
-                                Command="{Binding CanselStatementE}"
-                                Margin="5"></Button>
-                        <Button 
-                                Content="Виконати"
-                                Command="{Binding CanselStatementE}"
+                                Command="{Binding TakeInWorkStatementE}"
+                                Visibility="{Binding TakeStatementE_visability}"
                                 Margin="5"></Button>
                         <Button 
                                 Content="Повернути"
-                                Command="{Binding CanselStatementE}"
+                                Command="{Binding ReturnStatementE}"
+                                Visibility="{Binding ReturnStatementE_visability}"
                                 Margin="5"></Button>
                         <Button 
-                                Content="Відміна"
+                                Content="Виконати"
+                                Command="{Binding FinishStatementE}"
+                                Visibility="{Binding FinishStatementE_visability}"
+                                Margin="5"></Button>
+                        
+                        <Button 
+                                Content="Скасувати"
                                 Command="{Binding CanselStatementE}"
+                                Visibility="{Binding AbortStatementE_visability}"
                                 Margin="5"></Button>
                     </StackPanel>
                 </Grid>
