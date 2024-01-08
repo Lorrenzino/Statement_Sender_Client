@@ -14,7 +14,23 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
     internal class ViewModelStatementEditor : ViewModelBase
     {
         public List<string> Type_of_problem => Current_user.Type_of_problem;
-        
+        public List<string> Type_of_accountable => Current_user.Users_accountable_list;
+
+        private string _type_accountable;
+        public string Type_accountable
+        {
+            get
+            {
+                
+                return _type_accountable;
+            }
+            set
+            {
+                _type_accountable = value;
+                OnPropertyChanged(nameof(Status));
+            }
+        }
+
 
 
         private string _Autor_ID;
@@ -269,6 +285,8 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         {
             get
             {
+                if(_date_control == DateTime.MinValue)
+                    return null;
                 return _date_control;
             }
             set
@@ -484,11 +502,12 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
 
         public ViewModelStatementEditor()
         { 
+
         _Visability_Date_end = "False";
         _Visability_Date_con = "True";
         _Visability_User_param = "True";
         _Visability_Box_for_message = "True";
-        _Visability_Accountabl = "False";
+        _Visability_Accountabl = "True";
         _Visability_Worker = "False";
         _Visability_Sender = "False";
 
@@ -496,7 +515,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
         SendStatementE = new SendStatementE_Command(this);
         ChangStatementE = new ChangStatementE_Command(this);
         TakeInWorkStatementE = new TakeInWorkStatementE_Command(this);
-        //ReturnStatementE= new ReturnStatementE_Command(this);
+        ReturnStatementE= new ReturnStatementE_Command(this);
         FinishStatementE = new FinishStatementE_Command(this);
         CanselStatementE = new CanselStatementE_Command(this);
 
@@ -514,19 +533,32 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             _FinishStatementE_visability = "Collapsed";
             _AbortStatementE_visability= "Collapsed";
 
+            if (Type_of_accountable.Count != 0)
+                _type_accountable = Type_of_accountable[0];
+            else
+                _type_accountable = "#error list_of_accountable";
         }
         public ViewModelStatementEditor(ViewModelStatement view)
         {
-            _SendStatementE_visability = "Hidden";
+            _SendStatementE_visability = "Collapsed";
             //кнопки
             SendStatementE = new SendStatementE_Command(this);
             ChangStatementE = new ChangStatementE_Command(this);
             TakeInWorkStatementE = new TakeInWorkStatementE_Command(this);
-            //ReturnStatementE= new ReturnStatementE_Command(this);
+            ReturnStatementE= new ReturnStatementE_Command(this);
             FinishStatementE = new FinishStatementE_Command(this);
             CanselStatementE = new CanselStatementE_Command(this);
+            
+
+            //проверка на наличие отдела-ответсвтенного на наличие в списке отдел+Руководитель, при наличичи сразу присвоение для отображения пользователю
+            foreach(string acc in Type_of_accountable)
+                if(view.Accountable.Department!=null)
+                    if(acc.Contains(view.Accountable.Department))
+                        _type_accountable = acc;
+
 
             //если пользователь == отправитель
+            //что должен видеть и морчь делать подльзователь при разном статусе заявления
             if (view.Sender.User_pers_nom == Current_user.Current.User_pers_nom)
             {
                 //Відкрито
@@ -535,8 +567,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 {
                     _Visability_User_param = "True";
                     _Visability_Box_for_message = "True";
+                    _Visability_Accountabl = "True";
+                    _Visability_Box_for_message = "True";
 
-                    _SendStatementE_visability = "Collapsed";
                     _UpdateStatementE_visability = "Visible";
                     _AbortStatementE_visability = "Visible";
                 }
@@ -562,6 +595,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 if (view.Status == Current_user.Type_of_status[3])
                 {
                     _Visability_Box_for_message = "True";
+                    _Visability_Accountabl = "True";
 
                     _ReturnStatementE_visability = "Visible";
                     _UpdateStatementE_visability = "Visible";
@@ -574,7 +608,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                     _Visability_Box_for_message = "True";
 
                     _ReturnStatementE_visability = "Visible";
-                    _FinishStatementE_visability = "Visible";
+                    //_FinishStatementE_visability = "Visible";
                 }
                 //Скасовано
                 // можно надіслати(знов)(щось не влаштовує), завершини (та сама кнопка - підтвердження)
@@ -583,7 +617,7 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                     _Visability_Box_for_message = "True";
 
                     _ReturnStatementE_visability = "Visible";
-                    _FinishStatementE_visability = "Visible";
+                    //_FinishStatementE_visability = "Visible";
                 }
 
                 
@@ -593,14 +627,26 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             if ((view.Accountable.Department == Current_user.Current.Department)|| (view.Worker.Department == Current_user.Current.Department))
             {
                 //Відкрито
+
+                if (view.Status == Current_user.Type_of_status[0])
+                {
+                    _TakeStatementE_visability = "Visible";
+                    _AbortStatementE_visability = "Visible";
+                }
+
                 //Опрацьовується
+                if (view.Status == Current_user.Type_of_status[1])
+                {
+                    if(view.Worker.Department != Current_user.Current.Department)
+                        _TakeStatementE_visability = "Visible";
 
-                _TakeStatementE_visability = "Visible";
-                _AbortStatementE_visability = "Visible";
-
+                    _FinishStatementE_visability = "Visible";
+                }
                 //Призупинено
                 if (view.Status == Current_user.Type_of_status[2])
                 {
+                    if (view.Worker.Department != Current_user.Current.Department)
+                        _TakeStatementE_visability = "Visible";
 
                     _ReturnStatementE_visability = "Visible";
                     _FinishStatementE_visability = "Visible";
@@ -610,22 +656,27 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 // можна повернути(щось не влаштовує), редагувати, відмінити
                 if (view.Status == Current_user.Type_of_status[3])
                 {
-                    _TakeStatementE_visability = "Collapsed";
-                    _AbortStatementE_visability = "Collapsed";
+                    if (view.Worker.Department != Current_user.Current.Department)
+                        _TakeStatementE_visability = "Visible";
+
+                    _ReturnStatementE_visability = "Visible";
+                    _FinishStatementE_visability = "Visible";
+                    _AbortStatementE_visability = "Visible";
                 }
                 //Зроблено 
                 // можно повернути(щось не влаштовує), завершини (та сама кнопка - підтвердження)
                 if (view.Status == Current_user.Type_of_status[4])
                 {
-                    _TakeStatementE_visability = "Collapsed";
-                    _AbortStatementE_visability = "Collapsed";
+                    if (view.Worker.Department != Current_user.Current.Department)
+                        _TakeStatementE_visability = "Visible";
+
+                    _ReturnStatementE_visability = "Visible";
                 }
                 //Скасовано
                 // можно надіслати(знов)(щось не влаштовує), завершини (та сама кнопка - підтвердження)
                 if (view.Status == Current_user.Type_of_status[5])
                 {
-                    _TakeStatementE_visability = "Collapsed";
-                    _AbortStatementE_visability = "Collapsed"; 
+                    
                 }
 
                 if (Current_user.Current.User_Access_bill == "admin")

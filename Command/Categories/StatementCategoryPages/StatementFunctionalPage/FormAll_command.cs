@@ -44,21 +44,21 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                 switch (_categor)
                 {
                     case "me":
-                    foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
-                    {
-                        if (Current_user.isAutorise)
+                        foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
                         {
-                            if (st.Worker.User_ID == Current_user.Current.User_ID)
+                            if (Current_user.isAutorise)
+                            {
+                                if (st.Sender.User_ID == Current_user.Current.User_ID)
                                     if (st.Status == _word)
                                         Statement_list.Add(st);
-                        }
-                        else
-                        {
-                            if (st.Worker.User_pers_nom == Current_user.Current.User_pers_nom)
+                            }
+                            else
+                            {
+                                if (st.Sender.User_pers_nom == Current_user.Current.User_pers_nom)
                                     if (st.Status == _word)
                                         Statement_list.Add(st);
+                            }
                         }
-                    }
                         break;
                     case "dep":
                     foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
@@ -69,21 +69,22 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                     }
                         break;
                     case "my":
-                    foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
-                    {
-                        if (Current_user.isAutorise)
+                        foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
                         {
-                            if (st.Sender.User_ID == Current_user.Current.User_ID)
+                            if (Current_user.isAutorise)
+                            {
+                                if (st.Worker.User_ID == Current_user.Current.User_ID)
                                     if (st.Status == _word)
                                         Statement_list.Add(st);
-                        }
-                        else
-                        {
-                            if (st.Sender.User_pers_nom == Current_user.Current.User_pers_nom)
+                            }
+                            else
+                            {
+                                if (st.Worker.User_pers_nom == Current_user.Current.User_pers_nom)
                                     if (st.Status == _word)
                                         Statement_list.Add(st);
+                            }
                         }
-                    }
+                        
                         break;
                 }
                 
@@ -93,28 +94,6 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                 switch (_categor)
                 {
                     case "me":
-                        foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
-                        {
-                            if (Current_user.isAutorise)
-                            {
-                                if (st.Worker.User_ID == Current_user.Current.User_ID)
-                                    Statement_list.Add(st);
-                            }
-                            else
-                            {
-                                if (st.Worker.User_pers_nom == Current_user.Current.User_pers_nom)
-                                    Statement_list.Add(st);
-                            }
-                        }
-                        break;
-                    case "dep":
-                        foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
-                        {
-                            if (st.Accountable.Department == Current_user.Current.Department)
-                                Statement_list.Add(st);
-                        }
-                        break;
-                    case "my":
                         foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
                         {
                             if (Current_user.isAutorise)
@@ -129,6 +108,30 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                             }
                         }
                         break;
+                        
+                    case "dep":
+                        foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
+                        {
+                            if (st.Accountable.Department == Current_user.Current.Department)
+                                Statement_list.Add(st);
+                        }
+                        break;
+                    case "my":
+                        foreach (ViewModelStatement st in Statement_Collection.User_StatementsVM)
+                        {
+                            if (Current_user.isAutorise)
+                            {
+                                if (st.Worker.User_ID == Current_user.Current.User_ID)
+                                    Statement_list.Add(st);
+                            }
+                            else
+                            {
+                                if (st.Worker.User_pers_nom == Current_user.Current.User_pers_nom)
+                                    Statement_list.Add(st);
+                            }
+                        }
+                        break;
+
                 }
             }
             _navigationLib.CurPage_Statements = new ViewModelListStatement(_navigationLib, Statement_list);

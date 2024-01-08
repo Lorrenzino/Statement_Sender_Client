@@ -21,15 +21,22 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         }
         public override void Execute(object parameter)
         {
+            User AC = new User();
+
+            foreach (User U in Current_user.Users_accountable)
+            {
+                if (_view.Type_accountable.Contains(U.Department))
+                    AC = U;
+            }
             Statement newStatement = new Statement(Convert.ToInt32(_view.Autor_ID),
-                                                    _view.Sender, _view.Accountable, _view.Worker,
+                                                    _view.Sender, AC, _view.Worker,
                                                     _view.Sender_Name, _view.Sender_Department, _view.Addres, _view.Room, _view.Phone_nom,
                                                     _view.Priority, _view.Type_problem, _view.Subject, _view.Description, _view.Rezult,null,
                                                     Convert.ToDateTime(_view.Date_start), Convert.ToDateTime(_view.Date_end), Convert.ToDateTime(_view.Date_control),
                                                     _view.Status);
             ObservableCollection<Statement> s = new ObservableCollection<Statement>();
             s.Add(newStatement);
-            Request r = new Request("update", Current_user.LPK, s);
+            Request r = new Request("update", Current_user.LPK, s, null);
             Client A = new Client();
             A.OutCommingCallAsync(r);
             //донастроить ответ - подтверждение

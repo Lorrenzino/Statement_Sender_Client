@@ -18,6 +18,13 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
         {
             _view = view;
         }
+        public override bool CanExecute(object parameter)
+        {/*
+            if(Current_user.Current.User_ID == _view.Accountable.User_ID) 
+                return false;
+            */
+            return true;
+        }
         public override void Execute(object parameter)
         {
             Statement newStatement = new Statement(Convert.ToInt32(_view.Autor_ID),
@@ -28,7 +35,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                                                     Current_user.Type_of_status[1]);
             ObservableCollection<Statement> s = new ObservableCollection<Statement>();
             s.Add(newStatement);
-            Request r = new Request("update", Current_user.LPK, s);
+            Request r = new Request("update", Current_user.LPK, s, null);
             Client A = new Client();
             A.OutCommingCallAsync(r);
             //донастроить ответ - подтверждение

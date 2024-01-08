@@ -28,7 +28,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                                                     DateTime.MinValue, DateTime.MinValue, DateTime.MinValue,
                                                     "");
             col.Add(a);
-            Request RE = new Request("select", lp1, col);
+            Request RE = new Request("select", lp1, col, null);
             Client A = new Client();
             A.OutCommingCallAsync(RE);
         }

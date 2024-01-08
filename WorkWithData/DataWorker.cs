@@ -78,7 +78,14 @@ namespace Statement_Sender_Client.WorkWithData
                     break;
                 case "answer_insert":
                     break;
-                
+                case "answer_users_accountable":
+                    foreach(User u in Current_R.users)
+                    {
+                        Current_user.Users_accountable.Add(u);
+                    }
+                    break;
+
+
             }
 
             return feedback;

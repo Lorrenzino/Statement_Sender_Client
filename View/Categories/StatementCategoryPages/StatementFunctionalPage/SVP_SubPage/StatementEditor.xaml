@@ -40,27 +40,40 @@
                     </Grid.RowDefinitions>
 
                     <Grid Grid.Row="0">
+
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
 
-                        <Label  Grid.Column="0"
-                                Content="Номер"
-                                VerticalAlignment="Center"></Label>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Label  Grid.Column="0"
+                                    Content="Номер"
+                                    VerticalAlignment="Center"></Label>
 
 
-                        
+
                             <TextBox 
-                                Text="{Binding Autor_ID,Mode=OneWay}"
-                                Grid.Column="1"
-                                Width="150"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left"
-                                IsReadOnly="True"></TextBox>
-                                
-                            
-                        
+                                    Text="{Binding Autor_ID,Mode=OneWay}"
+                                    Grid.Column="1"
+                                    Width="150"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    IsReadOnly="True"></TextBox>
+                        </Grid>
+
+                        <TextBox 
+                                 Text="{Binding Status,Mode=OneWay}"
+                                 Grid.Column="1"
+                                 Width="150"
+                                 VerticalAlignment="Center"
+                                 HorizontalAlignment="Right"
+                                 IsReadOnly="True"></TextBox>
 
 
                     </Grid>
@@ -84,7 +97,7 @@
                                 HorizontalAlignment="Left"
                                 IsReadOnly="True" 
                                 ></TextBox>
-                        
+
                             <DatePicker x:Name="DateStart"
                                         VerticalAlignment="Center"
                                         HorizontalAlignment="Center"
@@ -92,12 +105,13 @@
                                         
                                         IsDropDownOpen="False"
                                         SelectedDate="{Binding Date_start}"
+                                        IsEnabled="False"
                                         FirstDayOfWeek="Monday"
                                         ></DatePicker>
-                            
+
                         </StackPanel>
                     </Grid>
-                    
+
                     <Grid Grid.Row="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
@@ -171,9 +185,9 @@
                                   ItemsSource="{Binding Type_of_problem}"
                                    SelectedValue="{Binding Type_problem}"
                                 VerticalAlignment="Center" 
-                                  IsEnabled="{Binding Visability_User_param}"></ComboBox>
+                                  IsEnabled="{Binding Visability_User_param}" ></ComboBox>
                     </Grid>
-                    
+
 
                     <Grid Grid.Row="4">
                         <Grid.ColumnDefinitions>
@@ -200,29 +214,86 @@
 
                         <Grid >
 
-                        <Grid.RowDefinitions>
-                            <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
-                            <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
-                            <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
-                        </Grid.RowDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                                <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                                <RowDefinition MinHeight="30" Height="1*"></RowDefinition>
+                            </Grid.RowDefinitions>
 
 
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                            <Label Grid.Column="0"
+                                <Label Grid.Column="0"
                                     Content="Адреса"
                                     VerticalAlignment="Center"></Label>
-                            <TextBox Grid.Column="1"
+                                <TextBox Grid.Column="1"
                                     Text="{Binding Addres}"
              
                                     VerticalAlignment="Center"
                                     IsEnabled="{Binding Visability_User_param}">
-                            </TextBox>
+                                </TextBox>
+                            </Grid>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Label Grid.Column="0"
+                                    Content="Підрозділ"
+                                    VerticalAlignment="Center"></Label>
+                                <TextBox Grid.Column="1"
+                                    Text="{Binding Sender_Department}"
+             
+                                    VerticalAlignment="Center"
+                                     IsEnabled="{Binding Visability_User_param}">
+                                </TextBox>
+
+                            </Grid>
+
+                            <Grid Grid.Row="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid Grid.Column="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                        Content="Кімната"
+                                        VerticalAlignment="Center"></Label>
+                                    <TextBox Grid.Column="1"
+                                        Text="{Binding Room}"
+                                        VerticalAlignment="Center"
+                                        IsEnabled="{Binding Visability_User_param}"></TextBox>
+                                </Grid>
+
+
+                                <Grid Grid.Column="1">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="100"></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0"
+                                        Content="Контактний номер"
+                                        VerticalAlignment="Center"></Label>
+                                    <TextBox Grid.Column="1"
+                                        Text="{Binding Phone_nom}"
+                                        VerticalAlignment="Center"
+                                        IsEnabled="{Binding Visability_User_param}"></TextBox>
+                                </Grid>
+                            </Grid>
+
                         </Grid>
+
 
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
@@ -231,70 +302,13 @@
                             </Grid.ColumnDefinitions>
 
                             <Label Grid.Column="0"
-                                    Content="Підрозділ"
-                                    VerticalAlignment="Center"></Label>
-                            <TextBox Grid.Column="1"
-                                    Text="{Binding Sender_Department}"
-             
-                                    VerticalAlignment="Center"
-                                     IsEnabled="{Binding Visability_User_param}">
-                            </TextBox>
-
-                        </Grid>
-
-                        <Grid Grid.Row="2" >
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-
-                            <Grid Grid.Column="0">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0"
-                                        Content="Кімната"
-                                        VerticalAlignment="Center"></Label>
-                                <TextBox Grid.Column="1"
-                                        Text="{Binding Room}"
-                                        VerticalAlignment="Center"
-                                        IsEnabled="{Binding Visability_User_param}"></TextBox>
-                            </Grid>
-
-
-                            <Grid Grid.Column="1">
-                                <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                   <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0"
-                                        Content="Контактний номер"
-                                        VerticalAlignment="Center"></Label>
-                                <TextBox Grid.Column="1"
-                                        Text="{Binding Phone_nom}"
-                                        VerticalAlignment="Center"
-                                        IsEnabled="{Binding Visability_User_param}"></TextBox>
-                            </Grid>
-                        </Grid>
-
-                    </Grid>
-                    
-
-                    <Grid Grid.Row="1">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-
-                        <Label Grid.Column="0"
                                 Content="Інший Адрес"
                                 VerticalAlignment="Center"></Label>
-                        <CheckBox x:Name="Chek"
+                            <CheckBox x:Name="Chek"
                                 Grid.Column="1"
                                 IsChecked="{Binding IsChecked}"
                                 VerticalAlignment="Center"/>
-                    </Grid>
+                        </Grid>
                     </Grid>
 
                     <Grid Grid.Row="7">
@@ -306,8 +320,9 @@
                                 Content="Тема"
                                 VerticalAlignment="Top"></Label>
                         <TextBox Grid.Column="1"
-                                Text="{Binding Subject}">
-                            
+                                Text="{Binding Subject}"
+                                IsEnabled="{Binding Visability_User_param}">
+                                
                         </TextBox>
 
 
@@ -320,14 +335,14 @@
                         </Grid.ColumnDefinitions>
 
                         <Label Grid.Column="0"
-                                Content="Опис"
+                                Content="Відповідь"
                                 VerticalAlignment="Center"></Label>
                         <TextBox Grid.Column="1"
                                 Text="{Binding Description }"
                                 IsEnabled="{Binding Visability_Box_for_message}"></TextBox>
                     </Grid>
 
-                    
+
 
                     <!--<Grid Grid.Row="8">
                         <Grid.ColumnDefinitions>
@@ -361,19 +376,22 @@
                                  VerticalAlignment="Center"
                                  IsEnabled="{Binding Visability_Worker}"></TextBox>
                     </Grid>
-                    
+
                     <Grid Grid.Row="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition Width="177*"></ColumnDefinition>
+                            <ColumnDefinition Width="68*"/>
                         </Grid.ColumnDefinitions>
                         <Label Grid.Column="0"
                                 Content="Відповідальний"
                                 VerticalAlignment="Top"></Label>
-                        <TextBox Grid.Column="1"
-                                Text="{Binding Accountable_Name}"
-                                VerticalAlignment="Center"
-                                IsEnabled="{Binding  Visability_Accountabl}"></TextBox>
+                        <ComboBox Grid.Column="1"
+                                ItemsSource="{Binding Type_of_accountable}"
+                                SelectedValue="{Binding Type_accountable, ConverterParameter=1}"
+                                VerticalAlignment="Center" 
+                                IsEnabled="{Binding Visability_Accountabl}"></ComboBox>
+                        
                     </Grid>
                 </Grid>
 
@@ -384,7 +402,7 @@
 
                     <StackPanel Orientation="Horizontal"   
                                 >
-                        
+
                         <Button 
                                 Content="Відправити"
                                 Command="{Binding SendStatementE}"
@@ -411,7 +429,7 @@
                                 Command="{Binding FinishStatementE}"
                                 Visibility="{Binding FinishStatementE_visability}"
                                 Margin="5"></Button>
-                        
+
                         <Button 
                                 Content="Скасувати"
                                 Command="{Binding CanselStatementE}"

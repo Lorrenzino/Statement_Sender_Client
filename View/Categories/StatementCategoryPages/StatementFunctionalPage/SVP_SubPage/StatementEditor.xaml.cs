@@ -27,9 +27,6 @@ namespace Statement_Sender_Client.View.Categories.StatementCategoryPages.Stateme
             //DataContext = new ViewModelStatementEditor();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
+      
     }
 }

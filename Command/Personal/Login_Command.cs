@@ -28,11 +28,17 @@ namespace Statement_Sender_Client.Command.Personal
         {
             
             _navigationLib.CurPage_Statements = new ViewModelListStatement(_navigationLib,Statement_Collection.User_StatementsVM);
-            Request r = new Request("login", new string[]{ login_vm.username, login_vm.password, "" }, null);
+            Request r = new Request("login", new string[]{ login_vm.username, login_vm.password, "" }, null, null);
             //ViewModelStatement newSVM = new ViewModelStatement(newStatement);
             //Statement_Collection.User_StatementsVM.Add(newSVM);
             Client A = new Client();
             A.OutCommingCallAsync(r);
+            r.Type_R = "users_accountable";
+            A.OutCommingCallAsync(r);
+            foreach(User u in Current_user.Users_accountable)
+            {
+                Current_user.Users_accountable_list.Add($"{u.Department}" + " " + $"{u.User_Name_Last}" + " " + $"{u.User_Name_First}");
+            }
             if (Current_user.isAutorise)
             {
                 _navigationLib.CurPage_Main = new ViewModel_MainStatementPage(_navigationLib);

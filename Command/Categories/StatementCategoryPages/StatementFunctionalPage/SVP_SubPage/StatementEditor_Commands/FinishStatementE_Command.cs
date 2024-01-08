@@ -28,7 +28,7 @@ namespace Statement_Sender_Client.Command.Categories.StatementCategoryPages.Stat
                                                     Current_user.Type_of_status[4]);
             ObservableCollection<Statement> s = new ObservableCollection<Statement>();
             s.Add(newStatement);
-            Request r = new Request("update", Current_user.LPK, s);
+            Request r = new Request("update", Current_user.LPK, s, null);
             Client A = new Client();
             A.OutCommingCallAsync(r);
             //донастроить ответ - подтверждение
