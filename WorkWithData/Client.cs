@@ -21,15 +21,17 @@ namespace Statement_Sender_Client.WorkWithData
         public static string data = null;
         public async void OutCommingCallAsync(Request message_to_send)
         {
-            byte[] bytes = new byte[1024];
-            var hostName = "HelpClient";               
-            IPHostEntry ipHost = Dns.GetHostEntry(hostName);
-            IPAddress ipAddress = ipHost.AddressList[1];
+            
+            byte[] bytes = new byte[1024]; //ok
+            var hostName = "HelpClient";  //ok    
+            IPHostEntry ipHost = Dns.GetHostEntry(hostName); //ok
+            IPAddress ipAddress = ipHost.AddressList[0]; 
             IPEndPoint remoteEP = new IPEndPoint(ipAddress, 20101);
-            Socket sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp);
 
+            Socket sender = new Socket(ipAddress.AddressFamily, SocketType.Stream, ProtocolType.Tcp); 
             try
             {
+
                 sender.Connect(remoteEP);
                 do
                 {

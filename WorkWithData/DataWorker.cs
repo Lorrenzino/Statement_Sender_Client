@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Statement_Sender_Client.Model;
-
+using Statement_Sender_Client.ViewModel.Categories.Statements;
 
 namespace Statement_Sender_Client.WorkWithData
 {
@@ -55,25 +55,22 @@ namespace Statement_Sender_Client.WorkWithData
                     Statement_Collection.User_StatementsVM.Clear();
                     foreach (Statement st in Current_R.Data)
                     {
-                        /*
-                        foreach (User us in Statement_Collection.User_list)
-                        {
-                            if (st.Sender.User_pers_nom != null)
-                                if (st.Sender.User_pers_nom == us.User_pers_nom)
-                                    st.Sender = us;
-                            if (st.Accountable.User_pers_nom != null)
-                                if (st.Accountable.User_pers_nom == us.User_pers_nom)
-                                    st.Accountable = us;
-                            if (st.Worker.User_pers_nom != null)
-                                if (st.Worker.User_pers_nom == us.User_pers_nom)
-                                    st.Worker = us;
-                        }
-                        */
-                            
                         Statement_Collection.User_Statements.Add(st);
-                        Statement_Collection.User_StatementsVM.Add(new ViewModel.Categories.Statements.ViewModelStatement(st));
                     }
-                    break;
+                    Statement_Collection.User_Statements = new ObservableCollection<Statement>(Statement_Collection.User_Statements.OrderBy(i => i.ID_unic));
+                    int i = 0;
+                    //List < int >= new List<int>();
+                    foreach (Statement st in Statement_Collection.User_Statements)
+                    {
+                        if (st.ID_unic != i)
+                        {
+                            i = st.ID_unic;
+                            Statement_Collection.User_StatementsVM.Add(new ViewModel.Categories.Statements.ViewModelStatement(st));
+                        }
+                    }
+
+                    
+                        break;
                 case "answer_update":
                     break;
                 case "answer_insert":

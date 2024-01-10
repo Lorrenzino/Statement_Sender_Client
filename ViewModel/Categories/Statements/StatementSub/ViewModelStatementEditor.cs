@@ -627,9 +627,11 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
             if ((view.Accountable.Department == Current_user.Current.Department)|| (view.Worker.Department == Current_user.Current.Department))
             {
                 //Відкрито
-
+                _Visability_Box_for_message = "True";
                 if (view.Status == Current_user.Type_of_status[0])
                 {
+
+
                     _TakeStatementE_visability = "Visible";
                     _AbortStatementE_visability = "Visible";
                 }
@@ -639,8 +641,9 @@ namespace Statement_Sender_Client.ViewModel.Categories.Statements.StatementSub
                 {
                     if(view.Worker.Department != Current_user.Current.Department)
                         _TakeStatementE_visability = "Visible";
-
+                    _ReturnStatementE_visability = "Visible";
                     _FinishStatementE_visability = "Visible";
+                    _AbortStatementE_visability = "Visible";
                 }
                 //Призупинено
                 if (view.Status == Current_user.Type_of_status[2])
